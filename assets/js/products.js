@@ -95,6 +95,84 @@ const products = [
         esSet: true
     },
 
+    // Arcilla Colgantes
+    {
+        id: 9,
+        name: "Macetero Arcilla Colgante",
+        price: 15.00,
+        category: "arcilla-colgantes",
+        subcategory: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Macetero de arcilla + planta de tu elección + tejido. Sistema colgante con macramé incluido.",
+        dimensions: "6.0cm de altura - 5.5 diámetro",
+        featured: true,
+        personalizable: false
+    },
+
+    // Mini-Macetas
+    {
+        id: 10,
+        name: "Mini-Maceta Personalizada",
+        price: 12.00,
+        category: "mini-macetas",
+        subcategory: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Macetero personalizado + planta. Diseño único según tu preferencia.",
+        dimensions: "4.0 cm de altura - 5.5 diámetro",
+        featured: true,
+        personalizable: true,
+        personalizacionCosto: 3.00,
+        personalizationType: "design" // Diferente tipo de personalización
+    },
+    {
+        id: 11,
+        name: "Mini-Maceta Oferta Especial",
+        price: 30.00, // 3 x S/.10.00 según la imagen
+        originalPrice: 36.00, // 3 x S/.12.00
+        category: "mini-macetas",
+        subcategory: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "OFERTA ESPECIAL: 3 mini-macetas pintadas tal cual la imagen. Pack completo con diseños únicos.",
+        dimensions: "4.0 cm de altura - 5.5 diámetro cada una",
+        featured: true,
+        personalizable: false,
+        isSpecialOffer: true,
+        quantity: 3 // Pack de 3 unidades
+    },
+
+    // Mini-Macetas Cuadradas
+    {
+        id: 12,
+        name: "Mini-Maceta Cuadrada Personalizada",
+        price: 12.00,
+        category: "mini-macetas",
+        subcategory: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Macetero cuadrado + planta. Diseño único según tu preferencia.",
+        dimensions: "4.0 cm de altura - 5.5 diámetro",
+        featured: true,
+        personalizable: true,
+        personalizacionCosto: 3.00,
+        personalizationType: "design",
+        shape: "cuadrada"
+    },
+    {
+        id: 13,
+        name: "Mini-Maceta Cuadrada Oferta Especial",
+        price: 30.00, // 3 x S/.10.00
+        originalPrice: 36.00, // 3 x S/.12.00
+        category: "mini-macetas",
+        subcategory: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "OFERTA ESPECIAL: 3 mini-macetas cuadradas con símbolos únicos (||, ■, ▷). Pack completo tal cual la imagen.",
+        dimensions: "4.0 cm de altura - 5.5 diámetro cada una",
+        featured: true,
+        personalizable: false,
+        isSpecialOffer: true,
+        quantity: 3,
+        shape: "cuadrada"
+    },
+
     // Letras Decorativas
     {
         id: 10,
@@ -229,6 +307,34 @@ const products = [
         description: "Pisapapeles funcional y decorativo con diseño geométrico moderno.",
         dimensions: "8cm x 8cm x 5cm",
         featured: true
+    },
+    
+    // MACETA MEDIANAS - Con personalización de nombre
+    {
+        id: 14,
+        name: "Maceta Mediana Natural",
+        price: 12.00,
+        personalizationType: "text",
+        personalizationCost: 3.00,
+        subcategory: "maceta-mediana",
+        category: "hogar",
+        image: "assets/images/maceta-mediana-natural.jpg",
+        description: "Maceta de tamaño mediano perfecta para suculentas y cactus. Personalizable con nombre.",
+        dimensions: "6.5cm diámetro x 4.5cm altura",
+        featured: false
+    },
+    {
+        id: 15,
+        name: "Maceta Mediana Color",
+        price: 12.00,
+        personalizationType: "text", 
+        personalizationCost: 3.00,
+        subcategory: "maceta-mediana",
+        category: "hogar",
+        image: "assets/images/maceta-mediana-color.jpg",
+        description: "Maceta mediana en colores vibrantes. Ideal para decorar con tu toque personal.",
+        dimensions: "6.5cm diámetro x 4.5cm altura",
+        featured: false
     }
 ];
 

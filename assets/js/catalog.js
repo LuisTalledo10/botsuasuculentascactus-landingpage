@@ -39,9 +39,40 @@ class CatalogManager {
     }
 
     setupArcillaProducts() {
+        // Productos de Arcilla tradicional
         const arcillaProducts = document.querySelectorAll('.arcilla-product');
         
         arcillaProducts.forEach(product => {
+            const addToCartBtn = product.querySelector('.add-to-cart-overlay');
+            const productId = parseInt(product.getAttribute('data-product-id'));
+            
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.handleAddToCart(productId);
+                });
+            }
+        });
+
+        // Productos de Arcilla Colgantes
+        const colgantesProducts = document.querySelectorAll('.colgantes-product-item');
+        
+        colgantesProducts.forEach(product => {
+            const addToCartBtn = product.querySelector('.add-to-cart-overlay');
+            const productId = parseInt(product.getAttribute('data-product-id'));
+            
+            if (addToCartBtn) {
+                addToCartBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.handleAddToCart(productId);
+                });
+            }
+        });
+
+        // Productos de Mini-Macetas
+        const miniProducts = document.querySelectorAll('.mini-product');
+        
+        miniProducts.forEach(product => {
             const addToCartBtn = product.querySelector('.add-to-cart-overlay');
             const productId = parseInt(product.getAttribute('data-product-id'));
             
@@ -71,7 +102,27 @@ class CatalogManager {
 
     showPersonalizationModal() {
         const modal = document.getElementById('personalizationModal');
-        if (!modal) return;
+        if (!modal || !this.currentProduct) return;
+
+        // Configurar el modal según el tipo de personalización
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        
+        if (this.currentProduct.personalizationType === 'design') {
+            modalTitle.textContent = 'Personalizar Mini-Maceta';
+            modalDescription.textContent = '¿Deseas personalizar el diseño de tu mini-maceta?';
+        } else {
+            // Determinar el tipo de producto para el texto del modal
+            let productType = 'producto';
+            if (this.currentProduct.subcategory && this.currentProduct.subcategory.includes('vaso')) {
+                productType = 'vaso';
+            } else if (this.currentProduct.subcategory && this.currentProduct.subcategory.includes('maceta')) {
+                productType = 'maceta';
+            }
+            
+            modalTitle.textContent = `Personalizar ${productType.charAt(0).toUpperCase() + productType.slice(1)}`;
+            modalDescription.textContent = `¿Deseas personalizar tu ${productType} con un nombre o texto?`;
+        }
 
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -93,15 +144,25 @@ class CatalogManager {
         const sinPersonalizar = document.getElementById('sinPersonalizar');
         const conPersonalizar = document.getElementById('conPersonalizar');
         const textInputSection = document.getElementById('textInputSection');
+        const designInputSection = document.getElementById('designInputSection');
         const personalizationText = document.getElementById('personalizationText');
+        const designDescription = document.getElementById('designDescription');
 
         // Resetear botones
         sinPersonalizar.classList.remove('active');
         conPersonalizar.classList.remove('active');
         
-        // Ocultar sección de texto
+        // Ocultar secciones de entrada
         textInputSection.style.display = 'none';
-        personalizationText.value = '';
+        designInputSection.style.display = 'none';
+        
+        // Limpiar campos
+        if (personalizationText) personalizationText.value = '';
+        if (designDescription) designDescription.value = '';
+        
+        // Reset contador de caracteres
+        const charCount = document.getElementById('designCharCount');
+        if (charCount) charCount.textContent = '0';
     }
 
     setupPersonalizationModal() {
@@ -135,15 +196,27 @@ class CatalogManager {
             sinPersonalizar.classList.add('active');
             conPersonalizar.classList.remove('active');
             textInputSection.style.display = 'none';
+            designInputSection.style.display = 'none';
         });
 
         conPersonalizar?.addEventListener('click', () => {
             conPersonalizar.classList.add('active');
             sinPersonalizar.classList.remove('active');
-            textInputSection.style.display = 'block';
-            setTimeout(() => {
-                personalizationText?.focus();
-            }, 100);
+            
+            // Mostrar la sección correcta según el tipo de personalización
+            if (this.currentProduct?.personalizationType === 'design') {
+                designInputSection.style.display = 'block';
+                textInputSection.style.display = 'none';
+                setTimeout(() => {
+                    designDescription?.focus();
+                }, 100);
+            } else {
+                textInputSection.style.display = 'block';
+                designInputSection.style.display = 'none';
+                setTimeout(() => {
+                    personalizationText?.focus();
+                }, 100);
+            }
         });
 
         // Confirmar agregar al carrito
@@ -166,6 +239,25 @@ class CatalogManager {
                 this.confirmAddToCart();
             }
         });
+
+        // Contador de caracteres para descripción de diseño
+        const designDescription = document.getElementById('designDescription');
+        const designCharCount = document.getElementById('designCharCount');
+        
+        designDescription?.addEventListener('input', (e) => {
+            const length = e.target.value.length;
+            if (designCharCount) {
+                designCharCount.textContent = length;
+            }
+            
+            // Limitar caracteres
+            if (length > 200) {
+                e.target.value = e.target.value.substring(0, 200);
+                if (designCharCount) {
+                    designCharCount.textContent = '200';
+                }
+            }
+        });
     }
 
     confirmAddToCart() {
@@ -174,18 +266,36 @@ class CatalogManager {
         const sinPersonalizar = document.getElementById('sinPersonalizar');
         const conPersonalizar = document.getElementById('conPersonalizar');
         const personalizationText = document.getElementById('personalizationText');
+        const designDescription = document.getElementById('designDescription');
 
         let isPersonalized = false;
         let customText = '';
 
         if (conPersonalizar?.classList.contains('active')) {
             isPersonalized = true;
-            customText = personalizationText?.value.trim() || '';
             
-            if (!customText) {
-                alert('Por favor ingresa el texto para personalizar el vaso');
-                personalizationText?.focus();
-                return;
+            // Diferentes tipos de personalización
+            if (this.currentProduct.personalizationType === 'design') {
+                customText = designDescription?.value.trim() || '';
+                if (!customText) {
+                    alert('Por favor describe el diseño que deseas para tu mini-maceta');
+                    designDescription?.focus();
+                    return;
+                }
+            } else {
+                customText = personalizationText?.value.trim() || '';
+                if (!customText) {
+                    alert('Por favor ingresa el texto para personalizar tu producto');
+                    personalizationText?.focus();
+                    return;
+                }
+                
+                // Validación de longitud para personalización de texto
+                if (customText.length > 15) {
+                    alert('El texto personalizado no puede exceder 15 caracteres');
+                    personalizationText?.focus();
+                    return;
+                }
             }
         } else if (!sinPersonalizar?.classList.contains('active')) {
             alert('Por favor selecciona una opción');
@@ -216,10 +326,12 @@ class CatalogManager {
             price: finalPrice,
             originalPrice: product.price,
             image: product.image,
-            quantity: 1,
+            quantity: product.quantity || 1, // Para ofertas especiales con múltiples unidades
             isPersonalized: isPersonalized,
             customText: customText,
-            personalizacionCosto: isPersonalized ? (product.personalizacionCosto || 0) : 0
+            personalizacionCosto: isPersonalized ? (product.personalizacionCosto || 0) : 0,
+            isSpecialOffer: product.isSpecialOffer || false,
+            personalizationType: product.personalizationType || 'text'
         };
 
         // Agregar al carrito usando el sistema existente
@@ -233,12 +345,28 @@ class CatalogManager {
         // Crear notificación temporal
         const notification = document.createElement('div');
         notification.className = 'add-to-cart-notification';
+        
+        let personalizationInfo = '';
+        if (item.isPersonalized) {
+            if (item.personalizationType === 'design') {
+                personalizationInfo = `<br><small>Diseño personalizado: "${item.customText.substring(0, 30)}${item.customText.length > 30 ? '...' : ''}"</small>`;
+            } else {
+                personalizationInfo = `<br><small>Personalizado: "${item.customText}"</small>`;
+            }
+        }
+        
+        let offerInfo = '';
+        if (item.isSpecialOffer) {
+            offerInfo = `<br><small>🎉 OFERTA ESPECIAL</small>`;
+        }
+        
         notification.innerHTML = `
             <div class="notification-content">
                 <i class="fas fa-check-circle"></i>
                 <div class="notification-text">
                     <strong>${item.name}</strong>
-                    ${item.isPersonalized ? `<br><small>Personalizado: "${item.customText}"</small>` : ''}
+                    ${personalizationInfo}
+                    ${offerInfo}
                     <br><span class="price">S/.${item.price.toFixed(2)}</span>
                 </div>
             </div>
