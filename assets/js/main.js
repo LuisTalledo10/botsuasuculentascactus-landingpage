@@ -43,14 +43,10 @@ function initNavigation() {
             header.style.backdropFilter = 'none';
         }
         
-        // Auto-hide/show header con animación suave
-        if (currentScrollY > lastScrollY && currentScrollY > 200) {
-            header.style.transform = 'translateY(-100%)';
-            header.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-        } else {
-            header.style.transform = 'translateY(0)';
-            header.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
-        }
+        // Navegación siempre visible - auto-hide desactivado
+        // La barra de navegación permanece siempre visible
+        header.style.transform = 'translateY(0)';
+        header.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
         
         lastScrollY = currentScrollY;
     });

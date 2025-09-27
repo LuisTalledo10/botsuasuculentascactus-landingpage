@@ -6,7 +6,7 @@ const products = [
         name: "Joyero Circular Pequeño",
         price: 35.00,
         category: "joyeros",
-        image: "assets/images/joyero-circular-pequeno.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Elegante joyero circular de cemento, perfecto para anillos y aretes pequeños. Diseño minimalista con acabado suave.",
         dimensions: "8cm x 8cm x 3cm",
         featured: true
@@ -16,7 +16,7 @@ const products = [
         name: "Bandeja Rectangular Grande",
         price: 55.00,
         category: "joyeros",
-        image: "assets/images/bandeja-rectangular-grande.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Bandeja espaciosa ideal para organizar joyas y accesorios. Perfecta para cómodas y tocadores.",
         dimensions: "20cm x 15cm x 2cm",
         featured: false
@@ -26,7 +26,7 @@ const products = [
         name: "Joyero con Compartimentos",
         price: 68.00,
         category: "joyeros",
-        image: "assets/images/joyero-compartimentos.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Joyero funcional con múltiples compartimentos para organizar diferentes tipos de joyas.",
         dimensions: "15cm x 15cm x 4cm",
         featured: true
@@ -36,7 +36,7 @@ const products = [
         name: "Bandeja Ovalada",
         price: 42.00,
         category: "joyeros",
-        image: "assets/images/bandeja-ovalada.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Hermosa bandeja ovalada con bordes suaves, ideal para centros de mesa o como organizador.",
         dimensions: "18cm x 12cm x 2.5cm",
         featured: false
@@ -48,7 +48,7 @@ const products = [
         name: "Maceta Cilíndrica Mediana",
         price: 48.00,
         category: "macetas",
-        image: "assets/images/maceta-cilindrica-mediana.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Maceta cilíndrica perfecta para suculentas y cactus pequeños. Incluye drenaje interno.",
         dimensions: "12cm x 12cm x 14cm",
         featured: true
@@ -58,7 +58,7 @@ const products = [
         name: "Maceta Cuadrada Grande",
         price: 65.00,
         category: "macetas",
-        image: "assets/images/maceta-cuadrada-grande.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Maceta cuadrada de gran capacidad, ideal para plantas de mayor tamaño. Diseño robusto y elegante.",
         dimensions: "18cm x 18cm x 18cm",
         featured: false
@@ -68,7 +68,7 @@ const products = [
         name: "Set 3 Macetas Redondas",
         price: 85.00,
         category: "macetas",
-        image: "assets/images/set-3-macetas-redondas.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Conjunto de 3 macetas redondas de diferentes tamaños. Perfectas para crear composiciones.",
         dimensions: "Pequeña: 8cm, Mediana: 12cm, Grande: 16cm",
         featured: true
@@ -78,7 +78,7 @@ const products = [
         name: "Maceta Triangular",
         price: 38.00,
         category: "macetas",
-        image: "assets/images/maceta-triangular.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Maceta de diseño triangular único, perfecta para espacios modernos y minimalistas.",
         dimensions: "14cm x 14cm x 12cm",
         featured: false
@@ -88,7 +88,7 @@ const products = [
         name: "Maceta Colgante",
         price: 52.00,
         category: "macetas",
-        image: "assets/images/maceta-colgante.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Maceta diseñada para colgar, incluye sistema de sujeción resistente. Ideal para plantas colgantes.",
         dimensions: "15cm x 15cm x 12cm + 30cm cadena",
         featured: true
@@ -100,7 +100,7 @@ const products = [
         name: "Letra Personalizada 15cm",
         price: 32.00,
         category: "letras",
-        image: "assets/images/letra-personalizada-15cm.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Letra decorativa personalizada en cemento. Elige tu letra favorita para decorar cualquier espacio.",
         dimensions: "15cm x 12cm x 3cm",
         featured: false
@@ -110,7 +110,7 @@ const products = [
         name: "Palabra LOVE",
         price: 95.00,
         category: "letras",
-        image: "assets/images/palabra-love.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Palabra completa 'LOVE' en letras de cemento. Perfecta para decoración romántica y moderna.",
         dimensions: "40cm x 12cm x 3cm total",
         featured: true
@@ -120,7 +120,7 @@ const products = [
         name: "Letra Grande 25cm",
         price: 58.00,
         category: "letras",
-        image: "assets/images/letra-grande-25cm.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Letra de gran tamaño perfecta como elemento decorativo principal en cualquier habitación.",
         dimensions: "25cm x 20cm x 4cm",
         featured: false
@@ -130,7 +130,7 @@ const products = [
         name: "Set Iniciales Pareja",
         price: 75.00,
         category: "letras",
-        image: "assets/images/set-iniciales-pareja.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Set de dos letras personalizadas, ideal para parejas. Incluye base decorativa común.",
         dimensions: "2 letras de 18cm x 15cm x 3cm",
         featured: true
@@ -142,7 +142,7 @@ const products = [
         name: "Pack Suculentas Starter",
         price: 125.00,
         category: "packs",
-        image: "assets/images/pack-suculentas-starter.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Pack perfecto para iniciar tu jardín de suculentas: 2 macetas + bandeja + plantas incluidas.",
         dimensions: "Varios tamaños incluidos",
         featured: true
@@ -152,7 +152,7 @@ const products = [
         name: "Pack Organizador Escritorio",
         price: 145.00,
         category: "packs",
-        image: "assets/images/pack-organizador-escritorio.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Set completo para escritorio: porta lápices + bandeja + maceta pequeña + letra decorativa.",
         dimensions: "Set completo variado",
         featured: true
@@ -162,7 +162,7 @@ const products = [
         name: "Pack Joyería Completo",
         price: 155.00,
         category: "packs",
-        image: "assets/images/pack-joyeria-completo.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Pack completo de organización de joyas: 2 joyeros + bandeja grande + espejo decorativo.",
         dimensions: "Set completo variado",
         featured: false
@@ -172,7 +172,7 @@ const products = [
         name: "Pack Decorativo Hogar",
         price: 185.00,
         category: "packs",
-        image: "assets/images/pack-decorativo-hogar.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Pack decorativo completo: maceta grande + 2 bandejas + palabra decorativa + vela incluida.",
         dimensions: "Set completo variado",
         featured: true
@@ -184,7 +184,7 @@ const products = [
         name: "Porta Lápices Circular",
         price: 35.00,
         category: "escritorio",
-        image: "assets/images/porta-lapices-circular.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Porta lápices circular con compartimentos internos para organizar útiles de escritorio.",
         dimensions: "10cm x 10cm x 12cm",
         featured: false
@@ -194,7 +194,7 @@ const products = [
         name: "Organizador Multi-Compartimento",
         price: 58.00,
         category: "escritorio",
-        image: "assets/images/organizador-multi-compartimento.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Organizador completo con múltiples compartimentos para lápices, clips y accesorios pequeños.",
         dimensions: "20cm x 12cm x 8cm",
         featured: true
@@ -204,7 +204,7 @@ const products = [
         name: "Base para Teléfono",
         price: 28.00,
         category: "escritorio",
-        image: "assets/images/base-telefono.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Base elegante para teléfono móvil o tablet. Ángulo perfecto para visualización.",
         dimensions: "12cm x 8cm x 6cm",
         featured: false
@@ -214,7 +214,7 @@ const products = [
         name: "Porta Tarjetas Empresarial",
         price: 32.00,
         category: "escritorio",
-        image: "assets/images/porta-tarjetas-empresarial.jpg",
+        image: "assets/images/prueba.PNG",
         description: "Elegante porta tarjetas de presentación, perfecto para oficinas y espacios profesionales.",
         dimensions: "12cm x 6cm x 4cm",
         featured: false

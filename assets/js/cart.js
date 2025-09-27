@@ -307,17 +307,26 @@ class ShoppingCart {
             return '';
         }
 
-        let message = `¡Hola ${WHATSAPP_CONFIG.businessName}! 🌱\n\n`;
-        message += `Quiero realizar la siguiente compra:\n\n`;
+        let message = `🌿 ¡Hola ${WHATSAPP_CONFIG.businessName}! �\n\n`;
+        message += `✨ Me interesan estos hermosos productos artesanales ✨\n\n`;
+        message += `📋 *MI PEDIDO:*\n`;
+        message += `─────────────────────────\n`;
 
-        this.items.forEach(item => {
+        this.items.forEach((item, index) => {
             const subtotal = this.getItemSubtotal(item.id);
-            message += `• ${item.name}\n`;
-            message += `  Cantidad: ${item.quantity} x ${formatPrice(item.price)} = ${formatPrice(subtotal)}\n\n`;
+            message += `${index + 1}. 🎨 *${item.name}*\n`;
+            message += `   📦 Cantidad: ${item.quantity} unidad${item.quantity > 1 ? 'es' : ''}\n`;
+            message += `   💰 Precio: ${formatPrice(item.price)} c/u\n`;
+            message += `   💵 Subtotal: *${formatPrice(subtotal)}*\n`;
+            message += `\n`;
         });
 
-        message += `*Total: ${formatPrice(this.getTotal())}*\n\n`;
-        message += `¡Gracias! 😊`;
+        message += `─────────────────────────\n`;
+        message += `🏷️ *TOTAL A PAGAR: ${formatPrice(this.getTotal())}*\n`;
+        message += `─────────────────────────\n\n`;
+        
+        message += `🚚 ¿Podrían confirmarme disponibilidad y tiempo de entrega?\n\n`;
+        message += `¡Gracias por crear arte tan hermoso! 🎭✨`;
 
         return encodeURIComponent(message);
     }

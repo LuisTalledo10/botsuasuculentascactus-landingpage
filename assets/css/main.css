@@ -312,29 +312,37 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    background: linear-gradient(135deg, var(--primary-color) 0%, #4a9d7a 100%);
     overflow: hidden;
 }
 
-.hero-background {
+/* Manchas decorativas para el hero */
+.hero::before {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/hero-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    top: 10%;
+    right: 5%;
+    width: 400px;
+    height: 300px;
+    background: rgba(47, 94, 76, 0.3);
+    border-radius: 60% 40% 70% 30% / 50% 70% 40% 60%;
+    z-index: 1;
+    animation: floatGentle 20s ease-in-out infinite;
+    transform: rotate(25deg);
 }
 
-.hero-overlay {
+.hero::after {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(59, 117, 95, 0.8);
+    bottom: 15%;
+    left: 2%;
+    width: 350px;
+    height: 380px;
+    background: rgba(47, 94, 76, 0.25);
+    border-radius: 70% 30% 50% 50% / 60% 40% 80% 20%;
+    z-index: 1;
+    animation: floatGentle 18s ease-in-out infinite reverse;
+    transform: rotate(-20deg);
 }
 
 .hero-content {
@@ -346,20 +354,50 @@ body {
     color: var(--white);
 }
 
+/* Manchas decorativas adicionales para el hero */
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    left: -150px;
+    width: 200px;
+    height: 150px;
+    background: rgba(47, 94, 76, 0.2);
+    border-radius: 80% 20% 60% 40% / 50% 50% 70% 30%;
+    z-index: -1;
+    animation: pulse 12s ease-in-out infinite;
+    transform: rotate(45deg);
+}
+
+.hero-content::after {
+    content: '';
+    position: absolute;
+    bottom: -120px;
+    right: -180px;
+    width: 220px;
+    height: 170px;
+    background: rgba(47, 94, 76, 0.18);
+    border-radius: 50% 50% 80% 20% / 70% 30% 60% 40%;
+    z-index: -1;
+    animation: pulse 15s ease-in-out infinite;
+    transform: rotate(-35deg);
+    animation-delay: 3s;
+}
+
 .hero-title {
     font-size: 3.5rem;
     font-weight: var(--font-weight-bold);
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
     color: var(--white);
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3), 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
     margin-bottom: var(--spacing-xl);
     color: rgba(255, 255, 255, 0.95);
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3), 0 1px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
     font-weight: 300;
     line-height: 1.6;
 }
@@ -1049,14 +1087,6 @@ body {
 }
 
 /* Efectos especiales para elementos premium */
-.hero-title {
-    background: linear-gradient(135deg, var(--dark-gray), var(--primary-color), var(--dark-gray));
-    background-size: 200% 200%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 3s ease-in-out infinite;
-}
 
 .logo-text {
     transition: var(--transition-smooth);
@@ -1320,29 +1350,31 @@ body {
 .catalog::before {
     content: '';
     position: absolute;
-    top: 10%;
-    right: 8%;
-    width: 200px;
-    height: 150px;
+    top: 5%;
+    right: 3%;
+    width: 350px;
+    height: 280px;
     background: var(--primary-color);
-    opacity: 0.05;
-    border-radius: 60% 40% 80% 20% / 70% 30% 60% 40%;
+    opacity: 0.08;
+    border-radius: 70% 30% 80% 20% / 60% 40% 30% 70%;
     z-index: 0;
     animation: floatGentle 20s ease-in-out infinite;
+    transform: rotate(15deg);
 }
 
 .catalog::after {
     content: '';
     position: absolute;
-    bottom: 15%;
-    left: 5%;
-    width: 120px;
-    height: 180px;
+    bottom: 8%;
+    left: 2%;
+    width: 280px;
+    height: 320px;
     background: var(--primary-color);
-    opacity: 0.07;
-    border-radius: 50% 50% 70% 30% / 60% 40% 50% 50%;
+    opacity: 0.06;
+    border-radius: 40% 60% 70% 30% / 80% 20% 50% 50%;
     z-index: 0;
     animation: floatGentle 25s ease-in-out infinite reverse;
+    transform: rotate(-20deg);
 }
 
 .about {
@@ -1352,29 +1384,31 @@ body {
 .about::before {
     content: '';
     position: absolute;
-    top: 20%;
-    left: 3%;
-    width: 160px;
-    height: 160px;
+    top: 15%;
+    left: 1%;
+    width: 300px;
+    height: 400px;
     background: var(--primary-color);
-    opacity: 0.04;
-    border-radius: 80% 20% 60% 40% / 50% 70% 30% 50%;
+    opacity: 0.05;
+    border-radius: 60% 40% 30% 70% / 50% 80% 20% 50%;
     z-index: 0;
     animation: floatGentle 18s ease-in-out infinite;
+    transform: rotate(25deg);
 }
 
 .about::after {
     content: '';
     position: absolute;
-    bottom: 10%;
-    right: 8%;
-    width: 140px;
-    height: 200px;
+    bottom: 5%;
+    right: 4%;
+    width: 320px;
+    height: 250px;
     background: var(--primary-color);
-    opacity: 0.06;
-    border-radius: 70% 30% 50% 50% / 40% 60% 40% 60%;
+    opacity: 0.07;
+    border-radius: 80% 20% 60% 40% / 30% 70% 40% 60%;
     z-index: 0;
     animation: floatGentle 22s ease-in-out infinite reverse;
+    transform: rotate(-15deg);
 }
 
 .contact {
@@ -1384,15 +1418,16 @@ body {
 .contact::before {
     content: '';
     position: absolute;
-    top: 30%;
-    right: 12%;
-    width: 180px;
-    height: 120px;
+    top: 20%;
+    right: 8%;
+    width: 380px;
+    height: 200px;
     background: var(--primary-color);
-    opacity: 0.05;
-    border-radius: 50% 50% 80% 20% / 30% 70% 30% 70%;
+    opacity: 0.06;
+    border-radius: 50% 50% 80% 20% / 40% 60% 30% 70%;
     z-index: 0;
     animation: floatGentle 16s ease-in-out infinite;
+    transform: rotate(10deg);
 }
 
 /* Manchas adicionales flotantes */
@@ -1416,80 +1451,98 @@ body {
 .spot-1 {
     top: 15%;
     left: 85%;
-    width: 20px;
-    height: 20px;
-    opacity: 0.15;
+    width: 60px;
+    height: 45px;
+    opacity: 0.12;
     animation-delay: 0s;
+    border-radius: 70% 30% 60% 40% / 50% 70% 30% 50%;
+    transform: rotate(35deg);
 }
 
 .spot-2 {
     top: 25%;
-    left: 10%;
-    width: 15px;
-    height: 15px;
-    opacity: 0.1;
+    left: 8%;
+    width: 45px;
+    height: 60px;
+    opacity: 0.08;
     animation-delay: 2s;
+    border-radius: 40% 60% 80% 20% / 70% 30% 60% 40%;
+    transform: rotate(-25deg);
 }
 
 .spot-3 {
     top: 60%;
-    left: 90%;
-    width: 25px;
-    height: 25px;
-    opacity: 0.08;
+    left: 88%;
+    width: 70px;
+    height: 55px;
+    opacity: 0.10;
     animation-delay: 4s;
+    border-radius: 60% 40% 70% 30% / 40% 60% 50% 50%;
+    transform: rotate(45deg);
 }
 
 .spot-4 {
     top: 70%;
-    left: 15%;
-    width: 18px;
-    height: 18px;
-    opacity: 0.12;
+    left: 12%;
+    width: 55px;
+    height: 70px;
+    opacity: 0.09;
     animation-delay: 6s;
+    border-radius: 80% 20% 50% 50% / 60% 40% 70% 30%;
+    transform: rotate(-40deg);
 }
 
 .spot-5 {
     top: 40%;
-    left: 5%;
-    width: 22px;
-    height: 22px;
-    opacity: 0.09;
+    left: 3%;
+    width: 65px;
+    height: 50px;
+    opacity: 0.07;
     animation-delay: 1s;
+    border-radius: 50% 50% 70% 30% / 80% 20% 60% 40%;
+    transform: rotate(20deg);
 }
 
 .spot-6 {
     top: 80%;
-    left: 80%;
-    width: 16px;
-    height: 16px;
+    left: 82%;
+    width: 50px;
+    height: 65px;
     opacity: 0.11;
     animation-delay: 3s;
+    border-radius: 30% 70% 60% 40% / 50% 50% 80% 20%;
+    transform: rotate(-30deg);
 }
 
 @keyframes floatGentle {
     0%, 100% {
         transform: translate(0, 0) rotate(0deg) scale(1);
+        border-radius: 60% 40% 80% 20% / 70% 30% 60% 40%;
     }
     25% {
-        transform: translate(10px, -15px) rotate(2deg) scale(1.05);
+        transform: translate(15px, -20px) rotate(5deg) scale(1.05);
+        border-radius: 70% 30% 60% 40% / 50% 70% 30% 50%;
     }
     50% {
-        transform: translate(-8px, -25px) rotate(-1deg) scale(0.98);
+        transform: translate(-10px, -35px) rotate(-3deg) scale(0.95);
+        border-radius: 80% 20% 70% 30% / 60% 40% 50% 50%;
     }
     75% {
-        transform: translate(15px, -10px) rotate(1.5deg) scale(1.02);
+        transform: translate(20px, -15px) rotate(4deg) scale(1.02);
+        border-radius: 50% 50% 80% 20% / 40% 60% 70% 30%;
     }
 }
 
 @keyframes pulse {
     0%, 100% {
-        opacity: 0.08;
-        transform: scale(1);
+        opacity: 0.06;
+        transform: scale(1) rotate(0deg);
+        border-radius: 60% 40% 70% 30% / 50% 50% 80% 20%;
     }
     50% {
-        opacity: 0.15;
-        transform: scale(1.2);
+        opacity: 0.12;
+        transform: scale(1.1) rotate(180deg);
+        border-radius: 70% 30% 60% 40% / 40% 60% 50% 50%;
     }
 }
 
