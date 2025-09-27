@@ -6,7 +6,12 @@
     <title>Botsua Suculentas y Cactus - Diseños Artesanales en Cemento</title>
     <meta name="description" content="Descubre nuestros productos artesanales hechos de cemento: macetas, joyeros, bandejas, letras decorativas y más.">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts    <!-- Scripts -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/catalog.js"></script>
+    <script src="assets/js/main.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -75,6 +80,10 @@
                 <a href="#catalogo" class="btn btn-primary hero-cta">Explorar catálogo</a>
             </div>
         </div>
+        
+        <!-- Manchas decorativas del hero -->
+        <div class="hero-spot hero-spot-1"></div>
+        <div class="hero-spot hero-spot-2"></div>
     </section>
 
     <!-- Catálogo Section -->
@@ -92,19 +101,133 @@
                 <div class="spot spot-3"></div>
             </div>
             
-            <!-- Filtros de categorías -->
-            <div class="category-filters">
-                <button class="filter-btn active" data-category="all">Todos</button>
-                <button class="filter-btn" data-category="joyeros">Joyeros y Bandejas</button>
-                <button class="filter-btn" data-category="macetas">Macetas</button>
-                <button class="filter-btn" data-category="letras">Letras</button>
-                <button class="filter-btn" data-category="packs">Packs de Regalo</button>
-                <button class="filter-btn" data-category="escritorio">Para Escritorio</button>
+            <!-- Navegación de Categorías Principales -->
+            <div class="main-category-nav">
+                <button class="main-category-btn active" data-main-category="macetas">Macetas</button>
+                <button class="main-category-btn" data-main-category="joyeros">Joyeros y Bandejas</button>
+                <button class="main-category-btn" data-main-category="letras">Letras Decorativas</button>
+                <button class="main-category-btn" data-main-category="packs">Packs de Regalo</button>
+            </div>
+
+            <!-- Sección Macetas -->
+            <div class="category-section active" id="macetas-section">
+                <!-- Subsección Arcilla -->
+                <div class="subcategory-section">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">ARCILLA</h3>
+                        <p class="subcategory-description">Vasos de arcilla tradicionales con plantas incluidas</p>
+                    </div>
+                    
+                    <div class="arcilla-grid">
+                        <!-- Imagen Principal -->
+                        <div class="arcilla-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Colección de vasos de arcilla con plantas">
+                        </div>
+                        
+                        <!-- Vasos Individuales -->
+                        <div class="arcilla-products">
+                            <div class="arcilla-product" data-product-id="5">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Vaso A" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                    <div class="product-label">A</div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Vaso A</h4>
+                                    <p class="product-price">S/.12.00</p>
+                                </div>
+                            </div>
+                            
+                            <div class="arcilla-product" data-product-id="6">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Vaso B" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                    <div class="product-label">B</div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Vaso B</h4>
+                                    <p class="product-price">S/.15.00</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="arcilla-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Vaso de arcilla + planta de elección</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">6.0cm de altura - 5.5 diámetro</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Vaso A:</span>
+                                <span class="detail-value">S/.12.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Vaso B:</span>
+                                <span class="detail-value">S/.15.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Vasos personalizados:</span>
+                                <span class="detail-value">S/.3.00 adicional por und.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Placeholder para más subsecciones -->
+                <div class="more-subcategories">
+                    <p class="coming-soon">Más categorías de macetas próximamente...</p>
+                </div>
+            </div>
+
+            <!-- Otras secciones principales (placeholder) -->
+            <div class="category-section" id="joyeros-section">
+                <p class="coming-soon">Sección de Joyeros próximamente...</p>
             </div>
             
-            <!-- Grid de productos -->
-            <div class="products-grid" id="productsGrid">
-                <!-- Los productos se cargarán dinámicamente -->
+            <div class="category-section" id="letras-section">
+                <p class="coming-soon">Sección de Letras próximamente...</p>
+            </div>
+            
+            <div class="category-section" id="packs-section">
+                <p class="coming-soon">Sección de Packs próximamente...</p>
+            </div>
+        </div>
+
+        <!-- Modal de Personalización -->
+        <div class="personalization-modal" id="personalizationModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Personalizar Vaso</h3>
+                    <span class="close-modal">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>¿Deseas personalizar tu vaso con un nombre o texto?</p>
+                    <p class="personalization-cost">Costo adicional: <strong>S/.3.00</strong></p>
+                    
+                    <div class="personalization-options">
+                        <button class="option-btn" id="sinPersonalizar">Sin Personalizar</button>
+                        <button class="option-btn primary" id="conPersonalizar">Personalizar</button>
+                    </div>
+                    
+                    <div class="text-input-section" id="textInputSection" style="display: none;">
+                        <label for="personalizationText">Texto a grabar:</label>
+                        <input type="text" id="personalizationText" maxlength="15" placeholder="Máximo 15 caracteres">
+                        <small>Máximo 15 caracteres</small>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" id="cancelPersonalization">Cancelar</button>
+                        <button class="btn btn-primary" id="confirmAddToCart">Añadir al Carrito</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -284,6 +407,38 @@
             </div>
             <div class="modal-body" id="productModalBody">
                 <!-- Contenido del producto se carga dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal del Carrito -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-overlay"></div>
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>🛒 Mi Carrito</h2>
+                <button class="close-cart" id="closeCart">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-body">
+                <div class="cart-items" id="cartItems">
+                    <!-- Los productos se cargarán dinámicamente -->
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span class="total-label">Total: </span>
+                    <span class="total-amount">S/.<span id="cartTotal">0.00</span></span>
+                </div>
+                <div class="cart-actions">
+                    <button class="btn btn-secondary" id="clearCart">
+                        <i class="fas fa-trash"></i> Vaciar Carrito
+                    </button>
+                    <button class="btn btn-primary" id="checkoutBtn">
+                        <i class="fab fa-whatsapp"></i> Realizar Pedido
+                    </button>
+                </div>
             </div>
         </div>
     </div>

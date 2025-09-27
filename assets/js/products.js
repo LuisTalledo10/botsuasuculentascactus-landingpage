@@ -42,56 +42,57 @@ const products = [
         featured: false
     },
 
-    // Macetas
+    // Macetas - Sección Arcilla
     {
         id: 5,
-        name: "Maceta Cilíndrica Mediana",
-        price: 48.00,
-        category: "macetas",
+        name: "Vaso de Arcilla Tipo A",
+        price: 12.00,
+        category: "arcilla",
+        subcategory: "macetas",
         image: "assets/images/prueba.PNG",
-        description: "Maceta cilíndrica perfecta para suculentas y cactus pequeños. Incluye drenaje interno.",
-        dimensions: "12cm x 12cm x 14cm",
-        featured: true
+        description: "Vaso de arcilla + planta de elección. Diseño clásico y funcional.",
+        dimensions: "6.0cm de altura - 5.5 diámetro",
+        featured: true,
+        personalizable: true,
+        personalizacionCosto: 3.00
     },
     {
         id: 6,
-        name: "Maceta Cuadrada Grande",
-        price: 65.00,
-        category: "macetas",
+        name: "Vaso de Arcilla Tipo B",
+        price: 15.00,
+        category: "arcilla",
+        subcategory: "macetas",
         image: "assets/images/prueba.PNG",
-        description: "Maceta cuadrada de gran capacidad, ideal para plantas de mayor tamaño. Diseño robusto y elegante.",
-        dimensions: "18cm x 18cm x 18cm",
-        featured: false
+        description: "Vaso de arcilla + planta de elección. Modelo redondo con mayor capacidad.",
+        dimensions: "6.0cm de altura - 5.5 diámetro",
+        featured: true,
+        personalizable: true,
+        personalizacionCosto: 3.00
     },
     {
         id: 7,
-        name: "Set 3 Macetas Redondas",
-        price: 85.00,
-        category: "macetas",
+        name: "Colección Vasos Personalizados",
+        price: 0, // Precio variable según personalización
+        category: "arcilla",
+        subcategory: "macetas",
         image: "assets/images/prueba.PNG",
-        description: "Conjunto de 3 macetas redondas de diferentes tamaños. Perfectas para crear composiciones.",
-        dimensions: "Pequeña: 8cm, Mediana: 12cm, Grande: 16cm",
-        featured: true
+        description: "Vasos de arcilla con nombres personalizados como Angela, Sofia, Jimena y Jimmy.",
+        dimensions: "6.0cm de altura - 5.5 diámetro",
+        featured: true,
+        soloPersonalizado: true,
+        personalizacionCosto: 3.00
     },
     {
         id: 8,
-        name: "Maceta Triangular",
-        price: 38.00,
-        category: "macetas",
+        name: "Set Completo Arcilla",
+        price: 0, // Precio calculado según selección
+        category: "arcilla",
+        subcategory: "macetas",
         image: "assets/images/prueba.PNG",
-        description: "Maceta de diseño triangular único, perfecta para espacios modernos y minimalistas.",
-        dimensions: "14cm x 14cm x 12cm",
-        featured: false
-    },
-    {
-        id: 9,
-        name: "Maceta Colgante",
-        price: 52.00,
-        category: "macetas",
-        image: "assets/images/prueba.PNG",
-        description: "Maceta diseñada para colgar, incluye sistema de sujeción resistente. Ideal para plantas colgantes.",
-        dimensions: "15cm x 15cm x 12cm + 30cm cadena",
-        featured: true
+        description: "Conjunto completo con diferentes vasos de arcilla y plantas de tu elección.",
+        dimensions: "Varios tamaños disponibles",
+        featured: false,
+        esSet: true
     },
 
     // Letras Decorativas

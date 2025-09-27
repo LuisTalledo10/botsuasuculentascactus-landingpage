@@ -8,31 +8,64 @@ class ShoppingCart {
     }
 
     // Agregar producto al carrito
-    addItem(productId, quantity = 1) {
-        const product = getProductById(productId);
-        if (!product) {
-            console.error('Producto no encontrado:', productId);
-            return false;
-        }
+    addItem(productData, quantity = 1) {
+        // Si es un objeto con datos completos (nuevo sistema)
+        if (typeof productData === 'object' && productData.id) {
+            const existingItemIndex = this.items.findIndex(item => 
+                item.id === productData.id && 
+                item.isPersonalized === productData.isPersonalized &&
+                item.customText === productData.customText
+            );
+            
+            if (existingItemIndex > -1) {
+                this.items[existingItemIndex].quantity += quantity;
+            } else {
+                this.items.push({
+                    id: productData.id,
+                    name: productData.name,
+                    price: productData.price,
+                    originalPrice: productData.originalPrice || productData.price,
+                    image: productData.image,
+                    quantity: quantity,
+                    isPersonalized: productData.isPersonalized || false,
+                    customText: productData.customText || '',
+                    personalizacionCosto: productData.personalizacionCosto || 0
+                });
+            }
+        } 
+        // Sistema legacy (ID del producto)
+        else {
+            const product = getProductById(productData);
+            if (!product) {
+                console.error('Producto no encontrado:', productData);
+                return false;
+            }
 
-        const existingItem = this.items.find(item => item.id === productId);
-        
-        if (existingItem) {
-            existingItem.quantity += quantity;
-        } else {
-            this.items.push({
-                id: productId,
-                name: product.name,
-                price: product.price,
-                image: product.image,
-                quantity: quantity
-            });
+            const existingItem = this.items.find(item => item.id === productData);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                this.items.push({
+                    id: productData,
+                    name: product.name,
+                    price: product.price,
+                    originalPrice: product.price,
+                    image: product.image,
+                    quantity: quantity,
+                    isPersonalized: false,
+                    customText: '',
+                    personalizacionCosto: 0
+                });
+            }
         }
 
         this.saveToLocalStorage();
         this.updateCartCount();
         this.showAddToCartAnimation();
-        this.showNotification(`${product.name} agregado al carrito`, 'success');
+        
+        const productName = typeof productData === 'object' ? productData.name : getProductById(productData)?.name;
+        this.showNotification(`${productName} agregado al carrito`, 'success');
         
         return true;
     }
@@ -40,6 +73,26 @@ class ShoppingCart {
     // Remover producto del carrito
     removeItem(productId) {
         const itemIndex = this.items.findIndex(item => item.id === productId);
+        if (itemIndex > -1) {
+            const removedItem = this.items[itemIndex];
+            this.items.splice(itemIndex, 1);
+            this.saveToLocalStorage();
+            this.updateCartCount();
+            this.updateCartDisplay();
+            this.showNotification(`${removedItem.name} removido del carrito`, 'info');
+        }
+    }
+
+    // Remover producto del carrito por ID único (incluye personalización)
+    removeItemByUniqueId(uniqueId) {
+        const [id, customText, isPersonalized] = uniqueId.split('_');
+        const itemIndex = this.items.findIndex(item => {
+            const itemUniqueId = item.isPersonalized 
+                ? `${item.id}_${item.customText}_${item.isPersonalized}`
+                : item.id.toString();
+            return itemUniqueId === uniqueId;
+        });
+        
         if (itemIndex > -1) {
             const removedItem = this.items[itemIndex];
             this.items.splice(itemIndex, 1);
@@ -60,6 +113,26 @@ class ShoppingCart {
             this.updateCartDisplay();
         } else if (item && quantity <= 0) {
             this.removeItem(productId);
+        }
+    }
+
+    // Actualizar cantidad por ID único
+    updateQuantityByUniqueId(uniqueId, quantity) {
+        const [id, customText, isPersonalized] = uniqueId.split('_');
+        const item = this.items.find(item => {
+            const itemUniqueId = item.isPersonalized 
+                ? `${item.id}_${item.customText}_${item.isPersonalized}`
+                : item.id.toString();
+            return itemUniqueId === uniqueId;
+        });
+        
+        if (item && quantity > 0) {
+            item.quantity = quantity;
+            this.saveToLocalStorage();
+            this.updateCartCount();
+            this.updateCartDisplay();
+        } else if (item && quantity <= 0) {
+            this.removeItemByUniqueId(uniqueId);
         }
     }
 
@@ -118,6 +191,27 @@ class ShoppingCart {
         } catch (error) {
             console.error('Error cargando carrito:', error);
             this.items = [];
+        }
+    }
+
+    // Abrir modal del carrito
+    openModal() {
+        const modal = document.getElementById('cartModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            this.isOpen = true;
+            this.updateCartDisplay();
+        }
+    }
+
+    // Cerrar modal del carrito
+    closeModal() {
+        const modal = document.getElementById('cartModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            this.isOpen = false;
         }
     }
 
@@ -275,27 +369,47 @@ class ShoppingCart {
                 </div>
             `;
         } else {
-            cartItems.innerHTML = this.items.map(item => `
-                <div class="cart-item" data-id="${item.id}">
-                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
-                    <div class="cart-item-info">
-                        <div class="cart-item-name">${item.name}</div>
-                        <div class="cart-item-price">${formatPrice(item.price)}</div>
+            cartItems.innerHTML = this.items.map(item => {
+                const displayName = item.isPersonalized && item.customText 
+                    ? `${item.name} - "${item.customText}"`
+                    : item.name;
+                
+                const personalizationInfo = item.isPersonalized 
+                    ? `<div class="personalization-info">
+                         <small><i class="fas fa-pen"></i> Personalizado</small>
+                         ${item.customText ? `<small class="custom-text">"${item.customText}"</small>` : ''}
+                         ${item.personalizacionCosto > 0 ? `<small class="personalization-cost">+S/.${item.personalizacionCosto.toFixed(2)}</small>` : ''}
+                       </div>`
+                    : '';
+
+                // ID único para items personalizados
+                const uniqueId = item.isPersonalized 
+                    ? `${item.id}_${item.customText}_${item.isPersonalized}`
+                    : item.id;
+
+                return `
+                    <div class="cart-item" data-unique-id="${uniqueId}">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${displayName}</div>
+                            ${personalizationInfo}
+                            <div class="cart-item-price">${formatPrice(item.price)}</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn" onclick="cart.updateQuantityByUniqueId('${uniqueId}', ${item.quantity - 1})">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="quantity-display">${item.quantity}</span>
+                            <button class="quantity-btn" onclick="cart.updateQuantityByUniqueId('${uniqueId}', ${item.quantity + 1})">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button class="remove-item" onclick="cart.removeItemByUniqueId('${uniqueId}')" title="Eliminar producto">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
                     </div>
-                    <div class="cart-item-controls">
-                        <button class="quantity-btn" onclick="cart.updateQuantity(${item.id}, ${item.quantity - 1})">
-                            <i class="fas fa-minus"></i>
-                        </button>
-                        <span class="quantity-display">${item.quantity}</span>
-                        <button class="quantity-btn" onclick="cart.updateQuantity(${item.id}, ${item.quantity + 1})">
-                            <i class="fas fa-plus"></i>
-                        </button>
-                        <button class="remove-item" onclick="cart.removeItem(${item.id})" title="Eliminar producto">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         cartTotal.textContent = this.getTotal().toFixed(2);
@@ -313,10 +427,28 @@ class ShoppingCart {
         message += `─────────────────────────\n`;
 
         this.items.forEach((item, index) => {
-            const subtotal = this.getItemSubtotal(item.id);
+            const subtotal = item.price * item.quantity;
             message += `${index + 1}. 🎨 *${item.name}*\n`;
+            
+            // Mostrar información de personalización si existe
+            if (item.isPersonalized && item.customText) {
+                message += `   ✏️ *Personalizado con:* "${item.customText}"\n`;
+            }
+            
             message += `   📦 Cantidad: ${item.quantity} unidad${item.quantity > 1 ? 'es' : ''}\n`;
-            message += `   💰 Precio: ${formatPrice(item.price)} c/u\n`;
+            
+            // Desglose de precio si está personalizado
+            if (item.isPersonalized && item.personalizacionCosto > 0) {
+                const basePrice = item.originalPrice || (item.price - item.personalizacionCosto);
+                message += `   💰 Precio base: ${formatPrice(basePrice)} c/u\n`;
+                message += `   ✨ Personalización: +${formatPrice(item.personalizacionCosto)} c/u\n`;
+                message += `   💰 *Precio final: ${formatPrice(item.price)} c/u*\n`;
+            } else if (item.isPersonalized) {
+                message += `   💰 Precio (personalizado): ${formatPrice(item.price)} c/u\n`;
+            } else {
+                message += `   💰 Precio: ${formatPrice(item.price)} c/u\n`;
+            }
+            
             message += `   💵 Subtotal: *${formatPrice(subtotal)}*\n`;
             message += `\n`;
         });
@@ -352,6 +484,53 @@ class ShoppingCart {
 
 // Crear instancia global del carrito
 const cart = new ShoppingCart();
+
+// Inicializar event listeners cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    // Botón del carrito
+    const cartBtn = document.getElementById('cartBtn');
+    if (cartBtn) {
+        cartBtn.addEventListener('click', () => {
+            cart.openModal();
+        });
+    }
+
+    // Botón cerrar carrito
+    const closeCart = document.getElementById('closeCart');
+    if (closeCart) {
+        closeCart.addEventListener('click', () => {
+            cart.closeModal();
+        });
+    }
+
+    // Overlay del carrito
+    const cartOverlay = document.querySelector('.cart-overlay');
+    if (cartOverlay) {
+        cartOverlay.addEventListener('click', () => {
+            cart.closeModal();
+        });
+    }
+
+    // Botón vaciar carrito
+    const clearCart = document.getElementById('clearCart');
+    if (clearCart) {
+        clearCart.addEventListener('click', () => {
+            cart.clear();
+        });
+    }
+
+    // Botón checkout
+    const checkoutBtn = document.getElementById('checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            cart.checkout();
+        });
+    }
+
+    // Inicializar carrito
+    cart.updateCartDisplay();
+    cart.updateCartCount();
+});
 
 // Función global para agregar al carrito (llamada desde los botones)
 function addToCart(productId, quantity = 1) {
