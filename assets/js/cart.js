@@ -487,10 +487,17 @@ const cart = new ShoppingCart();
 
 // Inicializar event listeners cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
+    // Asegurar que el modal esté cerrado al inicio
+    const cartModal = document.getElementById('cartModal');
+    if (cartModal) {
+        cartModal.classList.remove('active');
+    }
+    
     // Botón del carrito
     const cartBtn = document.getElementById('cartBtn');
     if (cartBtn) {
-        cartBtn.addEventListener('click', () => {
+        cartBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             cart.openModal();
         });
     }
@@ -526,6 +533,13 @@ document.addEventListener('DOMContentLoaded', function() {
             cart.checkout();
         });
     }
+
+    // Tecla Escape para cerrar
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && cart.isOpen) {
+            cart.closeModal();
+        }
+    });
 
     // Inicializar carrito
     cart.updateCartDisplay();
