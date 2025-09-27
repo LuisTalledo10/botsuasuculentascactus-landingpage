@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botsua Suculentas y Cactus - Diseños Artesanales en Cemento</title>
+    <meta name="description" content="Descubre nuestros productos artesanales hechos de cemento: macetas, joyeros, bandejas, letras decorativas y más.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="Botsua Suculentas y Cactus" class="logo-img">
+                    <span class="logo-text">Botsua</span>
+                </div>
+                
+                <nav class="nav" id="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#inicio" class="nav-link">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#catalogo" class="nav-link">Catálogo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#nosotros" class="nav-link">Nosotros</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#contacto" class="nav-link">Contacto</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div class="header-actions">
+                    <button class="cart-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    <button class="menu-toggle" id="menuToggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero hero-curve" id="inicio">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Diseños artesanales en cemento que transforman tus espacios</h1>
+                <p class="hero-description">
+                    Descubre nuestra colección única de productos hechos a mano con cemento de alta calidad. 
+                    Cada pieza es una obra de arte funcional para tu hogar.
+                </p>
+                <a href="#catalogo" class="btn btn-primary hero-cta">Explorar catálogo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catálogo Section -->
+    <section class="catalog" id="catalogo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestro Catálogo</h2>
+                <p class="section-description">Productos únicos hechos con amor y dedicación</p>
+            </div>
+            
+            <!-- Manchas decorativas -->
+            <div class="floating-spots">
+                <div class="spot spot-1"></div>
+                <div class="spot spot-2"></div>
+                <div class="spot spot-3"></div>
+            </div>
+            
+            <!-- Filtros de categorías -->
+            <div class="category-filters">
+                <button class="filter-btn active" data-category="all">Todos</button>
+                <button class="filter-btn" data-category="joyeros">Joyeros y Bandejas</button>
+                <button class="filter-btn" data-category="macetas">Macetas</button>
+                <button class="filter-btn" data-category="letras">Letras</button>
+                <button class="filter-btn" data-category="packs">Packs de Regalo</button>
+                <button class="filter-btn" data-category="escritorio">Para Escritorio</button>
+            </div>
+            
+            <!-- Grid de productos -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Los productos se cargarán dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section class="about" id="nosotros">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Sobre Botsua</h2>
+                    <p>
+                        En Botsua creamos piezas únicas y funcionales utilizando cemento como materia prima principal. 
+                        Cada producto es cuidadosamente elaborado a mano, combinando técnicas artesanales con diseños 
+                        contemporáneos que se adaptan a cualquier espacio.
+                    </p>
+                    <p>
+                        Nuestro compromiso es ofrecer productos de calidad que no solo sean hermosos, sino también 
+                        duraderos y funcionales. Cada pieza cuenta una historia de dedicación, creatividad y 
+                        amor por el arte del cemento.
+                    </p>
+                    
+                    <!-- Manchas decorativas -->
+                    <div class="floating-spots">
+                        <div class="spot spot-4"></div>
+                        <div class="spot spot-5"></div>
+                    </div>
+                    <div class="about-features">
+                        <div class="feature">
+                            <i class="fas fa-hand-holding-heart"></i>
+                            <span>Hecho a mano</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-leaf"></i>
+                            <span>Materiales sostenibles</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <span>Calidad garantizada</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/about-us.jpg" alt="Proceso artesanal Botsua">
+                </div>
+            </div>
+        </div>
+        <!-- Elemento decorativo -->
+        <div class="decoration-blob decoration-blob-3"></div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contáctanos</h2>
+                <p class="section-description">¿Tienes alguna pregunta? Nos encantaría escucharte</p>
+            </div>
+            
+            <!-- Manchas decorativas -->
+            <div class="floating-spots">
+                <div class="spot spot-6"></div>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+                </form>
+                
+                <div class="contact-info">
+                    <h3>Información de contacto</h3>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp: +51 999 999 999</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <span>@botsuasuculentas</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@botsua.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <img src="assets/images/logo.png" alt="Botsua" class="logo-img">
+                        <span class="logo-text">Botsua</span>
+                    </div>
+                    <p>Diseños artesanales en cemento que transforman tus espacios</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#catalogo">Catálogo</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Síguenos</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Botsua Suculentas y Cactus. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Carrito de compras</h3>
+                <button class="modal-close" id="closeCartModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems" class="cart-items">
+                    <!-- Los items del carrito se cargarán aquí -->
+                </div>
+                <div class="cart-total">
+                    <div class="total-line">
+                        <span>Total: S/. <span id="cartTotal">0.00</span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="clearCart">Vaciar carrito</button>
+                <button class="btn btn-primary" id="checkoutBtn">Finalizar compra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="productModalTitle">Producto</h3>
+                <button class="modal-close" id="closeProductModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="productModalBody">
+                <!-- Contenido del producto se carga dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script src="assets/js/cart.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
