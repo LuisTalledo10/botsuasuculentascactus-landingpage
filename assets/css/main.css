@@ -320,11 +320,11 @@ body {
 .hero::before {
     content: '';
     position: absolute;
-    top: 10%;
-    right: 5%;
-    width: 400px;
-    height: 300px;
-    background: rgba(47, 94, 76, 0.3);
+    top: 15%;
+    right: 8%;
+    width: 300px;
+    height: 200px;
+    background: rgba(47, 94, 76, 0.25);
     border-radius: 60% 40% 70% 30% / 50% 70% 40% 60%;
     z-index: 1;
     animation: floatGentle 20s ease-in-out infinite;
@@ -334,11 +334,11 @@ body {
 .hero::after {
     content: '';
     position: absolute;
-    bottom: 15%;
-    left: 2%;
-    width: 350px;
-    height: 380px;
-    background: rgba(47, 94, 76, 0.25);
+    bottom: 25%;
+    left: 5%;
+    width: 250px;
+    height: 280px;
+    background: rgba(47, 94, 76, 0.2);
     border-radius: 70% 30% 50% 50% / 60% 40% 80% 20%;
     z-index: 1;
     animation: floatGentle 18s ease-in-out infinite reverse;
@@ -358,11 +358,11 @@ body {
 .hero-content::before {
     content: '';
     position: absolute;
-    top: -80px;
-    left: -150px;
-    width: 200px;
-    height: 150px;
-    background: rgba(47, 94, 76, 0.2);
+    top: -60px;
+    left: -120px;
+    width: 150px;
+    height: 100px;
+    background: rgba(47, 94, 76, 0.15);
     border-radius: 80% 20% 60% 40% / 50% 50% 70% 30%;
     z-index: -1;
     animation: pulse 12s ease-in-out infinite;
@@ -372,11 +372,11 @@ body {
 .hero-content::after {
     content: '';
     position: absolute;
-    bottom: -120px;
-    right: -180px;
-    width: 220px;
-    height: 170px;
-    background: rgba(47, 94, 76, 0.18);
+    bottom: -90px;
+    right: -150px;
+    width: 170px;
+    height: 120px;
+    background: rgba(47, 94, 76, 0.12);
     border-radius: 50% 50% 80% 20% / 70% 30% 60% 40%;
     z-index: -1;
     animation: pulse 15s ease-in-out infinite;
@@ -1200,21 +1200,42 @@ body {
     color: var(--dark-gray);
 }
 
-/* Hero con curva inferior simple */
+/* Hero con curva inferior suave y animada */
 .hero {
-    padding-bottom: 100px;
+    padding-bottom: 80px;
+    position: relative;
 }
 
 .hero::after {
     content: '';
     position: absolute;
-    bottom: -1px;
+    bottom: -2px;
     left: 0;
     width: 100%;
-    height: 100px;
+    height: 80px;
     background: var(--light-gray);
-    border-radius: 50% 50% 0 0 / 100px 100px 0 0;
-    transform: scaleX(1.2);
+    border-radius: 50% 50% 0 0 / 60px 60px 0 0;
+    z-index: 2;
+    animation: waveBorder 8s ease-in-out infinite;
+}
+
+@keyframes waveBorder {
+    0%, 100% {
+        border-radius: 50% 50% 0 0 / 60px 60px 0 0;
+        transform: scaleX(1.1);
+    }
+    25% {
+        border-radius: 45% 55% 0 0 / 50px 70px 0 0;
+        transform: scaleX(1.15);
+    }
+    50% {
+        border-radius: 55% 45% 0 0 / 70px 50px 0 0;
+        transform: scaleX(1.05);
+    }
+    75% {
+        border-radius: 48% 52% 0 0 / 55px 65px 0 0;
+        transform: scaleX(1.12);
+    }
 }
 
 /* Catálogo con espaciado limpio */
@@ -1562,6 +1583,61 @@ body {
 
 /* Responsive */
 @media screen and (max-width: 768px) {
+    /* Evitar desbordamiento en hero móvil */
+    .hero {
+        overflow: hidden;
+        padding-bottom: 40px;
+    }
+    
+    /* Borde curvado más sutil en móvil */
+    .hero::after {
+        height: 40px;
+        border-radius: 50% 50% 0 0 / 30px 30px 0 0;
+        animation: waveBorderMobile 6s ease-in-out infinite;
+    }
+    
+    /* Ajustar manchas del hero para móvil */
+    .hero::before {
+        width: 120px;
+        height: 80px;
+        top: 12%;
+        right: 5%;
+        transform: rotate(25deg) scale(0.8);
+        opacity: 0.15;
+        animation: floatMobile 15s ease-in-out infinite;
+    }
+    
+    .hero::after {
+        width: 100px;
+        height: 120px;
+        bottom: 20%;
+        left: 8%;
+        transform: rotate(-20deg) scale(0.8);
+        opacity: 0.12;
+        animation: floatMobile 18s ease-in-out infinite reverse;
+    }
+    
+    /* Ajustar manchas adicionales del hero */
+    .hero-content::before {
+        width: 60px;
+        height: 45px;
+        top: -15px;
+        left: -25px;
+        transform: rotate(45deg) scale(0.7);
+        opacity: 0.1;
+        animation: pulseMobile 10s ease-in-out infinite;
+    }
+    
+    .hero-content::after {
+        width: 70px;
+        height: 50px;
+        bottom: -20px;
+        right: -30px;
+        transform: rotate(-35deg) scale(0.7);
+        opacity: 0.08;
+        animation: pulseMobile 12s ease-in-out infinite;
+    }
+    
     .catalog::before,
     .catalog::after,
     .about::before,
@@ -1570,12 +1646,68 @@ body {
         width: 80px;
         height: 80px;
         opacity: 0.03;
+        transform: scale(0.6);
+        animation: floatMobile 12s ease-in-out infinite;
     }
     
     .spot {
         width: 12px !important;
         height: 12px !important;
         opacity: 0.05 !important;
+        border-radius: 50% !important;
+        transform: scale(0.8) !important;
+    }
+}
+
+/* Animaciones específicas para móvil que no desbordan */
+@keyframes waveBorderMobile {
+    0%, 100% {
+        border-radius: 50% 50% 0 0 / 30px 30px 0 0;
+        transform: scaleX(1.05);
+    }
+    25% {
+        border-radius: 45% 55% 0 0 / 25px 35px 0 0;
+        transform: scaleX(1.08);
+    }
+    50% {
+        border-radius: 55% 45% 0 0 / 35px 25px 0 0;
+        transform: scaleX(1.02);
+    }
+    75% {
+        border-radius: 48% 52% 0 0 / 28px 32px 0 0;
+        transform: scaleX(1.06);
+    }
+}
+
+@keyframes floatMobile {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg) scale(0.7);
+        border-radius: 60% 40% 80% 20% / 70% 30% 60% 40%;
+    }
+    25% {
+        transform: translate(3px, -5px) rotate(1deg) scale(0.75);
+        border-radius: 70% 30% 60% 40% / 50% 70% 30% 50%;
+    }
+    50% {
+        transform: translate(-2px, -8px) rotate(-0.5deg) scale(0.65);
+        border-radius: 80% 20% 70% 30% / 60% 40% 50% 50%;
+    }
+    75% {
+        transform: translate(4px, -3px) rotate(0.5deg) scale(0.72);
+        border-radius: 50% 50% 80% 20% / 40% 60% 70% 30%;
+    }
+}
+
+@keyframes pulseMobile {
+    0%, 100% {
+        opacity: 0.15;
+        transform: scale(0.6) rotate(0deg);
+        border-radius: 60% 40% 70% 30% / 50% 50% 80% 20%;
+    }
+    50% {
+        opacity: 0.08;
+        transform: scale(0.7) rotate(45deg);
+        border-radius: 70% 30% 60% 40% / 40% 60% 50% 50%;
     }
 }
 
