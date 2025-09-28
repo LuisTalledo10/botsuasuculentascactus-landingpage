@@ -83,18 +83,71 @@ class MacetasCarousel {
 
     // Métodos para gestos táctiles
     touchStart(e) {
-        this.startDrag(e.touches[0].clientX);
-    }
+        this.touchStartX = e.touches[0].clientX;
+        this.touchStartY = e.touches[0].clientY;
+        this.hasMoved = false;
+        this.horizontalDrag = null; // null: no decidido, true: horizontal, false: vertical
+        this.isDragging = false;
 
-    touchMove(e) {
-        if (this.isDragging) {
-            e.preventDefault();
-            this.duringDrag(e.touches[0].clientX);
+        // Detectar si el touch es en los lados (20% izquierdo o derecho)
+        const rect = this.carouselContainer.getBoundingClientRect();
+        const x = e.touches[0].clientX - rect.left; // posición relativa al contenedor
+        const width = rect.width;
+        const sideZone = width * 0.2;
+        // Solo permitir drag si el touch es en los lados
+        if (x <= sideZone || x >= width - sideZone) {
+            this.allowHorizontalDrag = true;
+        } else {
+            this.allowHorizontalDrag = false;
         }
     }
 
+    touchMove(e) {
+        if (!this.allowHorizontalDrag) {
+            // Si el touch no fue en los lados, solo permitir scroll vertical
+            return;
+        }
+        const moveX = e.touches[0].clientX;
+        const moveY = e.touches[0].clientY;
+        const diffX = moveX - this.touchStartX;
+        const diffY = moveY - this.touchStartY;
+        const absDiffX = Math.abs(diffX);
+        const absDiffY = Math.abs(diffY);
+        const THRESHOLD = 10; // px mínimos para decidir dirección
+
+        if (this.horizontalDrag === null) {
+            if (absDiffX < THRESHOLD && absDiffY < THRESHOLD) {
+                // No decidir aún
+                return;
+            }
+            // Decidir dirección
+            if (absDiffX > absDiffY) {
+                this.horizontalDrag = true;
+                this.isDragging = true;
+                this.startDrag(this.touchStartX);
+            } else {
+                this.horizontalDrag = false;
+                this.isDragging = false;
+                // No activar drag, permitir scroll
+                return;
+            }
+        }
+
+        if (this.horizontalDrag && this.isDragging) {
+            e.preventDefault();
+            this.duringDrag(moveX);
+        }
+        // Si es vertical, no hacer nada y permitir scroll
+    }
+
     touchEnd(e) {
-        this.endDrag();
+        if (this.allowHorizontalDrag && this.horizontalDrag && this.isDragging) {
+            this.endDrag();
+        }
+        // Si fue vertical o en el centro, no hacer nada
+        this.horizontalDrag = null;
+        this.isDragging = false;
+        this.allowHorizontalDrag = false;
     }
 
     // Métodos para gestos con mouse
