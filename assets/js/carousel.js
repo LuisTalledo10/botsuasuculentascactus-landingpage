@@ -1,12 +1,13 @@
 // Carrusel de Macetas
 class MacetasCarousel {
     constructor() {
-        this.currentSlide = 0;
-        this.totalSlides = 15; // Total de subsecciones
-        this.carouselContainer = document.getElementById('carouselContainer');
-        this.indicators = document.querySelectorAll('.indicator');
-        this.prevBtn = document.getElementById('prevBtn');
-        this.nextBtn = document.getElementById('nextBtn');
+    this.currentSlide = 0;
+    this.carouselContainer = document.getElementById('carouselContainer');
+    this.slides = this.carouselContainer ? this.carouselContainer.querySelectorAll('.carousel-slide') : [];
+    this.totalSlides = this.slides.length;
+    this.indicators = document.querySelectorAll('.indicator');
+    this.prevBtn = document.getElementById('prevBtn');
+    this.nextBtn = document.getElementById('nextBtn');
         
         this.init();
     }
