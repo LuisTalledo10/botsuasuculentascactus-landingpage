@@ -311,30 +311,205 @@ const products = [
     
     // MACETA MEDIANAS - Con personalización de nombre
     {
-        id: 14,
+        id: 23,
         name: "Maceta Mediana Natural",
         price: 12.00,
         personalizationType: "text",
-        personalizationCost: 3.00,
+        personalizacionCosto: 3.00,
         subcategory: "maceta-mediana",
-        category: "hogar",
-        image: "assets/images/maceta-mediana-natural.jpg",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
         description: "Maceta de tamaño mediano perfecta para suculentas y cactus. Personalizable con nombre.",
         dimensions: "6.5cm diámetro x 4.5cm altura",
-        featured: false
+        featured: true,
+        personalizable: true
     },
+    
+    // MACETA CORAZÓN - Con personalización por diseño
     {
-        id: 15,
-        name: "Maceta Mediana Color",
-        price: 12.00,
-        personalizationType: "text", 
-        personalizationCost: 3.00,
-        subcategory: "maceta-mediana",
-        category: "hogar",
-        image: "assets/images/maceta-mediana-color.jpg",
-        description: "Maceta mediana en colores vibrantes. Ideal para decorar con tu toque personal.",
-        dimensions: "6.5cm diámetro x 4.5cm altura",
-        featured: false
+        id: 24,
+        name: "Maceta Corazón",
+        price: 20.00,
+        personalizationType: "design",
+        personalizacionCosto: 3.00,
+        subcategory: "maceta-corazon",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Maceta en forma de corazón personalizable con diseño único + planta de tu elección.",
+        dimensions: "Forma corazón - Tamaño medio",
+        featured: true,
+        personalizable: true
+    },
+    
+    // MACETA CIRCULAR - Con personalización por diseño
+    {
+        id: 26,
+        name: "Maceta Circular",
+        price: 20.00,
+        personalizationType: "design",
+        personalizacionCosto: 3.00,
+        subcategory: "maceta-circular",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Maceta circular de cemento personalizable con diseño único + planta de tu elección.",
+        dimensions: "7.0 cm de altura - 11.0 diámetro",
+        featured: true,
+        personalizable: true
+    },
+    
+    // MACETA TRIANGULAR TRUNCA - Con personalización por diseño
+    {
+        id: 27,
+        name: "Maceta Triangular Trunca",
+        price: 20.00,
+        personalizationType: "design",
+        personalizacionCosto: 3.00,
+        subcategory: "maceta-triangular",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Maceta triangular trunca de cemento personalizable con diseño único + planta de tu elección.",
+        dimensions: "7.0 cm de altura - 11.0 de ancho",
+        featured: true,
+        personalizable: true
+    },
+    
+    // MACETA TRIANGULOS - Con personalización por diseño
+    {
+        id: 28,
+        name: "Maceta Triangular",
+        price: 20.00,
+        personalizationType: "design",
+        personalizacionCosto: 3.00,
+        subcategory: "maceta-triangulos",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Maceta triangular de cemento personalizable con diseño único + planta de tu elección.",
+        dimensions: "7.0 cm de altura - 11.0 de ancho",
+        featured: true,
+        personalizable: true
+    },
+    
+    // ARREGLOS FLORALES - Sin personalización
+    {
+        id: 29,
+        name: "Arreglo Floral",
+        price: 60.00,
+        subcategory: "arreglos-florales",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Hermoso arreglo floral con macetero de arcilla y 8 plantas de tu elección.",
+        dimensions: "14.0 cm de altura - 16.0 diámetro",
+        featured: true,
+        personalizable: false
+    },
+    
+    // HEXAGONO - Sin personalización
+    {
+        id: 30,
+        name: "Hexágono Decorativo",
+        price: 25.00,
+        subcategory: "hexagono",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Hexágono decorativo de palitos con macetero incluido y plantas de tu elección.",
+        dimensions: "20.0 cm de altura - 23.0 diámetro",
+        featured: true,
+        personalizable: false
+    },
+    
+    // MACETA ESTRELLA - Con personalización por diseño (+S/.5.00)
+    {
+        id: 31,
+        name: "Maceta Estrella",
+        price: 30.00,
+        personalizationType: "design",
+        personalizacionCosto: 5.00,
+        subcategory: "maceta-estrella",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Maceta estrella de cemento con diseño geométrico único personalizable + planta de tu elección.",
+        dimensions: "9.0 cm de altura - 15.5 cm de ancho",
+        featured: true,
+        personalizable: true
+    },
+    
+    // MACETA ESTRELLA CON LETRAS - Personalización compleja
+    {
+        id: 32,
+        name: "Maceta Estrella con Letras",
+        price: 30.00,
+        personalizationType: "letters",
+        letterPrice: 4.00, // Precio por letra
+        basePrice: 5.00, // Precio por base de madera/melamine
+        subcategory: "maceta-estrella-letras",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Maceta estrella con letras personalizadas de cemento + planta. Incluye opción de base de madera/melamine.",
+        dimensions: "9.0 cm de altura - 15.5 cm de ancho",
+        featured: true,
+        personalizable: true
+    },
+
+    // YIN - YAN - Macetero doble sin personalización
+    {
+        id: 33,
+        name: "Macetero Yin-Yang",
+        price: 35.00,
+        subcategory: "macetero-yin-yang",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Macetero Yin-Yang de cemento + 2 plantas. Diseño único y elegante.",
+        dimensions: "12.0 cm de altura",
+        featured: true,
+        personalizable: false
+    },
+
+    // MACETA ABI - Con personalización de texto
+    {
+        id: 34,
+        name: "Maceta \"Abi\"",
+        price: 30.00,
+        personalizationType: "text",
+        personalizacionCosto: 5.00,
+        subcategory: "maceta-abi",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Maceta \"Abi\" de cemento + 3 plantas. Diseño tipo bolsa único y moderno.",
+        dimensions: "9.0 cm de altura - 10.0 cm de ancho",
+        featured: true,
+        personalizable: true
+    },
+
+    // MACETA DUO - PORTALAPICERO + MACETA
+    {
+        id: 35,
+        name: "Maceta Duo - Portalapicero + Maceta",
+        price: 50.00,
+        personalizationType: "text",
+        personalizacionCosto: 5.00,
+        subcategory: "maceta-duo-portalapicero",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Conjunto Maceta Duo de cemento: Portalápicero + Macetero + planta. Perfecto para escritorio u oficina.",
+        dimensions: "Variado",
+        featured: true,
+        personalizable: true
+    },
+
+    // MACETA CASITA - Con personalización de texto
+    {
+        id: 36,
+        name: "Maceta Casita",
+        price: 20.00,
+        personalizationType: "text",
+        personalizacionCosto: 3.00,
+        subcategory: "maceta-casita",
+        category: "macetas",
+        image: "assets/images/prueba.PNG",
+        description: "Maceta Casita de cemento con diseño tipo casa + plantas suculentas. Perfecta para decoración.",
+        dimensions: "Variado",
+        featured: true,
+        personalizable: true
     }
 ];
 

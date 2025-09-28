@@ -29,7 +29,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <img src="assets/images/logo.png" alt="Botsua Suculentas y Cactus" class="logo-img">
+                    <img src="assets/images/logo-hero.jpeg" alt="Botsua Suculentas y Cactus" class="logo-img">
                     <span class="logo-text">Botsua</span>
                 </div>
                 
@@ -72,6 +72,9 @@
         </div>
         <div class="container">
             <div class="hero-content">
+                <div class="hero-logo">
+                    <img src="assets/images/logo-hero.jpeg" alt="Botsua Suculentas y Cactus" class="hero-logo-img">
+                </div>
                 <h1 class="hero-title">Diseños artesanales en cemento que transforman tus espacios</h1>
                 <p class="hero-description">
                     Descubre nuestra colección única de productos hechos a mano con cemento de alta calidad. 
@@ -111,8 +114,34 @@
 
             <!-- Sección Macetas -->
             <div class="category-section active" id="macetas-section">
+                <!-- Controles del Carrusel -->
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" id="prevBtn">‹</button>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
+                        <span class="indicator" data-slide="5"></span>
+                        <span class="indicator" data-slide="6"></span>
+                        <span class="indicator" data-slide="7"></span>
+                        <span class="indicator" data-slide="8"></span>
+                        <span class="indicator" data-slide="9"></span>
+                        <span class="indicator" data-slide="10"></span>
+                        <span class="indicator" data-slide="11"></span>
+                        <span class="indicator" data-slide="12"></span>
+                        <span class="indicator" data-slide="13"></span>
+                        <span class="indicator" data-slide="14"></span>
+                    </div>
+                    <button class="carousel-btn next-btn" id="nextBtn">›</button>
+                </div>
+
+                <!-- Carrusel de Subsecciones -->
+                <div class="macetas-carousel">
+                    <div class="carousel-container" id="carouselContainer">
                 <!-- Subsección Arcilla -->
-                <div class="subcategory-section">
+                <div class="subcategory-section carousel-slide">
                     <div class="subcategory-header">
                         <h3 class="subcategory-title">ARCILLA</h3>
                         <p class="subcategory-description">Vasos de arcilla tradicionales con plantas incluidas</p>
@@ -121,14 +150,14 @@
                     <div class="arcilla-grid">
                         <!-- Imagen Principal -->
                         <div class="arcilla-main-image">
-                            <img src="assets/images/prueba.PNG" alt="Colección de vasos de arcilla con plantas">
+                            <img src="assets/images/macetas/arcilla/presentacionarcilla.jpeg" alt="Colección de vasos de arcilla con plantas">
                         </div>
                         
                         <!-- Vasos Individuales -->
                         <div class="arcilla-products">
                             <div class="arcilla-product" data-product-id="5">
                                 <div class="product-image-container">
-                                    <img src="assets/images/prueba.PNG" alt="Vaso A" class="product-image">
+                                    <img src="assets/images/macetas/arcilla/vasoA.jpeg" alt="Vaso A" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -142,7 +171,7 @@
                             
                             <div class="arcilla-product" data-product-id="6">
                                 <div class="product-image-container">
-                                    <img src="assets/images/prueba.PNG" alt="Vaso B" class="product-image">
+                                    <img src="assets/images/macetas/arcilla/vasoB.jpeg" alt="Vaso B" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -182,7 +211,7 @@
                 </div>
                 
                 <!-- Subsección Arcilla Colgantes -->
-                <div class="subcategory-section">
+                <div class="subcategory-section carousel-slide">
                     <div class="subcategory-header">
                         <h3 class="subcategory-title">ARCILLA COLGANTES</h3>
                         <p class="subcategory-description">Maceteros de arcilla con sistema de macramé para colgar</p>
@@ -230,7 +259,7 @@
                 </div>
                 
                 <!-- Subsección Mini-Macetas -->
-                <div class="subcategory-section">
+                <div class="subcategory-section carousel-slide">
                     <div class="subcategory-header">
                         <h3 class="subcategory-title">MINI - MACETAS</h3>
                         <p class="subcategory-description">Maceteros pequeños personalizados de cemento con diseños únicos</p>
@@ -373,7 +402,7 @@
                 </div>
                 
                 <!-- Subsección Maceta Mediana -->
-                <div class="subcategory-section">
+                <div class="subcategory-section carousel-slide">
                     <div class="subcategory-header">
                         <h3 class="subcategory-title">MACETA MEDIANAS</h3>
                         <p class="subcategory-description">Maceteros medianos de cemento personalizados con tu nombre</p>
@@ -386,9 +415,9 @@
                         </div>
                         
                         <!-- Productos -->
-                        <div class="mini-products">
+                        <div class="mini-products single-product">
                             <!-- Maceta Natural -->
-                            <div class="mini-product" data-product-id="14">
+                            <div class="mini-product" data-product-id="23">
                                 <div class="product-image-container">
                                     <img src="assets/images/prueba.PNG" alt="Maceta Mediana Natural" class="product-image">
                                     <div class="product-overlay">
@@ -397,21 +426,6 @@
                                 </div>
                                 <div class="product-info">
                                     <h4>Maceta Mediana Natural</h4>
-                                    <p class="product-price">S/.12.00</p>
-                                    <small class="personalization-hint">+ S/.3.00 por nombre personalizado</small>
-                                </div>
-                            </div>
-                            
-                            <!-- Maceta Color -->
-                            <div class="mini-product" data-product-id="15">
-                                <div class="product-image-container">
-                                    <img src="assets/images/prueba.PNG" alt="Maceta Mediana Color" class="product-image">
-                                    <div class="product-overlay">
-                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
-                                    </div>
-                                </div>
-                                <div class="product-info">
-                                    <h4>Maceta Mediana Color</h4>
                                     <p class="product-price">S/.12.00</p>
                                     <small class="personalization-hint">+ S/.3.00 por nombre personalizado</small>
                                 </div>
@@ -444,10 +458,665 @@
                     </div>
                 </div>
                 
-                <!-- Placeholder para más subsecciones -->
-                <div class="more-subcategories">
-                    <p class="coming-soon">Más categorías de macetas próximamente...</p>
+                <!-- Subsección Maceta Corazón -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA CORAZÓN</h3>
+                        <p class="subcategory-description">Maceteros en forma de corazón y redondos con precios especiales</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Maceta corazón y maceta redonda">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Corazón -->
+                            <div class="mini-product" data-product-id="24">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Maceta en forma de corazón" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta Corazón</h4>
+                                    <p class="product-price">S/.20.00</p>
+                                    <small class="personalization-hint">+ S/.3.00 por personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.20.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Maceta personalizada:</span>
+                                <span class="detail-value">S/.23.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Macetero + planta de tu elección</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Material:</span>
+                                <span class="detail-value">Cemento de alta calidad</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Personalización:</span>
+                                <span class="detail-value">+S/.3.00 por diseño personalizado</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
+                <!-- Subsección Maceta Circular -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA CIRCULAR</h3>
+                        <p class="subcategory-description">Maceta circular de cemento con diseño único</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Maceta circular con planta">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Circular -->
+                            <div class="mini-product" data-product-id="26">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Maceta circular" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta Circular</h4>
+                                    <p class="product-price">S/.20.00</p>
+                                    <small class="personalization-hint">+ S/.3.00 por personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Maceta circular + planta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">7.0 cm de altura - 11.0 diámetro</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.20.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Maceta personalizada:</span>
+                                <span class="detail-value">S/.23.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Personalización:</span>
+                                <span class="detail-value">+S/.3.00 por diseño personalizado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección Maceta Triangular Trunca -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA TRIANGULAR TRUNCA</h3>
+                        <p class="subcategory-description">Maceta triangular trunca de cemento con diseño moderno</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Maceta triangular trunca con planta">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Triangular Trunca -->
+                            <div class="mini-product" data-product-id="27">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Maceta triangular trunca" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta Triangular Trunca</h4>
+                                    <p class="product-price">S/.20.00</p>
+                                    <small class="personalization-hint">+ S/.3.00 por personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Maceta triangular + planta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">7.0 cm de altura - 11.0 de ancho</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.20.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Maceta personalizada:</span>
+                                <span class="detail-value">S/.23.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Personalización:</span>
+                                <span class="detail-value">+S/.3.00 por diseño personalizado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección Maceta Triangulos -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA TRIANGULOS</h3>
+                        <p class="subcategory-description">Maceta triangular de cemento con diseño geométrico</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Maceta triangular con planta">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Triangular -->
+                            <div class="mini-product" data-product-id="28">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Maceta triangular" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta Triangular</h4>
+                                    <p class="product-price">S/.20.00</p>
+                                    <small class="personalization-hint">+ S/.3.00 por personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Maceta triangular + planta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">7.0 cm de altura - 11.0 de ancho</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.20.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Maceta personalizada:</span>
+                                <span class="detail-value">S/.23.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Personalización:</span>
+                                <span class="detail-value">+S/.3.00 por diseño personalizado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección Arreglos Florales -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">ARREGLOS FLORALES</h3>
+                        <p class="subcategory-description">Hermosos arreglos con macetero de arcilla y múltiples plantas</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Arreglo floral con múltiples plantas">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Arreglo Floral -->
+                            <div class="mini-product" data-product-id="29">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Arreglo floral" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Arreglo Floral</h4>
+                                    <p class="product-price">S/.60.00</p>
+                                    <small class="personalization-hint">Precio fijo - Sin personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Macetero de arcilla + 8 plantas de tu elección</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">14.0 cm de altura - 16.0 diámetro</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio:</span>
+                                <span class="detail-value">S/.60.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">8 plantas incluidas de tu elección</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección Hexágono -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">HEXAGONO</h3>
+                        <p class="subcategory-description">Hexágono decorativo de madera con macetero incluido</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Hexágono decorativo con macetero">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Hexágono Decorativo -->
+                            <div class="mini-product" data-product-id="30">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Hexágono decorativo" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Hexágono Decorativo</h4>
+                                    <p class="product-price">S/.25.00</p>
+                                    <small class="personalization-hint">Precio fijo - Sin personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Hexágono de palitos + 1 macetero + plantas de tu elección</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">20.0 cm de altura - 23.0 diámetro</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio:</span>
+                                <span class="detail-value">S/.25.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Estructura hexágonal decorativa incluida</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección Maceta Estrella -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA ESTRELLA</h3>
+                        <p class="subcategory-description">Maceta estrella de cemento con diseño geométrico único</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Maceta estrella con planta">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Estrella -->
+                            <div class="mini-product" data-product-id="31">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Maceta estrella" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta Estrella</h4>
+                                    <p class="product-price">S/.30.00</p>
+                                    <small class="personalization-hint">+ S/.5.00 por personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Maceta estrella + planta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">9.0 cm de altura - 15.5 cm de ancho</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.30.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Maceta personalizada:</span>
+                                <span class="detail-value">S/.35.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Personalización:</span>
+                                <span class="detail-value">+S/.5.00 por diseño personalizado</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Segunda parte: Maceta Estrella con Letras dentro de la misma tarjeta -->
+                    <div class="mini-macetas-section-divider"></div>
+                    
+                    <div class="maceta-estrella-letras">
+                        <div class="mini-macetas-grid">
+                            <!-- Imagen Principal Letras -->
+                            <div class="mini-main-image">
+                                <img src="assets/images/prueba.PNG" alt="Maceta estrella con letras personalizadas">
+                            </div>
+                            
+                            <!-- Productos Letras -->
+                            <div class="mini-products single-product">
+                                <!-- Maceta Estrella con Letras -->
+                                <div class="mini-product" data-product-id="32">
+                                    <div class="product-image-container">
+                                        <img src="assets/images/prueba.PNG" alt="Maceta estrella con letras" class="product-image">
+                                        <div class="product-overlay">
+                                            <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <h4>Maceta Estrella - Otra Opción</h4>
+                                        <p class="product-price">S/.30.00</p>
+                                        <small class="personalization-hint">+ S/.4.00 por letra + Base opcional</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Información Detallada Letras -->
+                            <div class="mini-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Incluye:</span>
+                                    <span class="detail-value">Maceta estrella + planta</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Medidas:</span>
+                                    <span class="detail-value">9.0 cm de altura - 15.5 cm de ancho</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Precio regular:</span>
+                                    <span class="detail-value">S/.30.00</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Letras:</span>
+                                    <span class="detail-value">S/.4.00 c/u</span>
+                                </div>
+                                <div class="detail-row highlight">
+                                    <span class="detail-label">Base Madera/Melamine:</span>
+                                    <span class="detail-value">S/.5.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección YIN-YAN -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">YIN - YAN</h3>
+                        <p class="subcategory-description">Macetero Yin-Yang de cemento con diseño único y elegante</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Macetero Yin-Yang con 2 plantas">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Macetero Yin-Yang -->
+                            <div class="mini-product" data-product-id="33">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Macetero Yin-Yang" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Macetero Yin-Yang</h4>
+                                    <p class="product-price">S/.35.00</p>
+                                    <small class="no-personalization">Sin personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Macetero Yin-Yang + 2 plantas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">12.0 cm de altura</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio:</span>
+                                <span class="detail-value">S/.35.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Diseño:</span>
+                                <span class="detail-value">Yin-Yang único y elegante</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección MACETA ABI -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA ABI</h3>
+                        <p class="subcategory-description">Maceta "Abi" de cemento con diseño tipo bolsa único y moderno</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Maceta Abi con 3 plantas">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Abi -->
+                            <div class="mini-product" data-product-id="34">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Maceta Abi" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta "Abi"</h4>
+                                    <p class="product-price">S/.30.00</p>
+                                    <small class="personalization-hint">+ S/.5.00 personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Maceta "Abi" + 3 plantas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">9.0 cm de altura - 10.0 cm de ancho</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.30.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Personalizada:</span>
+                                <span class="detail-value">S/.35.00 (+S/.5.00)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección MACETA DUO - PORTALAPICERO + MACETA -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA DUO - PORTALAPICERO + MACETA</h3>
+                        <p class="subcategory-description">Conjunto de cemento: Portalápicero + Macetero + planta. Perfecto para escritorio u oficina</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Maceta Duo - Portalapicero y Maceta">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Duo -->
+                            <div class="mini-product" data-product-id="35">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Maceta Duo" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Personalizar</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta Duo - Portalapicero + Maceta</h4>
+                                    <p class="product-price">S/.50.00</p>
+                                    <small class="personalization-hint">+ S/.5.00 personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Portalápicero + macetero + planta</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">Variado</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.50.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Personalizada:</span>
+                                <span class="detail-value">S/.55.00 (+S/.5.00)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección MACETA CASITA -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA CASITA</h3>
+                        <p class="subcategory-description">Maceta Casita de cemento con diseño tipo casa. Perfecta para decoración</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/prueba.PNG" alt="Maceta Casita con plantas suculentas">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Casita -->
+                            <div class="mini-product" data-product-id="36">
+                                <div class="product-image-container">
+                                    <img src="assets/images/prueba.PNG" alt="Maceta Casita" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Personalizar</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta Casita</h4>
+                                    <p class="product-price">S/.20.00</p>
+                                    <small class="personalization-hint">+ S/.3.00 personalización</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Maceta Casita + plantas suculentas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">Variado</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.20.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Personalizada:</span>
+                                <span class="detail-value">S/.23.00 (+S/.3.00)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                    </div> <!-- Fin carousel-container -->
+                </div> <!-- Fin macetas-carousel -->
             </div>
 
             <!-- Otras secciones principales (placeholder) -->
@@ -473,7 +1142,7 @@
                 </div>
                 <div class="modal-body">
                     <p id="modalDescription">¿Deseas personalizar tu producto?</p>
-                    <p class="personalization-cost">Costo adicional: <strong>S/.3.00</strong></p>
+                    <p class="personalization-cost">Costo adicional: <strong id="personalizationCost">S/.3.00</strong></p>
                     
                     <div class="personalization-options">
                         <button class="option-btn" id="sinPersonalizar">Sin Personalizar</button>
@@ -492,6 +1161,31 @@
                         <label for="designDescription">Describe tu diseño:</label>
                         <textarea id="designDescription" rows="4" maxlength="200" placeholder="Describe cómo quieres que sea el diseño de tu mini-maceta (máximo 200 caracteres)"></textarea>
                         <small><span id="designCharCount">0</span>/200 caracteres</small>
+                    </div>
+                    
+                    <!-- Para personalización de letras -->
+                    <div class="letters-input-section" id="lettersInputSection" style="display: none;">
+                        <div class="letter-count-section">
+                            <label for="letterCount">¿Cuántas letras quieres?</label>
+                            <input type="number" id="letterCount" min="1" max="10" placeholder="Ej: 5">
+                            <button type="button" id="generateLetters" class="btn btn-secondary">Generar Casillas</button>
+                        </div>
+                        
+                        <div id="lettersContainer" class="letters-container">
+                            <!-- Las casillas se generan dinámicamente aquí -->
+                        </div>
+                        
+                        <div id="baseSelector" class="base-selector" style="display: none;">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="baseOption">
+                                <span class="checkmark"></span>
+                                Agregar base de madera/melamine (+S/.5.00)
+                            </label>
+                        </div>
+                        
+                        <div id="totalPrice" class="total-price">
+                            <!-- El precio total se actualiza dinámicamente -->
+                        </div>
                     </div>
                     
                     <div class="modal-actions">
@@ -541,7 +1235,7 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="assets/images/about-us.jpg" alt="Proceso artesanal Botsua">
+                    <img src="assets/images/logo-hero.jpeg" alt="Logo Botsua">
                 </div>
             </div>
         </div>
@@ -603,7 +1297,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="logo">
-                        <img src="assets/images/logo.png" alt="Botsua" class="logo-img">
+                        <img src="assets/images/logo-hero.jpeg" alt="Botsua" class="logo-img">
                         <span class="logo-text">Botsua</span>
                     </div>
                     <p>Diseños artesanales en cemento que transforman tus espacios</p>
@@ -717,6 +1411,7 @@
     <!-- JavaScript -->
     <script src="assets/js/config.js"></script>
     <script src="assets/js/products.js"></script>
+    <script src="assets/js/carousel.js"></script>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/main.js"></script>
 </body>
