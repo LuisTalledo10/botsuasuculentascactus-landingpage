@@ -1,13 +1,22 @@
 // Carrusel de Macetas
 class MacetasCarousel {
     constructor() {
-    this.currentSlide = 0;
-    this.carouselContainer = document.getElementById('carouselContainer');
-    this.slides = this.carouselContainer ? this.carouselContainer.querySelectorAll('.carousel-slide') : [];
-    this.totalSlides = this.slides.length;
-    this.indicators = document.querySelectorAll('.indicator');
-    this.prevBtn = document.getElementById('prevBtn');
-    this.nextBtn = document.getElementById('nextBtn');
+        this.currentSlide = 0;
+        this.carouselContainer = document.getElementById('carouselContainer');
+        this.slides = this.carouselContainer ? this.carouselContainer.querySelectorAll('.carousel-slide') : [];
+        this.totalSlides = this.slides.length;
+        this.indicators = document.querySelectorAll('.indicator');
+        this.prevBtn = document.getElementById('prevBtn');
+        this.nextBtn = document.getElementById('nextBtn');
+
+        // Ajustar dinámicamente el ancho del contenedor y de los slides
+        if (this.carouselContainer && this.totalSlides > 0) {
+            this.carouselContainer.style.width = `calc(100% * ${this.totalSlides})`;
+            this.slides.forEach(slide => {
+                slide.style.width = `calc(100% / ${this.totalSlides})`;
+                slide.style.flex = `0 0 calc(100% / ${this.totalSlides})`;
+            });
+        }
         
         this.init();
     }
