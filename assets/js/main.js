@@ -56,38 +56,83 @@ function initNavigation() {
     const nav = document.getElementById('nav');
 
     if (menuToggle && nav) {
-        menuToggle.addEventListener('click', () => {
-            const isActive = nav.classList.contains('active');
+        // Variable para rastrear el estado del menú
+        let isMenuOpen = false;
+        
+        menuToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopImmediatePropagation(); // Detener TODA propagación inmediatamente
             
-            if (!isActive) {
+            if (!isMenuOpen) {
+                // Abrir menú
                 nav.classList.add('active');
                 menuToggle.classList.add('active');
                 nav.style.maxHeight = '400px';
-                nav.style.transition = 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+                nav.style.opacity = '1';
+                nav.style.visibility = 'visible';
+                nav.style.transition = 'max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease';
+                isMenuOpen = true;
             } else {
+                // Cerrar menú
                 nav.style.maxHeight = '0';
-                nav.style.transition = 'max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+                nav.style.opacity = '0';
+                nav.style.transition = 'max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease';
                 setTimeout(() => {
                     nav.classList.remove('active');
                     menuToggle.classList.remove('active');
+                    nav.style.visibility = 'hidden';
+                    isMenuOpen = false;
                 }, 300);
             }
         });
 
-        // Cerrar menú al hacer click en un enlace
+        // Cerrar menú al hacer click en un enlace (solo en móvil)
         const navLinks = nav.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                nav.classList.remove('active');
-                menuToggle.classList.remove('active');
+                // Solo cerrar el menú si estamos en móvil (ventana <= 768px)
+                if (window.innerWidth <= 768) {
+                    nav.style.maxHeight = '0';
+                    nav.style.opacity = '0';
+                    nav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    nav.style.visibility = 'hidden';
+                    isMenuOpen = false;
+                }
             });
         });
 
-        // Cerrar menú al hacer click fuera
-        document.addEventListener('click', (e) => {
-            if (!nav.contains(e.target) && !menuToggle.contains(e.target)) {
+        // Función para cerrar el menú desde fuera (solo en móvil)
+        function closeMenuFromOutside(e) {
+            // Solo aplicar en móvil
+            if (window.innerWidth <= 768 && 
+                isMenuOpen && 
+                !nav.contains(e.target) && 
+                !menuToggle.contains(e.target)) {
+                nav.style.maxHeight = '0';
+                nav.style.opacity = '0';
                 nav.classList.remove('active');
                 menuToggle.classList.remove('active');
+                nav.style.visibility = 'hidden';
+                isMenuOpen = false;
+            }
+        }
+
+        // Agregar el event listener después de un delay para evitar conflictos
+        setTimeout(() => {
+            document.addEventListener('click', closeMenuFromOutside);
+        }, 500);
+        
+        // Reset del menú cuando se cambie el tamaño de ventana
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                // En escritorio, asegurar que el nav esté visible
+                nav.style.maxHeight = '';
+                nav.style.opacity = '';
+                nav.style.visibility = '';
+                nav.classList.remove('active');
+                menuToggle.classList.remove('active');
+                isMenuOpen = false;
             }
         });
     }

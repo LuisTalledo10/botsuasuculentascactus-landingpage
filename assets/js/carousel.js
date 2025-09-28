@@ -295,9 +295,6 @@ class MacetasCarousel {
                     carousel.style.height = `${finalHeight + 50}px`; // +50px de padding extra
                     carousel.style.transition = 'height 0.6s ease';
                 }
-                
-                // Debug: log para verificar alturas
-                console.log(`Slide ${this.currentSlide}: rect=${rect.height}, scroll=${activeSlide.scrollHeight}, inner=${totalInnerHeight}, final=${finalHeight}`);
             });
         }
     }

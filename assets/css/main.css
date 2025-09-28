@@ -312,6 +312,98 @@ body {
     transition: var(--transition);
 }
 
+/* Responsive Header & Navigation */
+@media (max-width: 768px) {
+    .header-content {
+        position: relative;
+    }
+
+    .nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-height: 0 !important;
+        overflow: hidden;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .nav.active {
+        max-height: 400px !important;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 0;
+        padding: var(--spacing-md) 0;
+        margin: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: 0;
+        text-align: left;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(59, 117, 95, 0.05);
+        transform: translateX(8px);
+    }
+
+    .nav-link::after,
+    .nav-link::before {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        z-index: 1001;
+        position: relative;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .logo-text {
+        font-size: 20px;
+    }
+
+    .cart-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;
@@ -3788,6 +3880,26 @@ body {
 @media (min-width: 769px) {
     .carousel-btn {
         display: flex;
+    }
+    
+    /* Asegurar que el nav esté siempre visible en escritorio */
+    .nav {
+        position: static !important;
+        width: auto !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        max-height: none !important;
+        overflow: visible !important;
+        transition: none !important;
+        z-index: auto !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    .nav.active {
+        max-height: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 }
 
