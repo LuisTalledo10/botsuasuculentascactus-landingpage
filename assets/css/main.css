@@ -3831,7 +3831,7 @@ body {
 .carousel-container {
     display: flex;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    width: calc(100% * 15); /* 15 subsecciones = 1500% */
+    /* width: calc(100% * 15);  15 subsecciones = 1500%  */
     align-items: flex-start; /* Alinear al inicio para que cada sección tenga su altura natural */
     cursor: grab;
     user-select: none;
@@ -3845,8 +3845,8 @@ body {
 }
 
 .carousel-slide {
-    width: calc(100% / 15); /* Cada slide es 1/15 del contenedor total */
-    flex: 0 0 calc(100% / 15); /* No se redimensiona */
+    /* width: calc(100% / 15);  Cada slide es 1/15 del contenedor total */
+    /* flex: 0 0 calc(100% / 15);  No se redimensiona */
     box-sizing: border-box;
     /* Altura automática según el contenido - sin restricciones */
 }
