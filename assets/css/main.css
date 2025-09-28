@@ -3733,6 +3733,7 @@ body {
     margin-top: 30px;
     overflow: hidden; /* Ocultar subsecciones que no están activas */
     /* Eliminar altura fija para que se ajuste automáticamente */
+    touch-action: pan-y; /* Permitir scroll vertical, pero interceptar horizontal */
 }
 
 .carousel-container {
@@ -3740,6 +3741,15 @@ body {
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     width: calc(100% * 15); /* 15 subsecciones = 1500% */
     align-items: flex-start; /* Alinear al inicio para que cada sección tenga su altura natural */
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.carousel-container:active {
+    cursor: grabbing;
 }
 
 .carousel-slide {
@@ -3772,6 +3782,13 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Asegurar que en escritorio los botones se muestren */
+@media (min-width: 769px) {
+    .carousel-btn {
+        display: flex;
+    }
 }
 
 .carousel-btn:hover {
@@ -3815,40 +3832,80 @@ body {
 /* Responsive para Carrusel */
 @media (max-width: 768px) {
     .carousel-controls {
-        gap: 15px;
+        gap: 0;
         margin-bottom: 15px;
+        justify-content: center;
     }
     
     .carousel-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+        display: none; /* Ocultar botones de navegación en móvil */
     }
     
     .carousel-indicators {
-        max-width: 250px;
+        max-width: 100%;
+        gap: 8px;
+        flex-wrap: nowrap; /* Forzar que se mantengan en una sola línea */
+        overflow-x: auto; /* Scroll horizontal si hay muchos puntos */
+        overflow-y: hidden;
+        padding: 5px 10px;
+        justify-content: center;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
     }
     
-    .indicator {
-        width: 10px;
-        height: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-controls {
-        gap: 10px;
-        flex-direction: column;
-    }
-    
-    .carousel-indicators {
-        order: -1;
-        margin-bottom: 15px;
-        max-width: 200px;
+    .carousel-indicators::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
     }
     
     .indicator {
         width: 8px;
         height: 8px;
+        flex-shrink: 0; /* Prevenir que se compriman */
+        min-width: 8px; /* Asegurar tamaño mínimo */
+    }
+    
+    .carousel-container {
+        cursor: default; /* En móviles no mostrar cursor de grab */
+    }
+    
+    .macetas-carousel {
+        touch-action: pan-y pinch-zoom; /* Mejorar comportamiento táctil */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-controls {
+        gap: 0;
+        margin-bottom: 10px;
+        flex-direction: row; /* Mantener en horizontal, no vertical */
+        justify-content: center;
+    }
+    
+    .carousel-btn {
+        display: none; /* Ocultar botones también en móviles pequeños */
+    }
+    
+    .carousel-indicators {
+        max-width: 100%;
+        margin-bottom: 0;
+        gap: 6px;
+        padding: 8px 15px;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        justify-content: flex-start; /* Permitir scroll si hay muchos */
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    
+    .carousel-indicators::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .indicator {
+        width: 7px;
+        height: 7px;
+        flex-shrink: 0;
+        min-width: 7px;
     }
 }

@@ -16,10 +16,25 @@ class MacetasCarousel {
         this.bindEvents();
         this.updateButtons();
         
+        // Establecer cursor inicial
+        this.carouselContainer.style.cursor = 'grab';
+        
         // Ajustar altura inicial después de que se haya cargado el contenido
+        // Usar múltiples timeouts para asegurar que todo esté renderizado
         setTimeout(() => {
             this.adjustCarouselHeight();
-        }, 100);
+        }, 200);
+        
+        setTimeout(() => {
+            this.adjustCarouselHeight();
+        }, 500);
+        
+        // También ajustar cuando se redimensione la ventana
+        window.addEventListener('resize', () => {
+            setTimeout(() => {
+                this.adjustCarouselHeight();
+            }, 100);
+        });
     }
 
     bindEvents() {
@@ -43,46 +58,198 @@ class MacetasCarousel {
             }
         });
 
-        // Touch/Swipe para móviles
-        let startX = 0;
-        let endX = 0;
+        // Variables para gestos táctiles y de mouse
+        this.isDragging = false;
+        this.startX = 0;
+        this.currentX = 0;
+        this.initialTranslate = 0;
+        this.animationId = 0;
 
-        this.carouselContainer.addEventListener('touchstart', (e) => {
-            startX = e.changedTouches[0].screenX;
-        });
+        // Touch events (móviles)
+        this.carouselContainer.addEventListener('touchstart', (e) => this.touchStart(e), { passive: false });
+        this.carouselContainer.addEventListener('touchmove', (e) => this.touchMove(e), { passive: false });
+        this.carouselContainer.addEventListener('touchend', (e) => this.touchEnd(e));
 
-        this.carouselContainer.addEventListener('touchend', (e) => {
-            endX = e.changedTouches[0].screenX;
-            this.handleSwipe();
-        });
+        // Mouse events (escritorio)
+        this.carouselContainer.addEventListener('mousedown', (e) => this.mouseStart(e));
+        this.carouselContainer.addEventListener('mousemove', (e) => this.mouseMove(e));
+        this.carouselContainer.addEventListener('mouseup', (e) => this.mouseEnd(e));
+        this.carouselContainer.addEventListener('mouseleave', (e) => this.mouseEnd(e));
+
+        // Prevenir selección de texto durante el arrastre
+        this.carouselContainer.addEventListener('selectstart', (e) => e.preventDefault());
+        this.carouselContainer.addEventListener('dragstart', (e) => e.preventDefault());
     }
 
-    handleSwipe() {
-        const minSwipeDistance = 50;
-        const swipeDistance = startX - endX;
+    // Métodos para gestos táctiles
+    touchStart(e) {
+        this.startDrag(e.touches[0].clientX);
+    }
 
-        if (Math.abs(swipeDistance) > minSwipeDistance) {
-            if (swipeDistance > 0) {
-                // Swipe izquierda - siguiente slide
-                this.nextSlide();
+    touchMove(e) {
+        if (this.isDragging) {
+            e.preventDefault();
+            this.duringDrag(e.touches[0].clientX);
+        }
+    }
+
+    touchEnd(e) {
+        this.endDrag();
+    }
+
+    // Métodos para gestos con mouse
+    mouseStart(e) {
+        e.preventDefault();
+        this.startDrag(e.clientX);
+        this.carouselContainer.style.cursor = 'grabbing';
+    }
+
+    mouseMove(e) {
+        if (this.isDragging) {
+            e.preventDefault();
+            this.duringDrag(e.clientX);
+        }
+    }
+
+    mouseEnd(e) {
+        this.endDrag();
+        this.carouselContainer.style.cursor = 'grab';
+    }
+
+    // Lógica común para ambos tipos de gestos
+    startDrag(clientX) {
+        this.isDragging = true;
+        this.startX = clientX;
+        this.initialTranslate = -this.currentSlide * (100 / 15);
+        this.inMagnetZone = false; // Solo detectar zona, no activar aún
+        this.magnetDirection = null;
+        
+        // Cancelar cualquier animación en progreso
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+    }
+
+    duringDrag(clientX) {
+        if (!this.isDragging) return;
+
+        this.currentX = clientX;
+        const diffX = this.currentX - this.startX;
+        const containerWidth = this.carouselContainer.parentElement.offsetWidth;
+        
+        // Reducir MUCHO más la sensibilidad del arrastre
+        const sensitivity = 0.15; // Aumentar un poco la sensibilidad para mejor feedback visual
+        const adjustedDiffX = diffX * sensitivity;
+        
+        // Limitar el movimiento máximo para que se vea suave
+        const maxDragDistance = containerWidth * 0.3; // Aumentar a 30% para mejor feedback visual
+        const clampedDiffX = Math.max(-maxDragDistance, Math.min(maxDragDistance, adjustedDiffX));
+        
+        // Calcular el porcentaje de arrastre
+        const dragPercentage = (clampedDiffX / containerWidth) * 100;
+        
+        // La posición base es siempre el slide actual
+        const baseTranslate = -this.currentSlide * (100 / 15);
+        let newTranslate = baseTranslate + dragPercentage;
+        
+        // Aplicar resistencia en los extremos
+        if (this.currentSlide === 0 && diffX > 0) {
+            // En el primer slide arrastrando hacia la derecha - resistencia
+            newTranslate = baseTranslate + (dragPercentage * 0.3);
+        } else if (this.currentSlide === this.totalSlides - 1 && diffX < 0) {
+            // En el último slide arrastrando hacia la izquierda - resistencia
+            newTranslate = baseTranslate + (dragPercentage * 0.3);
+        }
+        
+        // Solo seguimiento visual - SIN activar el imán durante el arrastre
+        this.carouselContainer.style.transition = 'none';
+        this.carouselContainer.style.transform = `translateX(${newTranslate}%)`;
+        
+        // Solo detectar si está en zona de imán para después (cuando se suelte)
+        const magnetThreshold = containerWidth * 0.25; // 25% para activar el imán al soltar
+        this.inMagnetZone = Math.abs(diffX) > magnetThreshold;
+        
+        if (this.inMagnetZone) {
+            if (diffX > 0 && this.currentSlide > 0) {
+                this.magnetDirection = 'prev';
+            } else if (diffX < 0 && this.currentSlide < this.totalSlides - 1) {
+                this.magnetDirection = 'next';
             } else {
-                // Swipe derecha - slide anterior
-                this.prevSlide();
+                this.inMagnetZone = false;
+                this.magnetDirection = null;
             }
         }
     }
 
+    endDrag() {
+        if (!this.isDragging) return;
+        
+        this.isDragging = false;
+        
+        // AQUÍ es donde se activa el imán - solo cuando sueltas el click
+        if (this.inMagnetZone && this.magnetDirection) {
+            // Activar efecto imán con transición suave
+            this.carouselContainer.style.transition = 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+            
+            if (this.magnetDirection === 'prev' && this.currentSlide > 0) {
+                // Engancharse suavemente al slide anterior
+                this.currentSlide--;
+                const targetTranslate = -this.currentSlide * (100 / 15);
+                this.carouselContainer.style.transform = `translateX(${targetTranslate}%)`;
+                this.updateButtons();
+                
+                // Actualizar indicadores después de un pequeño delay
+                setTimeout(() => {
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === this.currentSlide);
+                    });
+                    // Forzar recálculo de altura después del cambio
+                    this.adjustCarouselHeight();
+                }, 150);
+                
+            } else if (this.magnetDirection === 'next' && this.currentSlide < this.totalSlides - 1) {
+                // Engancharse suavemente al siguiente slide
+                this.currentSlide++;
+                const targetTranslate = -this.currentSlide * (100 / 15);
+                this.carouselContainer.style.transform = `translateX(${targetTranslate}%)`;
+                this.updateButtons();
+                
+                // Actualizar indicadores después de un pequeño delay
+                setTimeout(() => {
+                    this.indicators.forEach((indicator, index) => {
+                        indicator.classList.toggle('active', index === this.currentSlide);
+                    });
+                    // Forzar recálculo de altura después del cambio
+                    this.adjustCarouselHeight();
+                }, 150);
+            }
+        } else {
+            // Sin zona de imán - volver suavemente a la posición actual
+            this.carouselContainer.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+            this.updateCarousel();
+        }
+        
+        // Limpiar estado
+        this.inMagnetZone = false;
+        this.magnetDirection = null;
+    }
+
     updateCarousel() {
         const translateX = -this.currentSlide * (100 / 15); // Cada slide es 1/15 del contenedor
-        this.carouselContainer.style.transform = `translateX(${translateX}%)`;
         
-        // Ajustar altura automáticamente según el contenido de la subsección activa
-        this.adjustCarouselHeight();
+        // Asegurar que la transición esté activada para los cambios programáticos
+        this.carouselContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+        this.carouselContainer.style.transform = `translateX(${translateX}%)`;
         
         // Actualizar indicadores
         this.indicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index === this.currentSlide);
         });
+        
+        // Ajustar altura después de que la transición haya comenzado
+        setTimeout(() => {
+            this.adjustCarouselHeight();
+        }, 100);
     }
 
     adjustCarouselHeight() {
@@ -90,14 +257,48 @@ class MacetasCarousel {
         const slides = this.carouselContainer.querySelectorAll('.carousel-slide');
         if (slides[this.currentSlide]) {
             const activeSlide = slides[this.currentSlide];
-            const activeSlideHeight = activeSlide.scrollHeight;
             
-            // Ajustar la altura del contenedor del carrusel
-            const carousel = document.querySelector('.macetas-carousel');
-            carousel.style.height = `${activeSlideHeight}px`;
+            // Forzar recálculo del layout antes de medir
+            activeSlide.style.display = 'block';
+            activeSlide.style.visibility = 'visible';
             
-            // Añadir una transición suave para el cambio de altura
-            carousel.style.transition = 'height 0.5s ease, transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            // Esperar un momento para que se renderice completamente
+            requestAnimationFrame(() => {
+                // Obtener la altura real incluyendo todos los elementos internos
+                let maxHeight = 0;
+                
+                // Método 1: Usar getBoundingClientRect para altura más precisa
+                const rect = activeSlide.getBoundingClientRect();
+                maxHeight = Math.max(maxHeight, rect.height);
+                
+                // Método 2: Verificar scrollHeight
+                maxHeight = Math.max(maxHeight, activeSlide.scrollHeight);
+                
+                // Método 3: Calcular la altura de los elementos internos
+                const innerElements = activeSlide.querySelectorAll('.subcategory-section, .product-card, .product-grid');
+                let totalInnerHeight = 0;
+                
+                innerElements.forEach(element => {
+                    const elementRect = element.getBoundingClientRect();
+                    const computedStyle = window.getComputedStyle(element);
+                    const marginTop = parseFloat(computedStyle.marginTop) || 0;
+                    const marginBottom = parseFloat(computedStyle.marginBottom) || 0;
+                    totalInnerHeight += elementRect.height + marginTop + marginBottom;
+                });
+                
+                // Usar la altura más grande encontrada, con un mínimo
+                const finalHeight = Math.max(maxHeight, totalInnerHeight, 400); // Mínimo 400px
+                
+                // Ajustar la altura del contenedor del carrusel
+                const carousel = document.querySelector('.macetas-carousel');
+                if (carousel) {
+                    carousel.style.height = `${finalHeight + 50}px`; // +50px de padding extra
+                    carousel.style.transition = 'height 0.6s ease';
+                }
+                
+                // Debug: log para verificar alturas
+                console.log(`Slide ${this.currentSlide}: rect=${rect.height}, scroll=${activeSlide.scrollHeight}, inner=${totalInnerHeight}, final=${finalHeight}`);
+            });
         }
     }
 
