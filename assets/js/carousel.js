@@ -174,7 +174,7 @@ class MacetasCarousel {
     startDrag(clientX) {
         this.isDragging = true;
         this.startX = clientX;
-        this.initialTranslate = -this.currentSlide * (100 / 15);
+    this.initialTranslate = -this.currentSlide * (100 / this.totalSlides);
         this.inMagnetZone = false; // Solo detectar zona, no activar aún
         this.magnetDirection = null;
         
@@ -203,7 +203,7 @@ class MacetasCarousel {
         const dragPercentage = (clampedDiffX / containerWidth) * 100;
         
         // La posición base es siempre el slide actual
-        const baseTranslate = -this.currentSlide * (100 / 15);
+    const baseTranslate = -this.currentSlide * (100 / this.totalSlides);
         let newTranslate = baseTranslate + dragPercentage;
         
         // Aplicar resistencia en los extremos
@@ -248,7 +248,7 @@ class MacetasCarousel {
             if (this.magnetDirection === 'prev' && this.currentSlide > 0) {
                 // Engancharse suavemente al slide anterior
                 this.currentSlide--;
-                const targetTranslate = -this.currentSlide * (100 / 15);
+                const targetTranslate = -this.currentSlide * (100 / this.totalSlides);
                 this.carouselContainer.style.transform = `translateX(${targetTranslate}%)`;
                 this.updateButtons();
                 
@@ -264,7 +264,7 @@ class MacetasCarousel {
             } else if (this.magnetDirection === 'next' && this.currentSlide < this.totalSlides - 1) {
                 // Engancharse suavemente al siguiente slide
                 this.currentSlide++;
-                const targetTranslate = -this.currentSlide * (100 / 15);
+                const targetTranslate = -this.currentSlide * (100 / this.totalSlides);
                 this.carouselContainer.style.transform = `translateX(${targetTranslate}%)`;
                 this.updateButtons();
                 
@@ -289,7 +289,7 @@ class MacetasCarousel {
     }
 
     updateCarousel() {
-        const translateX = -this.currentSlide * (100 / 15); // Cada slide es 1/15 del contenedor
+    const translateX = -this.currentSlide * (100 / this.totalSlides); // Cada slide es 1/totalSlides del contenedor
         
         // Asegurar que la transición esté activada para los cambios programáticos
         this.carouselContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
