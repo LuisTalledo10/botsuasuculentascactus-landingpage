@@ -12,29 +12,39 @@ class CatalogManager {
     }
 
     setupMainCategoryNavigation() {
-        const mainCategoryBtns = document.querySelectorAll('.main-category-btn');
-        const categorySections = document.querySelectorAll('.category-section');
+        // Solo dos botones: Macetas y Joyeros
+        const btnMacetas = document.getElementById('btn-macetas');
+        const btnJoyeros = document.getElementById('btn-joyeros');
+        const mainCategoryBtns = [btnMacetas, btnJoyeros];
 
-        mainCategoryBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const targetCategory = btn.getAttribute('data-main-category');
-                
-                // Actualizar botones activos
-                mainCategoryBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Mostrar sección correspondiente
-                categorySections.forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                const targetSection = document.getElementById(`${targetCategory}-section`);
-                if (targetSection) {
-                    setTimeout(() => {
-                        targetSection.classList.add('active');
-                    }, 200);
-                }
-            });
+        // Ir al slide 0 (Macetas)
+        btnMacetas.addEventListener('click', () => {
+            mainCategoryBtns.forEach(b => b.classList.remove('active'));
+            btnMacetas.classList.add('active');
+            // Mostrar sección (si hay más de una)
+            const macetasSection = document.getElementById('macetas-section');
+            if (macetasSection) {
+                macetasSection.classList.add('active');
+            }
+            // Ir al slide 0
+            if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
+                window.macetasCarousel.goToSlide(0);
+            }
+        });
+
+        // Ir al slide 15 (Joyeros)
+        btnJoyeros.addEventListener('click', () => {
+            mainCategoryBtns.forEach(b => b.classList.remove('active'));
+            btnJoyeros.classList.add('active');
+            // Mostrar sección (si hay más de una)
+            const macetasSection = document.getElementById('macetas-section');
+            if (macetasSection) {
+                macetasSection.classList.add('active');
+            }
+            // Ir al slide 15
+            if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
+                window.macetasCarousel.goToSlide(15);
+            }
         });
     }
 

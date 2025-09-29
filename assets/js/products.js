@@ -1,6 +1,92 @@
-// Base de datos de productos
+
 const products = [
-    // Joyeros y Bandejas
+    // MACETA TOGEPI PINTADA
+    {
+        id: 55,
+        name: "Maceta TOGEPI Pintada",
+        price: 35.00,
+        category: "macetas",
+        subcategory: "pokemon",
+        image: "assets/images/pokemon.PNG",
+        description: "Maceta TOGEPI Pintada.",
+        dimensions: "variado",
+        featured: true,
+        personalizable: false,
+    },
+
+    // MACETA TOGEPI
+    {
+        id: 54,
+        name: "Maceta TOGEPI",
+        price: 30.00,
+        category: "macetas",
+        subcategory: "pokemon",
+        image: "assets/images/pokemon.PNG",
+        description: "Maceta TOGEPI.",
+        dimensions: "variado",
+        featured: true,
+        personalizable: false,
+    },
+
+    // MACETA SNORLAX PINTADA
+    {
+        id: 53,
+        name: "Maceta SNORLAX Pintada",
+        price: 30.00,
+        category: "macetas",
+        subcategory: "pokemon",
+        image: "assets/images/pokemon.PNG",
+        description: "Maceta SNORLAX Pintada.",
+        dimensions: "variado",
+        featured: true,
+        personalizable: false,
+    },
+
+    // MACETA SNORLAX
+    {
+        id: 52,
+        name: "Maceta SNORLAX",
+        price: 25.00,
+        category: "macetas",
+        subcategory: "pokemon",
+        image: "assets/images/pokemon.PNG",
+        description: "Maceta SNORLAX.",
+        dimensions: "variado",
+        featured: true,
+        personalizable: false,
+    },
+
+    // MACETA ODDRISH
+    {
+        id: 51,
+        name: "Maceta ODDRISH",
+        price: 25.00,
+        pricePersonalizada: 30.00,
+        category: "macetas",
+        subcategory: "pokemon",
+        image: "assets/images/pokemon.PNG",
+        description: "Maceta pokemon de cemento + planta incluida. Personalizable.",
+        dimensions: "8.5 cm de altura – 7.0 cm de ancho",
+        featured: true,
+        personalizable: true,
+        personalizacionCosto: 5.00
+    },
+
+    // MACETA BALBASAUR
+    {
+        id: 50,
+        name: "Maceta Balbasaur",
+        price: 20.00,
+        pricePersonalizada: 25.00,
+        category: "macetas",
+        subcategory: "pokemon",
+        image: "assets/images/pokemon.PNG",
+        description: "Maceta pokemon de cemento + planta incluida. Personalizable.",
+        dimensions: "6.0 cm de altura – 7.0 cm de ancho",
+        featured: true,
+        personalizable: true,
+        personalizacionCosto: 5.00
+    },
     {
         id: 1,
         name: "Joyero Circular Pequeño",

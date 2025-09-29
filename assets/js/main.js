@@ -1,3 +1,9 @@
+// Inicializar referencia global para el carrusel
+window.addEventListener('DOMContentLoaded', function() {
+    if (typeof MacetasCarousel !== 'undefined') {
+        window.macetasCarousel = new MacetasCarousel();
+    }
+});
 // JavaScript principal para Botsua Landing Page
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar la aplicación
