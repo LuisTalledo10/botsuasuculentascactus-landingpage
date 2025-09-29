@@ -250,10 +250,7 @@ function initProductSearch() {
         const searchContainer = document.createElement('div');
         searchContainer.className = 'search-container';
         searchContainer.innerHTML = `
-            <div class="search-box">
-                <input type="text" id="productSearch" placeholder="Buscar productos..." />
-                <i class="fas fa-search"></i>
-            </div>
+
         `;
         
         // Agregar estilos para la búsqueda

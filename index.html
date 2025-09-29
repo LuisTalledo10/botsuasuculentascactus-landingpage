@@ -70,8 +70,12 @@
 
     <!-- Hero Section -->
     <section class="hero hero-curve" id="inicio">
-        <div class="hero-background">
-            <div class="hero-overlay"></div>
+        <div class="hero-background" style="position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;">
+            <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 0;">
+                <source src="assets/images/video-hero.webm" type="video/webm">
+                Tu navegador no soporta el video HTML5.
+            </video>
+            <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; background: rgba(0,0,0,0.45);"></div>
         </div>
         <div class="container">
             <div class="hero-content">

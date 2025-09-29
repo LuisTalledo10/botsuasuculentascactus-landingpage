@@ -410,7 +410,7 @@ body {
     display: flex;
     align-items: center;
     position: relative;
-    background: linear-gradient(135deg, var(--orange) 0%, var(--orange-light) 100%);
+    background: transparent;
     overflow: hidden;
     padding-bottom: 0;
 }
@@ -575,13 +575,13 @@ body {
 .section-title {
     font-size: 2.5rem;
     font-weight: var(--font-weight-bold);
-    color: var(--dark-gray);
+    color: var(--light-gray);
     margin-bottom: var(--spacing-sm);
 }
 
 .section-description {
     font-size: 1.1rem;
-    color: var(--gray);
+    color: var(--light-gray);
 }
 
 /* Catálogo con imagen de fondo estática */
@@ -1568,7 +1568,7 @@ body {
     left: 50%;
     width: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--primary-dark));
+    background: linear-gradient(90deg, var(--orange), var(--orange-dark));
     transition: var(--transition-elastic);
     transform: translateX(-50%);
     border-radius: 2px;
