@@ -1,5 +1,179 @@
 
 const products = [
+    // RECUERDOS (Letras Variadas)
+    {
+        id: 67,
+        name: "Recuerdos (Letras Variadas)",
+        price: 10.50,
+        category: "macetas",
+        subcategory: "recuerdos-letras",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "Macetero (variado) + plantita + cartel + 1 letra + corazón + base de madera/melamine. Precios a partir de 12 unidades.",
+        dimensions: "Maceteros variados con letras",
+        featured: false,
+        personalizable: false,
+    },
+
+    // RECUERDOS (Mini Macetas)
+    {
+        id: 66,
+        name: "Recuerdos (Mini Macetas)",
+        price: 6.00,
+        category: "macetas",
+        subcategory: "recuerdos-mini",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "Macetero + plantita + cartel. Precios a partir de 12 unidades. Ideal para eventos.",
+        dimensions: "Mini tamaño para recuerdos",
+        featured: false,
+        personalizable: true,
+        personalizacionCosto: 0.50,
+        personalizationType: "paint"
+    },
+
+    // RECUERDOS
+    {
+        id: 65,
+        name: "Recuerdos",
+        price: 12.00,
+        category: "macetas",
+        subcategory: "recuerdos",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "Dos letras + corazón + base de madera + macetero + plantita + cartel. Ideal para recuerdos especiales.",
+        dimensions: "Conjunto completo con base",
+        featured: false,
+        personalizable: false,
+    },
+
+    // POR AMOR
+    {
+        id: 64,
+        name: "Por Amor",
+        price: 7.50,
+        category: "macetas",
+        subcategory: "por-amor",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "Macetero de arcilla + yute + planta + piedritas + cartel. Perfecto para detalles especiales.",
+        dimensions: "Tamaño ideal para regalos",
+        featured: false,
+        personalizable: false,
+    },
+
+    // BOX DÚo
+    {
+        id: 63,
+        name: "Box Dúo",
+        price: 40.00,
+        category: "macetas",
+        subcategory: "box-duo",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "2 maceteros de arcilla + 2 plantitas (a tu elección) + 2 pinceles + 2 palitos de madera + 5 colores + 1 bolsa ecológica.",
+        dimensions: "Kit completo para pintar y decorar",
+        featured: false,
+        personalizable: false,
+    },
+
+    // PARTAMACETERO PARA ESCRITORIO
+    {
+        id: 62,
+        name: "Partamacetero Para Escritorio",
+        price: 25.00,
+        category: "macetas",
+        subcategory: "partamacetero-escritorio",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "Portamacetero de madera pino + macetero de arcilla + 1 plantita. Perfecto para escritorio.",
+        dimensions: "Tamaño compacto para escritorio",
+        featured: false,
+        personalizable: false,
+    },
+
+    // PORTAMACETERO PARA 3
+    {
+        id: 61,
+        name: "Portamacetero Para 3",
+        price: 40.00,
+        category: "macetas",
+        subcategory: "portamacetero-para-3",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "Portamacetero de madero pino + 3 maceteros de arcilla + 3 plantas. Perfecto para decoración horizontal.",
+        dimensions: "Medidas estándar para 3 macetas",
+        featured: false,
+        personalizable: false,
+    },
+
+    // MARCO - 2 PLANTAS
+    {
+        id: 60,
+        name: "Marco - 2 Plantas",
+        price: 50.00,
+        category: "macetas",
+        subcategory: "marco-2plantas",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "Marco de madera pino + 2 frascos de vidrio + 2 plantas. Perfecto para decoración colgante.",
+        dimensions: "25.5 largo x 24.5 x alto x 12.00 de ancho",
+        featured: false,
+        personalizable: false,
+    },
+
+    // MARCO - 1PLANTAS
+    {
+        id: 59,
+        name: "Marco - 1Plantas",
+        price: 40.00,
+        category: "macetas",
+        subcategory: "marco-1plantas",
+        image: "assets/images/macetas/placeholder-generator.js",
+        description: "Marco de madera pino + 1 frasco de vidrio + plantas. Perfecto para decoración colgante.",
+        dimensions: "16.0 largo x 22.0 x alto x 12.00 de ancho",
+        featured: false,
+        personalizable: false,
+    },
+
+    // PORTAMACETERO 3-1
+    {
+        id: 58,
+        name: "Portamacetero 3-1",
+        price: 30.00,
+        category: "macetas",
+        subcategory: "portamacetero-3-1",
+        image: "assets/images/macetas/maceta-casita/casita.PNG",
+        description: "Porta macetero de madera balsa + 3 maceteros de arcilla + 3 plantas. Incluye todo listo para decorar.",
+        dimensions: "7.0 de ancho – 3 alturas (7.5 – 10 – 11.5)",
+        featured: false,
+        personalizable: false,
+    },
+
+    // MACETA TEXTURIZADA
+    {
+        id: 57,
+        name: "Maceta Texturizada",
+        price: 18.00,
+        category: "macetas",
+        subcategory: "texturizada",
+        image: "assets/images/macetas/maceta-casita/casita.PNG",
+        description: "Maceta texturizada de cemento con planta, letra y fotografía incluidas. Diseño único con acabado texturizado.",
+        dimensions: "4.5 cm altura - 6.5 cm diámetro",
+        featured: false,
+        personalizable: false,
+    },
+
+    // LETRAS DECORATIVAS
+    {
+        id: 56,
+        name: "Letras Decorativas",
+        price: 30.00, // Precio base: 4 letras + macetero
+        category: "macetas",
+        subcategory: "letras",
+        image: "assets/images/letras.PNG",
+        description: "Letras decorativas de cemento personalizables con macetero incluido. Precio base incluye 4 letras + corazón de regalo + base melamine.",
+        dimensions: "5.5 cm altura - 3.00 cm ancho",
+        featured: true,
+        personalizable: true,
+        personalizationType: "letras",
+        extraLetterPrice: 4.00, // Precio por letra adicional
+        paintedPrice: 5.00, // Precio adicional por pintado
+        baseIncluded: true
+    },
+
     // MACETA TOGEPI PINTADA
     {
         id: 55,

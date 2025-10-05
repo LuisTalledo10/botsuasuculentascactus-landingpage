@@ -1,3 +1,87 @@
+// Enviar mensaje a WhatsApp desde el formulario de contacto
+function sendWhatsAppMessage(e) {
+    e.preventDefault();
+    var nombre = document.getElementById('nombre').value.trim();
+    var apellido = document.getElementById('apellido').value.trim();
+    var mensaje = document.getElementById('mensaje').value.trim();
+    if (!nombre || !apellido || !mensaje) {
+        // Mostrar validación visual
+        showFormValidation();
+        return false;
+    }
+    
+    // Mostrar animación de envío
+    showSendingAnimation();
+    
+    var texto = `Hola, soy ${nombre} ${apellido}.%0A${mensaje}`;
+    var url = `https://wa.me/51987510300?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+    
+    // Resetear formulario después de enviar
+    setTimeout(() => {
+        document.getElementById('contact-form-botsua').reset();
+        hideSendingAnimation();
+    }, 1000);
+    
+    return false;
+}
+
+// Mostrar validación del formulario
+function showFormValidation() {
+    const inputs = document.querySelectorAll('#contact-form-botsua input, #contact-form-botsua textarea');
+    inputs.forEach(input => {
+        if (!input.value.trim()) {
+            input.style.borderColor = '#e74c3c';
+            input.style.animation = 'shake 0.5s ease-in-out';
+            setTimeout(() => {
+                input.style.animation = '';
+            }, 500);
+        }
+    });
+}
+
+// Mostrar animación de envío
+function showSendingAnimation() {
+    const button = document.querySelector('#contact-form-botsua button[type="submit"]');
+    const originalText = button.textContent;
+    button.textContent = 'Enviando...';
+    button.style.background = '#27ae60';
+    button.disabled = true;
+    
+    // Restaurar después de un tiempo
+    setTimeout(() => {
+        button.textContent = originalText;
+        button.style.background = '';
+        button.disabled = false;
+    }, 2000);
+}
+
+// Ocultar animación de envío
+function hideSendingAnimation() {
+    const button = document.querySelector('#contact-form-botsua button[type="submit"]');
+    button.textContent = 'Enviar a WhatsApp';
+    button.style.background = '';
+    button.disabled = false;
+}
+// Mostrar video de fondo cuando la sección 'nosotros' o 'contacto' está visible
+function handleAboutContactVideoBg() {
+    const aboutSection = document.getElementById('nosotros');
+    const contactSection = document.getElementById('contacto');
+    let inView = false;
+    if (aboutSection) {
+        const rect = aboutSection.getBoundingClientRect();
+        inView = inView || (rect.top < window.innerHeight && rect.bottom > 0);
+    }
+    if (contactSection) {
+        const rect = contactSection.getBoundingClientRect();
+        inView = inView || (rect.top < window.innerHeight && rect.bottom > 0);
+    }
+    document.body.classList.toggle('about-contact-active', inView);
+}
+
+window.addEventListener('scroll', handleAboutContactVideoBg);
+window.addEventListener('resize', handleAboutContactVideoBg);
+document.addEventListener('DOMContentLoaded', handleAboutContactVideoBg);
 // Inicializar referencia global para el carrusel
 window.addEventListener('DOMContentLoaded', function() {
     if (typeof MacetasCarousel !== 'undefined') {
@@ -149,24 +233,24 @@ function initNavigation() {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
-            
             if (targetSection) {
                 const headerHeight = header.offsetHeight;
                 const targetPosition = targetSection.offsetTop - headerHeight;
-                
-                // Añadir efecto visual al enlace clickeado
+                // Efecto visual de click
                 this.style.transform = 'scale(0.95)';
                 this.style.transition = 'transform 0.2s ease';
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
                 }, 200);
-                
+                // Forzar scrollspy inmediato
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                const navLinkToActivate = Array.from(document.querySelectorAll('.nav-link')).find(l => l.getAttribute('href') === `#${targetId}`);
+                if (navLinkToActivate) navLinkToActivate.classList.add('active');
                 // Smooth scroll con curva personalizada
                 const startPosition = window.pageYOffset;
                 const distance = targetPosition - startPosition;
                 const duration = 800;
                 let start = null;
-                
                 function animation(currentTime) {
                     if (start === null) start = currentTime;
                     const timeElapsed = currentTime - start;
@@ -174,14 +258,12 @@ function initNavigation() {
                     window.scrollTo(0, run);
                     if (timeElapsed < duration) requestAnimationFrame(animation);
                 }
-                
                 function easeInOutCubic(t, b, c, d) {
                     t /= d/2;
                     if (t < 1) return c/2*t*t*t + b;
                     t -= 2;
                     return c/2*(t*t*t + 2) + b;
                 }
-                
                 requestAnimationFrame(animation);
             }
         });
@@ -194,20 +276,25 @@ function initNavigation() {
     function highlightActiveLink() {
         const scrollPos = window.scrollY + window.innerHeight / 3;
 
+        let found = false;
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.offsetHeight;
             const sectionId = section.getAttribute('id');
-
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+            if (!found && scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${sectionId}`) {
                         link.classList.add('active');
                     }
                 });
+                found = true;
             }
         });
+        // Si no se encontró ninguna sección (por ejemplo, arriba del todo), quitar todos los activos
+        if (!found) {
+            navLinks.forEach(link => link.classList.remove('active'));
+        }
     }
 
     window.addEventListener('scroll', highlightActiveLink);
@@ -726,3 +813,386 @@ window.BotsuaApp = {
     showModal,
     hideModal
 };
+
+// === MEJORAS DEL FORMULARIO DE CONTACTO ===
+document.addEventListener('DOMContentLoaded', function() {
+    initializeContactFormEnhancements();
+});
+
+function initializeContactFormEnhancements() {
+    const form = document.getElementById('contact-form-botsua');
+    const textarea = document.getElementById('mensaje');
+    
+    if (!form || !textarea) return;
+    
+    // Agregar contador de caracteres para el textarea
+    addCharacterCounter(textarea);
+    
+    // Validación en tiempo real
+    addRealTimeValidation(form);
+    
+    // Efectos de focus/blur
+    addFocusEffects(form);
+    
+    // Animación de entrada
+    addFormEntryAnimation(form);
+}
+
+function addCharacterCounter(textarea) {
+    const maxLength = textarea.getAttribute('maxlength') || 500;
+    const counter = document.createElement('div');
+    counter.className = 'char-counter';
+    counter.textContent = `0/${maxLength} caracteres`;
+    textarea.parentNode.appendChild(counter);
+    
+    textarea.addEventListener('input', function() {
+        const length = this.value.length;
+        counter.textContent = `${length}/${maxLength} caracteres`;
+        
+        if (length > maxLength * 0.9) {
+            counter.classList.add('warning');
+        } else {
+            counter.classList.remove('warning');
+        }
+    });
+}
+
+function addRealTimeValidation(form) {
+    const inputs = form.querySelectorAll('input, textarea');
+    
+    inputs.forEach(input => {
+        input.addEventListener('blur', function() {
+            validateField(this);
+        });
+        
+        input.addEventListener('input', function() {
+            if (this.value.trim() !== '') {
+                validateField(this);
+            }
+        });
+    });
+}
+
+function validateField(field) {
+    const value = field.value.trim();
+    
+    if (field.hasAttribute('required') && value === '') {
+        setFieldState(field, 'invalid');
+        return false;
+    }
+    
+    if (field.type === 'text' && value.length > 0 && value.length < 2) {
+        setFieldState(field, 'invalid');
+        return false;
+    }
+    
+    setFieldState(field, 'valid');
+    return true;
+}
+
+function setFieldState(field, state) {
+    field.classList.remove('valid', 'invalid');
+    field.classList.add(state);
+    
+    if (state === 'valid') {
+        field.style.borderColor = '#27ae60';
+    } else if (state === 'invalid') {
+        field.style.borderColor = '#e74c3c';
+    }
+}
+
+function addFocusEffects(form) {
+    const inputs = form.querySelectorAll('input, textarea');
+    
+    inputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.style.borderColor = 'var(--primary-color, #3B755F)';
+            this.style.transform = 'translateY(-2px)';
+        });
+        
+        input.addEventListener('blur', function() {
+            if (!this.classList.contains('valid') && !this.classList.contains('invalid')) {
+                this.style.borderColor = '#e0e0e0';
+            }
+            this.style.transform = 'translateY(0)';
+        });
+    });
+}
+
+function addFormEntryAnimation(form) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'slideInUp 0.8s ease-out';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    observer.observe(form);
+}
+
+// Agregar animación de shake y slideInUp al CSS si no existe
+if (!document.querySelector('#contact-form-animations')) {
+    const style = document.createElement('style');
+    style.id = 'contact-form-animations';
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .contact-form-botsua input.valid,
+        .contact-form-botsua textarea.valid {
+            border-color: #27ae60 !important;
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+        }
+        
+        .contact-form-botsua input.invalid,
+        .contact-form-botsua textarea.invalid {
+            border-color: #e74c3c !important;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// === FUNCIONES PARA MODAL DE LETRAS ===
+
+function openLettersModal() {
+    // Cerrar cualquier modal que pueda estar abierto
+    const personalizationModal = document.getElementById('personalizationModal');
+    if (personalizationModal && personalizationModal.classList.contains('active')) {
+        personalizationModal.classList.remove('active');
+    }
+    
+    // Abrir el modal de letras
+    const modal = document.getElementById('lettersModal');
+    if (modal) {
+        modal.classList.add('active');
+        resetLettersForm();
+    }
+}
+
+function closeLettersModal() {
+    const modal = document.getElementById('lettersModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
+
+function resetLettersForm() {
+    document.getElementById('lettersQuantity').value = '4';
+    document.getElementById('lettersText').value = '';
+    document.getElementById('lettersPainted').checked = false;
+    updateLettersPrice();
+}
+
+function updateLettersPrice() {
+    const quantity = parseInt(document.getElementById('lettersQuantity').value);
+    const isPainted = document.getElementById('lettersPainted').checked;
+    
+    const singleLetterPrice = 20.00; // 1 letra + macetero
+    const basePrice = 30.00; // 4 letras + macetero
+    const extraLetterPrice = 4.00;
+    const paintedPrice = 5.00;
+    
+    let total, extraLetters, extraLettersCost;
+    
+    if (quantity === 1) {
+        // Caso especial: 1 letra
+        total = singleLetterPrice;
+        extraLetters = 0;
+        extraLettersCost = 0;
+    } else {
+        // Caso normal: 4+ letras
+        extraLetters = quantity > 4 ? quantity - 4 : 0;
+        extraLettersCost = extraLetters * extraLetterPrice;
+        total = basePrice + extraLettersCost;
+    }
+    
+    let paintedCost = isPainted ? paintedPrice : 0;
+    total += paintedCost;
+    
+    // Actualizar la visualización
+    const basePriceRow = document.getElementById('basePriceRow');
+    const basePriceText = document.getElementById('basePriceText');
+    const basePriceValue = document.getElementById('basePriceValue');
+    const extraLettersRow = document.getElementById('extraLettersRow');
+    const extraLettersText = document.getElementById('extraLettersText');
+    const extraLettersPrice = document.getElementById('extraLettersPrice');
+    const paintedRow = document.getElementById('paintedRow');
+    const totalElement = document.getElementById('lettersTotal');
+    
+    // Actualizar precio base según la cantidad
+    if (quantity === 1) {
+        basePriceText.textContent = 'Base (1 letra + macetero):';
+        basePriceValue.textContent = 'S/.20.00';
+    } else {
+        basePriceText.textContent = 'Base (4 letras + macetero):';
+        basePriceValue.textContent = 'S/.30.00';
+    }
+    
+    if (extraLetters > 0) {
+        extraLettersRow.style.display = 'flex';
+        extraLettersText.textContent = `${extraLetters} letra${extraLetters > 1 ? 's' : ''} adicional${extraLetters > 1 ? 'es' : ''}:`;
+        extraLettersPrice.textContent = `S/.${extraLettersCost.toFixed(2)}`;
+    } else {
+        extraLettersRow.style.display = 'none';
+    }
+    
+    if (isPainted) {
+        paintedRow.style.display = 'flex';
+    } else {
+        paintedRow.style.display = 'none';
+    }
+    
+    totalElement.textContent = `S/.${total.toFixed(2)}`;
+    
+    // Animación de actualización
+    totalElement.classList.add('price-updated');
+    setTimeout(() => totalElement.classList.remove('price-updated'), 500);
+}
+
+function validateLettersInput(input) {
+    // Permitir solo letras y limitar a la cantidad seleccionada
+    const quantity = parseInt(document.getElementById('lettersQuantity').value);
+    let value = input.value.replace(/[^a-zA-Z]/g, '').toUpperCase();
+    
+    if (value.length > quantity) {
+        value = value.substring(0, quantity);
+    }
+    
+    input.value = value;
+    
+    // Validación visual
+    const button = document.querySelector('#lettersModal .btn-primary');
+    if (value.length === quantity && value.length > 0) {
+        button.disabled = false;
+        button.style.opacity = '1';
+        input.style.borderColor = '#27ae60';
+    } else {
+        button.disabled = true;
+        button.style.opacity = '0.6';
+        input.style.borderColor = value.length === 0 ? '#e0e0e0' : '#e74c3c';
+    }
+}
+
+function addLettersToCart() {
+    const quantity = parseInt(document.getElementById('lettersQuantity').value);
+    const lettersText = document.getElementById('lettersText').value.toUpperCase();
+    const isPainted = document.getElementById('lettersPainted').checked;
+    
+    // Validar que se hayan escrito todas las letras
+    if (lettersText.length !== quantity) {
+        alert(`Por favor, escribe exactamente ${quantity} letra${quantity > 1 ? 's' : ''}.`);
+        return;
+    }
+    
+    // Calcular precio total
+    const singleLetterPrice = 20.00;
+    const basePrice = 30.00;
+    const extraLetterPrice = 4.00;
+    const paintedPrice = 5.00;
+    
+    let totalPrice, extraLetters, extraLettersCost;
+    
+    if (quantity === 1) {
+        totalPrice = singleLetterPrice;
+        extraLetters = 0;
+        extraLettersCost = 0;
+    } else {
+        extraLetters = quantity > 4 ? quantity - 4 : 0;
+        extraLettersCost = extraLetters * extraLetterPrice;
+        totalPrice = basePrice + extraLettersCost;
+    }
+    
+    let paintedCost = isPainted ? paintedPrice : 0;
+    totalPrice += paintedCost;
+    
+    // Crear nombre descriptivo del producto
+    let productName = `Letras "${lettersText}"`;
+    if (isPainted) {
+        productName += ' (Pintadas)';
+    }
+    
+    // Crear descripción detallada
+    let description = `${quantity} letras: "${lettersText}"`;
+    if (extraLetters > 0) {
+        description += ` (+${extraLetters} letra${extraLetters > 1 ? 's' : ''} adicional${extraLetters > 1 ? 'es' : ''})`;
+    }
+    if (isPainted) {
+        description += ' + Pintado';
+    }
+    description += ' + Base melamine + Corazón de regalo';
+    
+    // Agregar al carrito
+    const letterProduct = {
+        id: 56,
+        name: productName,
+        price: totalPrice,
+        image: "assets/images/letras.PNG",
+        quantity: 1,
+        personalization: {
+            type: 'letras',
+            letters: lettersText,
+            lettersCount: quantity,
+            painted: isPainted,
+            description: description,
+            basePrice: basePrice,
+            extraLettersCost: extraLettersCost,
+            paintedCost: paintedCost
+        }
+    };
+    
+    // Usar la función existente del carrito
+    if (typeof window.BotsuaApp !== 'undefined' && window.BotsuaApp.cart) {
+        window.BotsuaApp.cart.addItem(letterProduct);
+    } else {
+        // Fallback si no existe el sistema de carrito
+        console.log('Producto de letras agregado:', letterProduct);
+        alert('Letras agregadas al carrito exitosamente!');
+    }
+    
+    closeLettersModal();
+}
+
+// Event listeners para el modal de letras
+document.addEventListener('DOMContentLoaded', function() {
+    // Listener para el selector de cantidad
+    const quantitySelect = document.getElementById('lettersQuantity');
+    if (quantitySelect) {
+        quantitySelect.addEventListener('change', updateLettersPrice);
+    }
+    
+    // Listener para el checkbox de pintado
+    const paintedCheckbox = document.getElementById('lettersPainted');
+    if (paintedCheckbox) {
+        paintedCheckbox.addEventListener('change', updateLettersPrice);
+    }
+    
+    // Listener para cerrar modal al hacer clic fuera
+    const lettersModal = document.getElementById('lettersModal');
+    if (lettersModal) {
+        lettersModal.addEventListener('click', function(e) {
+            if (e.target === lettersModal) {
+                closeLettersModal();
+            }
+        });
+    }
+    
+    // Inicializar precio
+    setTimeout(updateLettersPrice, 100);
+});

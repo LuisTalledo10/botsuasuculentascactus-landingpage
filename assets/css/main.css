@@ -1,10 +1,329 @@
-/* Reset y configuración base */
-* {
-    margin: 0;
-    padding: 0;
+/* Layout de contacto 70/30 */
+.contact-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    z-index: 2;
+}
+.contact-form-botsua {
+    flex: 0 1 70%;
+    min-width: 0;
+}
+.social-networks {
+    flex: 0 1 30%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+@media (max-width: 900px) {
+    .contact-layout {
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 98vw;
+    }
+    .contact-form-botsua, .social-networks {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+/* Formulario de contacto Botsua */
+.contact-form-botsua {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    color: var(--text-dark, #333);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    z-index: 2;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.contact-form-botsua:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form-botsua::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--primary-color, #3B755F), #27ae60, var(--primary-color, #3B755F));
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.contact-form-botsua:hover::before {
+    opacity: 0.1;
+}
+
+.contact-form-botsua h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    color: var(--primary-color, #3B755F);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.contact-form-botsua h3::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color, #3B755F), #27ae60);
+    border-radius: 2px;
+}
+
+.contact-form-botsua .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.contact-form-botsua .form-group:nth-child(2) { animation-delay: 0.1s; }
+.contact-form-botsua .form-group:nth-child(3) { animation-delay: 0.2s; }
+.contact-form-botsua .form-group:nth-child(4) { animation-delay: 0.3s; }
+
+.contact-form-botsua label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark, #333);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.contact-form-botsua input,
+.contact-form-botsua textarea {
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 1rem;
+    background: #fff;
+    color: var(--text-dark, #333);
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
 
+.contact-form-botsua input:focus,
+.contact-form-botsua textarea:focus {
+    border-color: var(--primary-color, #3B755F);
+    box-shadow: 0 0 0 3px rgba(59, 117, 95, 0.1), 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    background: #fafafa;
+}
+
+.contact-form-botsua input::placeholder,
+.contact-form-botsua textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+.contact-form-botsua textarea {
+    min-height: 120px;
+    max-height: 200px;
+    resize: vertical;
+    font-family: 'Poppins', sans-serif;
+}
+
+.contact-form-botsua input:valid {
+    border-color: #27ae60;
+}
+
+.contact-form-botsua input:invalid:not(:placeholder-shown) {
+    border-color: #e74c3c;
+}
+
+.contact-form-botsua button[type="submit"] {
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 15px 0;
+    background: linear-gradient(135deg, var(--primary-color, #3B755F), #27ae60);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    animation-delay: 0.4s;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.contact-form-botsua button[type="submit"]:hover {
+    background: linear-gradient(135deg, #27ae60, var(--primary-color, #3B755F));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 117, 95, 0.3);
+}
+
+.contact-form-botsua button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.contact-form-botsua button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.contact-form-botsua button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+/* Contador de caracteres */
+.contact-form-botsua .char-counter {
+    font-size: 0.8rem;
+    color: #666;
+    text-align: right;
+    margin-top: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.contact-form-botsua .char-counter.warning {
+    color: #e74c3c;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .contact-form-botsua {
+        max-width: 95vw;
+        padding: 2rem 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 1.5rem;
+    }
+    
+    .contact-form-botsua input,
+    .contact-form-botsua textarea {
+        padding: 10px 14px;
+        font-size: 0.95rem;
+    }
+    
+    .contact-form-botsua button[type="submit"] {
+        padding: 12px 0;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-form-botsua {
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 1.3rem;
+    }
+}
+.about-bg-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    z-index: 1;
+    pointer-events: none;
+}
+/* Video de fondo para la sección Nosotros */
+.about-video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: #000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s;
+}
+
+body.about-contact-active .about-video-bg {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+
+.about-bg-video {
+    width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 1;
+}
+.about .container, .about-content, .about-text, .about-image {
+    position: relative;
+}
+.about-bg-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 1;
+    pointer-events: none;
+}
 :root {
     /* Colores principales */
     --primary-color: #3B755F;
@@ -61,6 +380,12 @@ body {
     line-height: 1.6;
     color: var(--dark-gray);
     scroll-behavior: smooth;
+
+    
+    /* 🔹 Solución */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .container {
@@ -190,6 +515,26 @@ body {
     padding: 8px 16px;
     border-radius: var(--border-radius);
     overflow: hidden;
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+    background: linear-gradient(90deg, rgba(59,117,95,0.08), rgba(255,255,255,0.0));
+    font-weight: var(--font-weight-bold);
+    box-shadow: none;
+    border: none;
+    transform: none !important;
+}
+
+.nav-link:active,
+.nav-link:focus {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.nav-link {
+    border: none;
 }
 
 .nav-link::before {
@@ -407,12 +752,15 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     position: relative;
     background: transparent;
     overflow: hidden;
     padding-bottom: 0;
+    padding-top: 0; /* Se quita el padding superior */
+    box-sizing: border-box;
 }
 
 
@@ -592,11 +940,15 @@ body {
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    margin-top: -80px;
-    padding-top: 120px;
+    margin-top: 0;
+    padding-top: 0px;
     position: relative;
     z-index: 3;
+    scroll-margin-top: 0;
 }
+
+
+
 
 .category-filters {
     display: flex;
@@ -737,15 +1089,26 @@ body {
 
 /* About Section */
 .about {
-    padding: var(--spacing-xxl) 0;
+    min-height: 100vh;
+    height: 100vh;
+    padding: 0;
     background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xxl);
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xxl);
+    position: relative;
+    z-index: 2;
 }
 
 .about-text {
@@ -790,12 +1153,12 @@ body {
 /* Contact Section */
 .contact {
     padding: var(--spacing-xxl) 0;
-    background-color: var(--light-gray);
+    background: none;
 }
 
 /* Sección de contacto con redes sociales */
 .contact-social {
-    background: var(--orange);
+    background: none;
     position: relative;
     overflow: hidden;
 }
@@ -1659,8 +2022,14 @@ body {
 
 /* Hero con curva inferior suave y animada */
 .hero {
-    padding-bottom: 0;
+    height: 100vh; /* Ocupa el 100% de la pantalla */
     position: relative;
+    display: flex;
+    justify-content: center; /* Centrar contenido verticalmente */
+    align-items: center; /* Centrar contenido horizontalmente */
+    overflow: hidden; /* Evita que algo se desborde */
+    padding-bottom: 0; /* Quitar padding inferior */
+    margin: 0; /* Quitar margen por defecto */
 }
 
 /* Contenedor para las manchas del hero */
@@ -1708,7 +2077,7 @@ body {
 
 /* Catálogo con espaciado limpio e imagen de fondo */
 .catalog {
-    margin-top: -50px;
+    margin-top: 0;
     padding-top: 100px;
     position: relative;
     z-index: 2;
@@ -1738,7 +2107,7 @@ body {
 
 /* Contacto con entrada suave */
 .contact {
-    margin-top: -30px;
+    margin-top: 0;
     padding-top: 80px;
     position: relative;
 }
@@ -2620,6 +2989,29 @@ body {
     box-shadow: var(--shadow-medium);
 }
 
+/* Botón específico para letras */
+.letters-customization-btn {
+    background: var(--white);
+    color: var(--primary-color);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+}
+
+.letters-customization-btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(0);
+}
+
 .product-label {
     position: absolute;
     top: 15px;
@@ -3202,6 +3594,16 @@ body {
     font-size: 0.8rem;
     margin-top: 4px;
     font-style: italic;
+}
+
+.no-personalization {
+    display: block;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    margin-top: 4px;
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .offer-desc {
@@ -3826,6 +4228,275 @@ body {
     overflow: hidden; /* Ocultar subsecciones que no están activas */
     /* Eliminar altura fija para que se ajuste automáticamente */
     touch-action: pan-y; /* Permitir scroll vertical, pero interceptar horizontal */
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%; /* Solo el ancho necesario */
+}
+
+/* =================================
+   ESTILOS ESPECÍFICOS PARA MODAL DE LETRAS
+================================= */
+
+/* Modal específico para letras */
+#lettersModal .modal-content {
+    max-width: 600px;
+    width: 95%;
+    max-height: 85vh;
+}
+
+#lettersModal .modal-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    border-radius: 20px 20px 0 0;
+}
+
+#lettersModal .modal-header h3 {
+    color: var(--white);
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-semibold);
+}
+
+#lettersModal .close-modal {
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+#lettersModal .close-modal:hover {
+    color: rgba(255, 255, 255, 0.8);
+    transform: rotate(90deg);
+}
+
+/* Configuración de letras */
+.letters-config-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.config-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.config-row label {
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.config-row select,
+.config-row input[type="text"] {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: var(--white);
+    color: var(--dark-gray);
+}
+
+.config-row select:focus,
+.config-row input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(59, 117, 95, 0.1);
+}
+
+.config-row input[type="text"] {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: var(--font-weight-medium);
+}
+
+.config-row small {
+    color: var(--medium-gray);
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+/* Checkbox personalizado para pintado */
+.config-row .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    background: rgba(59, 117, 95, 0.05);
+    margin-top: var(--spacing-sm);
+}
+
+.config-row .checkbox-label:hover {
+    background: rgba(59, 117, 95, 0.1);
+    border-color: var(--primary-color);
+}
+
+.config-row .checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.config-row .checkbox-label .checkmark {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-medium);
+    font-size: 0.95rem;
+}
+
+/* Resumen de precio */
+.price-summary {
+    background: rgba(255, 107, 53, 0.05);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    border: 2px solid rgba(255, 107, 53, 0.2);
+    margin-top: var(--spacing-md);
+}
+
+.price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.95rem;
+}
+
+.price-row:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 107, 53, 0.1);
+}
+
+.price-row.total-row {
+    background: rgba(255, 107, 53, 0.1);
+    padding: 12px;
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-sm);
+    font-size: 1.1rem;
+}
+
+.price-row.total-row span {
+    color: #FF6B35;
+}
+
+.price-row span:first-child {
+    color: var(--dark-gray);
+}
+
+.price-row span:last-child {
+    color: var(--primary-color);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Animaciones para actualizaciones de precio */
+.price-updated {
+    animation: highlightPrice 0.5s ease;
+}
+
+@keyframes highlightPrice {
+    0% { background: rgba(255, 107, 53, 0.3); }
+    100% { background: transparent; }
+}
+
+/* Botones del modal de letras */
+#lettersModal .modal-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid #e0e0e0;
+}
+
+#lettersModal .modal-actions .btn {
+    flex: 1;
+    padding: 12px 24px;
+    font-weight: var(--font-weight-semibold);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#lettersModal .btn-secondary {
+    background: transparent;
+    color: var(--medium-gray);
+    border: 2px solid #e0e0e0;
+}
+
+#lettersModal .btn-secondary:hover {
+    background: #f8f9fa;
+    border-color: var(--medium-gray);
+    color: var(--dark-gray);
+}
+
+#lettersModal .btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+}
+
+#lettersModal .btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* Estilos responsive para modal de letras */
+@media (max-width: 768px) {
+    #lettersModal .modal-content {
+        width: 98%;
+        max-height: 90vh;
+        margin: 1rem;
+    }
+    
+    #lettersModal .modal-header h3 {
+        font-size: 1.2rem;
+    }
+    
+    .letters-config-section {
+        gap: var(--spacing-md);
+    }
+    
+    .price-summary {
+        padding: var(--spacing-md);
+    }
+    
+    #lettersModal .modal-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .config-row .checkbox-label {
+        padding: var(--spacing-xs);
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #lettersModal .modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .price-row {
+        font-size: 0.9rem;
+    }
+    
+    .price-row.total-row {
+        font-size: 1rem;
+    }
 }
 
 .carousel-container {

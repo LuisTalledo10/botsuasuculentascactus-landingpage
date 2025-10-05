@@ -12,15 +12,134 @@ class CatalogManager {
     }
 
     setupMainCategoryNavigation() {
-        // Solo dos botones: Macetas y Joyeros
+        // Elementos de navegación
         const btnMacetas = document.getElementById('btn-macetas');
-        const btnJoyeros = document.getElementById('btn-joyeros');
-        const mainCategoryBtns = [btnMacetas, btnJoyeros];
+        const btnPokemon = document.getElementById('btn-pokemon');
+        const btnLetras = document.getElementById('btn-letras');
+        const mainCategoryBtns = [btnMacetas, btnPokemon, btnLetras];
+
+        // Definir rangos de slides para cada sección
+        const slideRanges = {
+            macetas: { start: 0, end: 14, button: btnMacetas },
+            pokemon: { start: 15, end: 18, button: btnPokemon },
+            letras: { start: 19, end: 19, button: btnLetras }
+        };
+
+        // Función para actualizar botones según el slide actual
+        const updateActiveButton = (currentSlide) => {
+            console.log('Actualizando botones para slide:', currentSlide);
+            
+            // Remover active de todos los botones
+            mainCategoryBtns.forEach(btn => btn?.classList.remove('active'));
+
+            // Determinar qué botón debe estar activo
+            for (const [section, range] of Object.entries(slideRanges)) {
+                if (currentSlide >= range.start && currentSlide <= range.end) {
+                    range.button?.classList.add('active');
+                    console.log(`Sección activa: ${section}, slide: ${currentSlide}`);
+                    break;
+                }
+            }
+        };
+
+        // Función mejorada para detectar cambios de slide
+        let lastKnownSlide = 0;
+        
+        const checkSlideChange = () => {
+            if (window.macetasCarousel && typeof window.macetasCarousel.currentSlide !== 'undefined') {
+                const currentSlide = window.macetasCarousel.currentSlide;
+                
+                if (currentSlide !== lastKnownSlide) {
+                    lastKnownSlide = currentSlide;
+                    updateActiveButton(currentSlide);
+                }
+            }
+        };
+
+        // Configurar múltiples métodos de detección
+        const setupSlideDetection = () => {
+            if (window.macetasCarousel) {
+                console.log('Carrusel encontrado, configurando detección...');
+                
+                // Método 1: Interceptar métodos del carrusel
+                const originalUpdateCarousel = window.macetasCarousel.updateCarousel;
+                const originalGoToSlide = window.macetasCarousel.goToSlide;
+                const originalPrevSlide = window.macetasCarousel.prevSlide;
+                const originalNextSlide = window.macetasCarousel.nextSlide;
+                
+                window.macetasCarousel.updateCarousel = function() {
+                    originalUpdateCarousel.call(this);
+                    setTimeout(() => updateActiveButton(this.currentSlide), 50);
+                };
+                
+                window.macetasCarousel.goToSlide = function(slideIndex) {
+                    originalGoToSlide.call(this, slideIndex);
+                    setTimeout(() => updateActiveButton(this.currentSlide), 50);
+                };
+                
+                window.macetasCarousel.prevSlide = function() {
+                    originalPrevSlide.call(this);
+                    setTimeout(() => updateActiveButton(this.currentSlide), 50);
+                };
+                
+                window.macetasCarousel.nextSlide = function() {
+                    originalNextSlide.call(this);
+                    setTimeout(() => updateActiveButton(this.currentSlide), 50);
+                };
+
+                // Método 2: Observer en el contenedor del carrusel
+                const carouselContainer = document.querySelector('#carouselContainer');
+                if (carouselContainer) {
+                    const observer = new MutationObserver(() => {
+                        setTimeout(checkSlideChange, 100);
+                    });
+
+                    observer.observe(carouselContainer, {
+                        attributes: true,
+                        attributeFilter: ['style']
+                    });
+                }
+
+                // Método 3: Polling como respaldo
+                setInterval(checkSlideChange, 200);
+
+                // Método 4: Detectar clicks en indicadores
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => {
+                        setTimeout(() => updateActiveButton(index), 100);
+                    });
+                });
+
+                // Método 5: Detectar clicks en botones de navegación
+                const prevBtn = document.getElementById('prevBtn');
+                const nextBtn = document.getElementById('nextBtn');
+                
+                if (prevBtn) {
+                    prevBtn.addEventListener('click', () => {
+                        setTimeout(checkSlideChange, 100);
+                    });
+                }
+                
+                if (nextBtn) {
+                    nextBtn.addEventListener('click', () => {
+                        setTimeout(checkSlideChange, 100);
+                    });
+                }
+
+                // Establecer estado inicial
+                updateActiveButton(window.macetasCarousel.currentSlide || 0);
+            } else {
+                // Si el carrusel no existe aún, reintentar
+                setTimeout(setupSlideDetection, 500);
+            }
+        };
+
+        // Inicializar detección
+        setupSlideDetection();
 
         // Ir al slide 0 (Macetas)
-        btnMacetas.addEventListener('click', () => {
-            mainCategoryBtns.forEach(b => b.classList.remove('active'));
-            btnMacetas.classList.add('active');
+        btnMacetas?.addEventListener('click', () => {
             // Mostrar sección (si hay más de una)
             const macetasSection = document.getElementById('macetas-section');
             if (macetasSection) {
@@ -32,10 +151,8 @@ class CatalogManager {
             }
         });
 
-        // Ir al slide 15 (Joyeros)
-        btnJoyeros.addEventListener('click', () => {
-            mainCategoryBtns.forEach(b => b.classList.remove('active'));
-            btnJoyeros.classList.add('active');
+        // Ir al slide 15 (Pokemon)
+        btnPokemon?.addEventListener('click', () => {
             // Mostrar sección (si hay más de una)
             const macetasSection = document.getElementById('macetas-section');
             if (macetasSection) {
@@ -44,6 +161,19 @@ class CatalogManager {
             // Ir al slide 15
             if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
                 window.macetasCarousel.goToSlide(15);
+            }
+        });
+
+        // Ir al slide 19 (Letras)
+        btnLetras?.addEventListener('click', () => {
+            // Mostrar sección (si hay más de una)
+            const macetasSection = document.getElementById('macetas-section');
+            if (macetasSection) {
+                macetasSection.classList.add('active');
+            }
+            // Ir al slide 19
+            if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
+                window.macetasCarousel.goToSlide(19);
             }
         });
     }
@@ -80,13 +210,14 @@ class CatalogManager {
         });
 
         // Productos de Mini-Macetas
-        const miniProducts = document.querySelectorAll('.mini-product');
+        const miniProducts = document.querySelectorAll('.mini-product:not(.letters-special)');
         
         miniProducts.forEach(product => {
             const addToCartBtn = product.querySelector('.add-to-cart-overlay');
             const productId = parseInt(product.getAttribute('data-product-id'));
             
-            if (addToCartBtn) {
+            // Excluir el producto de letras (ID 56) que tiene su propio sistema
+            if (addToCartBtn && productId !== 56) {
                 addToCartBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     this.handleAddToCart(productId);

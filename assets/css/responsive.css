@@ -1,3 +1,33 @@
+@media screen and (max-width: 900px) {
+    .about {
+        min-height: 100vh;
+        height: auto;
+        padding: var(--spacing-xl) 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .about-content {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+    }
+    .about-image {
+        margin-top: var(--spacing-lg);
+        width: 80vw;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .about-image img {
+        width: 100%;
+        max-width: 320px;
+    }
+}
 /* Responsive Design */
 
 /* Tablets y pantallas medianas */
@@ -194,7 +224,8 @@
     
     /* Hero */
     .hero {
-        min-height: 80vh;
+        min-height: 100vh;
+        height: 100vh;
         text-align: center;
         padding: var(--spacing-xxl) 0;
     }

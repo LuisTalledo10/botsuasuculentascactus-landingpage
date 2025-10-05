@@ -69,7 +69,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero hero-curve" id="inicio">
+    <section class="hero" id="inicio">
         <div class="hero-background" style="position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;">
             <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 0;">
                 <source src="assets/images/video-hero.webm" type="video/webm">
@@ -114,7 +114,8 @@
             <!-- Navegación de Categorías Principales -->
             <div class="main-category-nav">
                 <button class="main-category-btn active" id="btn-macetas">Macetas</button>
-                <button class="main-category-btn" id="btn-joyeros">Pokemon</button>
+                <button class="main-category-btn" id="btn-pokemon">Pokemon</button>
+                <button class="main-category-btn" id="btn-letras">Letras</button>
             </div>
 
             <!-- Sección Macetas -->
@@ -142,6 +143,18 @@
                         <span class="indicator" data-slide="16"></span>
                         <span class="indicator" data-slide="17"></span>
                         <span class="indicator" data-slide="18"></span>
+                        <span class="indicator" data-slide="19"></span>
+                        <span class="indicator" data-slide="20"></span>
+                        <span class="indicator" data-slide="21"></span>
+                        <span class="indicator" data-slide="22"></span>
+                        <span class="indicator" data-slide="23"></span>
+                        <span class="indicator" data-slide="24"></span>
+                        <span class="indicator" data-slide="25"></span>
+                        <span class="indicator" data-slide="26"></span>
+                        <span class="indicator" data-slide="27"></span>
+                        <span class="indicator" data-slide="28"></span>
+                        <span class="indicator" data-slide="29"></span>
+                        <span class="indicator" data-slide="30"></span>
                     </div>
                     <button class="carousel-btn next-btn" id="nextBtn">›</button>
                 </div>
@@ -1353,6 +1366,651 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!-- Subsección LETRAS -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">LETRAS</h3>
+                        <p class="subcategory-description">Letras decorativas de cemento personalizables con macetero incluido</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/letras.PNG" alt="Letras decorativas con macetero">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Letras Decorativas -->
+                            <div class="mini-product letters-product " data-product-id="56">
+                                <div class="product-image-container ">
+                                    <img src="assets/images/letras.PNG" alt="Letras decorativas" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="letters-customization-btn" onclick="event.stopPropagation(); openLettersModal(); return false;">Personalizar Letras</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Letras Decorativas</h4>
+                                    <p class="product-price">Desde S/.30.00</p>
+                                    <small class="personalization-hint">4 letras + macetero base</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Letras + corazón de regalo + base melamine</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">5.5 cm altura - 3.00 cm ancho</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">1 letra + macetero:</span>
+                                <span class="detail-value">S/.20.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio base:</span>
+                                <span class="detail-value">4 letras + macetero = S/.30.00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Letra adicional:</span>
+                                <span class="detail-value">S/.4.00 por letra extra</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Pintado opcional:</span>
+                                <span class="detail-value">+S/.5.00 (pintado de letras)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subsección MACETA TEXTURIZADA -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MACETA TEXTURIZADA</h3>
+                        <p class="subcategory-description">Maceta texturizada de cemento con planta, letra y fotografía incluidas</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta texturizada con fotografía">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Maceta Texturizada -->
+                            <div class="mini-product" data-product-id="57">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta texturizada" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Maceta Texturizada</h4>
+                                    <p class="product-price">S/.18.00</p>
+                                    <small class="no-personalization">Precio fijo</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Maceta texturizada + planta + letra + fotografía</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">4.5 cm de altura - 6.5 cm diámetro</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.18.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Incluye fotografía personalizada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                                <!-- Subsección PORTAMACETERO 3-1 -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">PORTAMACETERO 3-1</h3>
+                        <p class="subcategory-description">Portamacetero de madera balsa + 3 maceteros de arcilla + 3 plantas. Incluye todo listo para decorar.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta texturizada con fotografía">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Portamacetero 3-1 -->
+                            <div class="mini-product" data-product-id="58">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Portamacetero 3-1 con plantas" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Portamacetero 3-1</h4>
+                                    <p class="product-price">S/.30.00</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Porta macetero de madera balsa + 3 maceteros de arcilla + 3 plantas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">7.0 de ancho – 3 alturas (7.5 – 10 – 11.5)</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.30.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Incluye fotografía personalizada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección MARCO - 1PLANTAS -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MARCO - 1PLANTAS</h3>
+                        <p class="subcategory-description">Marco de madera pino + 1 frasco de vidrio + plantas. Perfecto para decoración colgante.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Marco colgante con planta">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Marco - 1Plantas -->
+                            <div class="mini-product" data-product-id="59">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Marco - 1Plantas" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Marco - 1Plantas</h4>
+                                    <p class="product-price">S/.40.00</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Marco de madera pino + 1 frasco de vidrio + plantas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">16.0 largo x 22.0 x alto x 12.00 de ancho</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.40.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Incluye todo listo para colgar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección MARCO - 2 PLANTAS -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">MARCO - 2 PLANTAS</h3>
+                        <p class="subcategory-description">Marco de madera pino + 2 frascos de vidrio + 2 plantas. Perfecto para decoración colgante.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Marco colgante con 2 plantas">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Marco - 2 Plantas -->
+                            <div class="mini-product" data-product-id="60">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Marco - 2 Plantas" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Marco - 2 Plantas</h4>
+                                    <p class="product-price">S/.50.00</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Marco de madera pino + 2 frascos de vidrio + 2 plantas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">25.5 largo x 24.5 x alto x 12.00 de ancho</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.50.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Incluye todo listo para colgar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección PORTAMACETERO PARA 3 -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">PORTAMACETERO PARA 3</h3>
+                        <p class="subcategory-description">Portamacetero de madero pino + 3 maceteros de arcilla + 3 plantas. Perfecto para decoración horizontal.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Portamacetero para 3 plantas">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Portamacetero Para 3 -->
+                            <div class="mini-product" data-product-id="61">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Portamacetero Para 3" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Portamacetero Para 3</h4>
+                                    <p class="product-price">S/.40.00</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Portamacetero de madero pino + 3 maceteros de arcilla + 3 plantas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">Medidas estándar para 3 macetas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.40.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Incluye todo listo para decorar</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección PARTAMACETERO PARA ESCRITORIO -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">PARTAMACETERO PARA ESCRITORIO</h3>
+                        <p class="subcategory-description">Portamacetero de madera pino + macetero de arcilla + 1 plantita. Perfecto para escritorio.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Partamacetero para escritorio">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Partamacetero Para Escritorio -->
+                            <div class="mini-product" data-product-id="62">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Partamacetero Para Escritorio" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Partamacetero Para Escritorio</h4>
+                                    <p class="product-price">S/.25.00</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Portamacetero de madera pino + macetero de arcilla + 1 plantita</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Medidas:</span>
+                                <span class="detail-value">Tamaño compacto para escritorio</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.25.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Ideal para espacios de trabajo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección BOX DÚo -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">BOX DÚo</h3>
+                        <p class="subcategory-description">2 maceteros de arcilla + 2 plantitas (a tu elección) + 2 pinceles + 2 palitos de madera + 5 colores + 1 bolsa ecológica.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Box Dúo kit completo">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Box Dúo -->
+                            <div class="mini-product" data-product-id="63">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Box Dúo" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Box Dúo</h4>
+                                    <p class="product-price">S/.40.00</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">2 maceteros de arcilla + 2 plantitas (a tu elección) + 2 pinceles + 2 palitos de madera + 5 colores + 1 bolsa ecológica</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Actividad:</span>
+                                <span class="detail-value">Kit completo para pintar y decorar</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.40.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Kit creativo completo con bolsa ecológica</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección POR AMOR -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">POR AMOR</h3>
+                        <p class="subcategory-description">Macetero de arcilla + yute + planta + piedritas + cartel. Perfecto para detalles especiales.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Por amor - detalle especial">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Por Amor -->
+                            <div class="mini-product" data-product-id="64">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Por Amor" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Por Amor</h4>
+                                    <p class="product-price">S/.7.50</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Macetero de arcilla + yute + planta + piedritas + cartel</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Ocasión:</span>
+                                <span class="detail-value">Perfecto para detalles especiales y regalos</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.7.50</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Diseño temático con mensaje de amor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección RECUERDOS -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">RECUERDOS</h3>
+                        <p class="subcategory-description">Dos letras + corazón + base de madera + macetero + plantita + cartel. Ideal para recuerdos especiales.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos - letras con plantas">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Recuerdos -->
+                            <div class="mini-product" data-product-id="65">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Recuerdos</h4>
+                                    <p class="product-price">S/.12.00</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Dos letras + corazón + base de madera + macetero + plantita + cartel</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Ocasión:</span>
+                                <span class="detail-value">Ideal para recuerdos especiales y eventos</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.12.00</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Conjunto completo con base de madera</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección RECUERDOS (Mini Macetas) -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">RECUERDOS (Mini Macetas)</h3>
+                        <p class="subcategory-description">Macetero + plantita + cartel. Precios a partir de 12 unidades. Ideal para eventos.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos mini macetas para eventos">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Recuerdos Mini Macetas -->
+                            <div class="mini-product" data-product-id="66">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos Mini Macetas" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Personalizar</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Recuerdos (Mini Macetas)</h4>
+                                    <p class="product-price">Desde S/.6.00</p>
+                                    <small class="personalization-hint">Personalización disponible (+S/.0.50)</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Macetero + plantita + cartel</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Color natural:</span>
+                                <span class="detail-value">S/.6.00 (color natural del concreto)</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Pintado:</span>
+                                <span class="detail-value">S/.6.50 (+S/.0.50)</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Precios a partir de 12 unidades</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Subsección RECUERDOS (Letras Variadas) -->
+                <div class="subcategory-section carousel-slide">
+                    <div class="subcategory-header">
+                        <h3 class="subcategory-title">RECUERDOS (Letras Variadas)</h3>
+                        <p class="subcategory-description">Macetero (variado) + plantita + cartel + 1 letra + corazón + base de madera/melamine. Precios a partir de 12 unidades.</p>
+                    </div>
+                    
+                    <div class="mini-macetas-grid">
+                        <!-- Imagen Principal -->
+                        <div class="mini-main-image">
+                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos letras variadas para eventos">
+                        </div>
+                        
+                        <!-- Productos -->
+                        <div class="mini-products single-product">
+                            <!-- Recuerdos Letras Variadas -->
+                            <div class="mini-product" data-product-id="67">
+                                <div class="product-image-container">
+                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos Letras Variadas" class="product-image">
+                                    <div class="product-overlay">
+                                        <button class="add-to-cart-overlay">Añadir al Carrito</button>
+                                    </div>
+                                </div>
+                                <div class="product-info">
+                                    <h4>Recuerdos (Letras Variadas)</h4>
+                                    <p class="product-price">S/.10.50</p>
+                                    <small class="no-personalization">Sin personalización disponible</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Información Detallada -->
+                        <div class="mini-details">
+                            <div class="detail-row">
+                                <span class="detail-label">Incluye:</span>
+                                <span class="detail-value">Macetero (variado) + plantita + cartel + 1 letra + corazón + base de madera/melamine</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Diseños:</span>
+                                <span class="detail-value">Maceteros variados con diferentes formas</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Precio regular:</span>
+                                <span class="detail-value">S/.10.50</span>
+                            </div>
+                            <div class="detail-row highlight">
+                                <span class="detail-label">Especial:</span>
+                                <span class="detail-value">Precios a partir de 12 unidades</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 
                     </div> <!-- Fin carousel-container -->
                 </div> <!-- Fin macetas-carousel -->
@@ -1422,10 +2080,90 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal Específico para Letras -->
+        <div class="personalization-modal" id="lettersModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Personalizar Letras Decorativas</h3>
+                    <span class="close-modal" onclick="closeLettersModal()">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Personaliza tu conjunto de letras decorativas</p>
+                    
+                    <!-- Selector de cantidad de letras -->
+                    <div class="letters-config-section">
+                        <div class="config-row">
+                            <label for="lettersQuantity">¿Cuántas letras necesitas?</label>
+                            <select id="lettersQuantity" onchange="updateLettersPrice()">
+                                <option value="1">1 letra + macetero</option>
+                                <option value="4" selected>4 letras (Precio base)</option>
+                                <option value="5">5 letras</option>
+                                <option value="6">6 letras</option>
+                                <option value="7">7 letras</option>
+                                <option value="8">8 letras</option>
+                                <option value="9">9 letras</option>
+                                <option value="10">10 letras</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Input para escribir las letras -->
+                        <div class="config-row">
+                            <label for="lettersText">Escribe las letras que quieres:</label>
+                            <input type="text" id="lettersText" maxlength="10" placeholder="Ej: AMOR, CASA, BEBE" style="text-transform: uppercase;" oninput="validateLettersInput(this)">
+                            <small>Solo letras, sin espacios ni números</small>
+                        </div>
+                        
+                        <!-- Opción de pintado -->
+                        <div class="config-row">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="lettersPainted" onchange="updateLettersPrice()">
+                                <span class="checkmark"></span>
+                                Agregar pintado de letras (+S/.5.00)
+                            </label>
+                        </div>
+                        
+                        <!-- Resumen de precio -->
+                        <div class="price-summary">
+                            <div class="price-breakdown">
+                                <div class="price-row" id="basePriceRow">
+                                    <span id="basePriceText">Base (4 letras + macetero):</span>
+                                    <span id="basePriceValue">S/.30.00</span>
+                                </div>
+                                <div class="price-row" id="extraLettersRow" style="display: none;">
+                                    <span id="extraLettersText">Letras adicionales:</span>
+                                    <span id="extraLettersPrice">S/.0.00</span>
+                                </div>
+                                <div class="price-row" id="paintedRow" style="display: none;">
+                                    <span>Pintado de letras:</span>
+                                    <span>S/.5.00</span>
+                                </div>
+                                <div class="price-row total-row">
+                                    <span><strong>Total:</strong></span>
+                                    <span><strong id="lettersTotal">S/.30.00</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="btn btn-secondary" onclick="closeLettersModal()">Cancelar</button>
+                        <button class="btn btn-primary" onclick="addLettersToCart()">Añadir al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Nosotros Section -->
     <section class="about" id="nosotros">
+        <div class="about-video-bg">
+            <video autoplay loop muted playsinline poster="assets/images/logo-hero.jpeg" class="about-bg-video">
+                <source src="assets/images/video-hero.webm" type="video/webm">
+                Tu navegador no soporta el video HTML5.
+            </video>
+            <div class="about-bg-overlay"></div>
+        </div>
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
@@ -1471,7 +2209,7 @@
     </section>
 
     <!-- Contacto Section -->
-    <section class="contact contact-social" id="contacto" style="background: url('assets/images/fondo-contacto.png') center center/cover no-repeat fixed; min-height: 100vh;">
+    <section class="contact contact-social" id="contacto" style="min-height: 100vh;">
     <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Contáctanos</h2>
@@ -1486,46 +2224,23 @@
             </div>
             
             <div class="contact-layout">
-                <!-- Carrusel de imágenes a la izquierda -->
-                <div class="contact-carousel">
-                    <h3>Nuestros Productos Destacados</h3>
-                    <div class="contact-carousel-container">
-                        <div class="contact-carousel-track" id="contactCarousel">
-                            <div class="contact-carousel-slide">
-                                <img src="assets/images/joyero.PNG" alt="Joyeros Botsua" class="contact-carousel-image">
-                                <div class="contact-slide-info">
-                                    <h4>Joyeros Botsua</h4>
-                                    <p>Colección de joyeros únicos</p>
-                                </div>
-                            </div>
-                            <div class="contact-carousel-slide">
-                                <img src="assets/images/letras.PNG" alt="Letras Especiales" class="contact-carousel-image">
-                                <div class="contact-slide-info">
-                                    <h4>Letras Especiales</h4>
-                                    <p>Letras decorativas personalizadas</p>
-                                </div>
-                            </div>
-                            <div class="contact-carousel-slide">
-                                <img src="assets/images/macetas/arcilla/maceta-presentacion.PNG" alt="Macetas Personalizadas" class="contact-carousel-image">
-                                <div class="contact-slide-info">
-                                    <h4>macetas personalizadas</h4>
-                                    <p>Perfectas para decorar tu hogar</p>
-                                </div>
-                            </div>
-                            <div class="contact-carousel-slide">
-                                <img src="assets/images/pokemon.PNG" alt="Pokemon" class="contact-carousel-image">
-                                <div class="contact-slide-info">
-                                    <h4>Pokemon</h4>
-                                    <p>Figuras de Pokemon personalizadas</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="contact-carousel-controls">
-                            <button class="contact-carousel-btn contact-prev-btn" onclick="moveContactCarousel(-1)">‹</button>
-                            <button class="contact-carousel-btn contact-next-btn" onclick="moveContactCarousel(1)">›</button>
-                        </div>
+                <!-- Formulario de contacto -->
+                <form class="contact-form-botsua" id="contact-form-botsua" autocomplete="off" onsubmit="return sendWhatsAppMessage(event)">
+                    <h3>Envíanos tu mensaje</h3>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" name="nombre" required maxlength="40" placeholder="Tu nombre">
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" id="apellido" name="apellido" required maxlength="40" placeholder="Tu apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje</label>
+                        <textarea id="mensaje" name="mensaje" rows="5" maxlength="500" required placeholder="Escribe tu mensaje..." style="resize: none;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar a WhatsApp</button>
+                </form>
 
                 <!-- Redes sociales a la derecha - SOLO las 4 que pediste -->
                 <div class="social-networks">
