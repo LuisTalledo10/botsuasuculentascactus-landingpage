@@ -26,10 +26,14 @@
         flex-direction: column;
         gap: 1.5rem;
         max-width: 98vw;
+        padding: 0 1rem;
     }
     .contact-form-botsua, .social-networks {
         flex: 1 1 100%;
         max-width: 100%;
+    }
+    .contact-form-botsua {
+        margin: 0 auto;
     }
 }
 /* Formulario de contacto Botsua */
@@ -48,6 +52,7 @@
     gap: 1.5rem;
     z-index: 2;
     position: relative;
+    box-sizing: border-box;
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
 }
@@ -135,6 +140,10 @@
     width: 100%;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
 }
 
 .contact-form-botsua input:focus,
@@ -186,6 +195,9 @@
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 0.6s ease forwards;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .contact-form-botsua button[type="submit"]:hover {
@@ -234,38 +246,176 @@
     }
 }
 
-/* Responsive */
+/* Responsive para tablets */
 @media (max-width: 900px) {
+    .contact-layout {
+        padding: 0 1rem;
+        gap: 2rem;
+    }
+    
     .contact-form-botsua {
-        max-width: 95vw;
-        padding: 2rem 1.5rem;
-        margin: 1rem auto;
+        max-width: 100%;
+        padding: 2rem;
+        margin: 0;
+        border-radius: 18px;
     }
     
     .contact-form-botsua h3 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
+        text-align: center;
     }
     
     .contact-form-botsua input,
     .contact-form-botsua textarea {
-        padding: 10px 14px;
-        font-size: 0.95rem;
+        padding: 14px 16px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+    
+    .contact-form-botsua button[type="submit"] {
+        padding: 16px 0;
+        font-size: 1.1rem;
+        border-radius: 12px;
+    }
+    
+    .social-networks {
+        margin-top: 1rem;
+    }
+}
+
+/* Responsive para pantallas pequeñas (móviles) */
+@media (max-width: 480px) {
+    .contact-layout {
+        padding: 0 0.5rem;
+        gap: 1.5rem;
+        margin: 0;
+    }
+    
+    .contact-form-botsua {
+        padding: 1.5rem 1rem;
+        border-radius: 16px;
+        margin: 0;
+        max-width: 100%;
+        width: calc(100vw - 1rem);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .contact-form-botsua .form-group {
+        margin-bottom: 1rem;
+    }
+    
+    .contact-form-botsua label {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .contact-form-botsua input,
+    .contact-form-botsua textarea {
+        padding: 12px 14px;
+        font-size: 16px; /* Evita zoom en iOS */
+        border-radius: 8px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .contact-form-botsua textarea {
+        min-height: 100px;
+        resize: none;
+    }
+    
+    .contact-form-botsua button[type="submit"] {
+        padding: 14px 0;
+        font-size: 1rem;
+        border-radius: 10px;
+        margin-top: 0.5rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+    }
+    
+    .social-networks {
+        margin-top: 0;
+    }
+    
+    .social-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* Breakpoint adicional para pantallas medianas */
+@media (max-width: 640px) {
+    .contact-layout {
+        padding: 0 0.75rem;
+    }
+    
+    .contact-form-botsua {
+        padding: 1.75rem 1.25rem;
+        gap: 1.25rem;
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 1.35rem;
+    }
+    
+    .contact-form-botsua input,
+    .contact-form-botsua textarea {
+        padding: 13px 15px;
+        font-size: 15px;
+    }
+}
+
+/* Breakpoint para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .contact-layout {
+        padding: 0 0.25rem;
+    }
+    
+    .contact-form-botsua {
+        padding: 1.25rem 0.75rem;
+        width: calc(100vw - 0.5rem);
+        border-radius: 12px;
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 1.25rem;
+    }
+    
+    .contact-form-botsua input,
+    .contact-form-botsua textarea {
+        padding: 11px 12px;
+        font-size: 16px;
+        border-radius: 6px;
     }
     
     .contact-form-botsua button[type="submit"] {
         padding: 12px 0;
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
 }
 
-@media (max-width: 480px) {
-    .contact-form-botsua {
-        padding: 1.5rem 1rem;
-        border-radius: 16px;
+/* Mejoras para el viewport en móviles */
+@media screen and (max-width: 768px) {
+    .contact-social {
+        padding-bottom: 2rem;
+        min-height: auto;
     }
     
-    .contact-form-botsua h3 {
-        font-size: 1.3rem;
+    .contact-form-botsua input:focus,
+    .contact-form-botsua textarea:focus {
+        transform: none; /* Evitar movimientos durante focus en móviles */
+    }
+    
+    /* Evitar zoom en inputs en iOS */
+    .contact-form-botsua input[type="text"],
+    .contact-form-botsua input[type="email"],
+    .contact-form-botsua textarea {
+        font-size: 16px !important;
     }
 }
 .about-bg-overlay {
@@ -277,7 +427,7 @@
     z-index: 1;
     pointer-events: none;
 }
-/* Video de fondo siempre visible para todas las secciones */
+/* Video de fondo solo para el hero */
 .about-video-bg {
     position: fixed;
     top: 0;
@@ -288,6 +438,13 @@
     overflow: hidden;
     pointer-events: none;
     background: #000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Mostrar video cuando el hero está activo */
+body.hero-active .about-video-bg {
     visibility: visible;
     opacity: 1;
 }
@@ -962,23 +1119,20 @@ body {
 .section-title {
     font-size: 2.5rem;
     font-weight: var(--font-weight-bold);
-    color: var(--light-gray);
+    color: var(--primary-color);
     margin-bottom: var(--spacing-sm);
 }
 
 .section-description {
     font-size: 1.1rem;
-    color: var(--light-gray);
+    color: var(--primary-dark);
 }
 
-/* Catálogo con imagen de fondo estática */
+/* Catálogo con fondo de color sólido */
 .catalog {
     padding: var(--spacing-xxl) 0;
-    background-image: url('../images/fondo-botsua.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #FFFFF0 !important;
+    background-image: none !important;
     margin-top: 0;
     padding-top: 0px;
     position: relative;
@@ -1136,11 +1290,13 @@ body {
     min-height: 100vh;
     height: 100vh;
     padding: 0;
-    background-color: var(--white);
+    background-color: #F5FFF0;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    position: relative;
+    z-index: 3;
 }
 
 .about-content {
@@ -1197,19 +1353,22 @@ body {
 /* Contact Section */
 .contact {
     padding: var(--spacing-xxl) 0;
-    background: none;
+    background-color: #F0FFF3;
+    position: relative;
+    z-index: 3;
 }
 
 /* Sección de contacto con redes sociales */
 .contact-social {
-    background: none;
+    background-color: #F0FFF3;
     position: relative;
     overflow: hidden;
+    z-index: 3;
 }
 
 .contact-social .section-title,
 .contact-social .section-description {
-    color: var(--white);
+    color: var(--text-dark);
 }
 
 /* Manchas decorativas verdes para la sección de contacto */
@@ -2142,17 +2301,13 @@ body {
     position: relative;
 }
 
-/* Catálogo con espaciado limpio e imagen de fondo */
+/* Catálogo con espaciado limpio y fondo de color sólido */
 .catalog {
     margin-top: 0;
     padding-top: 100px;
     position: relative;
     z-index: 2;
-    background-image: url('../images/fondo-botsua.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: #FDFFF0;
 }
 
 /* About con división sutil */
@@ -2837,8 +2992,8 @@ body {
 
 .main-category-btn {
     padding: 12px 24px;
-    background-color: var(--white);
-    color: var(--dark-gray);
+    background-color: var(--primary-light);
+    color: var(--white);
     border: 2px solid var(--light-gray);
     border-radius: 30px;
     font-weight: var(--font-weight-medium);
@@ -2905,7 +3060,7 @@ body {
 
 /* Subsecciones */
 .subcategory-section {
-    background: var(--white);
+    background: #F3F0FF;
     border-radius: 20px;
     padding: var(--spacing-xl);
     margin-bottom: var(--spacing-xxl);
@@ -4667,7 +4822,7 @@ body {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #ddd;
+    background: var(--primary-light);
     cursor: pointer;
     transition: background 0.3s ease;
 }

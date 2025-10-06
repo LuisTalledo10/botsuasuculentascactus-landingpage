@@ -63,10 +63,23 @@ function hideSendingAnimation() {
     button.style.background = '';
     button.disabled = false;
 }
-// Video de fondo está siempre activo para todas las secciones
-// Ya no necesitamos función para controlar visibilidad
+// Controlar video de fondo solo para el hero
+function handleHeroVideoBg() {
+    const heroSection = document.getElementById('inicio');
+    let inView = false;
+    
+    if (heroSection) {
+        const rect = heroSection.getBoundingClientRect();
+        inView = rect.top < window.innerHeight && rect.bottom > 0;
+    }
+    
+    document.body.classList.toggle('hero-active', inView);
+}
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('scroll', handleHeroVideoBg);
+window.addEventListener('resize', handleHeroVideoBg);
+document.addEventListener('DOMContentLoaded', function() {
+    handleHeroVideoBg(); // Ejecutar inmediatamente al cargar
     if (typeof MacetasCarousel !== 'undefined') {
         window.macetasCarousel = new MacetasCarousel();
     }
