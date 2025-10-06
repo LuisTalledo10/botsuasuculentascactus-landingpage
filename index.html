@@ -70,12 +70,12 @@
 
     <!-- Hero Section -->
     <section class="hero" id="inicio">
-        <div class="hero-background" style="position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none;">
-            <video autoplay loop muted playsinline style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; object-fit: cover; z-index: 0;">
+        <div class="about-video-bg">
+            <video autoplay loop muted playsinline poster="assets/images/logo-hero.jpeg" class="about-bg-video">
                 <source src="assets/images/video-hero.webm" type="video/webm">
                 Tu navegador no soporta el video HTML5.
             </video>
-            <div class="hero-overlay" style="position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; background: rgba(0,0,0,0.45);"></div>
+            <div class="about-bg-overlay"></div>
         </div>
         <div class="container">
             <div class="hero-content">
@@ -98,6 +98,13 @@
 
     <!-- Catálogo Section -->
     <section class="catalog" id="catalogo">
+        <div class="about-video-bg">
+            <video autoplay loop muted playsinline poster="assets/images/logo-hero.jpeg" class="about-bg-video">
+                <source src="assets/images/video-hero.webm" type="video/webm">
+                Tu navegador no soporta el video HTML5.
+            </video>
+            <div class="about-bg-overlay"></div>
+        </div>
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Nuestro Catálogo</h2>
@@ -1147,7 +1154,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta Casita con plantas suculentas">
+                            <img src="assets/images/macetas/pokemon/balbasur.png" alt="Maceta Balbasaur">
                         </div>
                         
                         <!-- Productos -->
@@ -1155,13 +1162,13 @@
                             <!-- Maceta Casita -->
                             <div class="mini-product" data-product-id="50">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta Casita" class="product-image">
+                                    <img src="assets/images/macetas/pokemon/balbasur2.png" alt="Maceta Balbasaur" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Personalizar</button>
                                     </div>
                                 </div>
                                 <div class="product-info">
-                                    <h4>Maceta Pokemon</h4>
+                                    <h4>Maceta Balbasaur</h4>
                                     <p class="product-price">S/.20.00</p>
                                     <small class="personalization-hint">+ S/.5.00 personalización</small>
                                 </div>
@@ -1200,7 +1207,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta ODDRISH">
+                            <img src="assets/images/macetas/pokemon/odrich.png" alt="Maceta ODDRISH">
                         </div>
                         
                         <!-- Productos -->
@@ -1208,7 +1215,7 @@
                             <!-- Maceta ODDRISH -->
                             <div class="mini-product" data-product-id="51">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta ODDRISH" class="product-image">
+                                    <img src="assets/images/macetas/pokemon/odrich2.png" alt="Maceta ODDRISH" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Personalizar</button>
                                     </div>
@@ -1253,7 +1260,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta SNORLAX">
+                            <img src="assets/images/macetas/pokemon/snorlax.png" alt="Maceta SNORLAX">
                         </div>
                         
                         <!-- Productos -->
@@ -1261,7 +1268,7 @@
 
                             <div class="arcilla-product" data-product-id="52">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta SNORLAX" class="product-image">
+                                    <img src="assets/images/macetas/pokemon/snorlax.png" alt="Maceta SNORLAX" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1275,7 +1282,7 @@
                             
                             <div class="arcilla-product" data-product-id="53">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta SNORLAX" class="product-image">
+                                    <img src="assets/images/macetas/pokemon/snorlax.png" alt="Maceta SNORLAX" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1315,7 +1322,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta SNORLAX">
+                            <img src="assets/images/macetas/pokemon/togepi.png" alt="Maceta TOGEPI">
                         </div>
                         
                         <!-- Productos -->
@@ -1323,7 +1330,7 @@
 
                             <div class="arcilla-product" data-product-id="54">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta TOGEPI" class="product-image">
+                                    <img src="assets/images/macetas/pokemon/togepi.png" alt="Maceta TOGEPI" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1337,7 +1344,7 @@
                             
                             <div class="arcilla-product" data-product-id="55">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta SNORLAX" class="product-image">
+                                    <img src="assets/images/macetas/pokemon/togepi.png" alt="Maceta TOGEPI" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1378,7 +1385,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/letras.PNG" alt="Letras decorativas con macetero">
+                            <img src="assets/images/macetas/letras/letras2.png" alt="Letras decorativas con macetero">
                         </div>
                         
                         <!-- Productos -->
@@ -1386,7 +1393,7 @@
                             <!-- Letras Decorativas -->
                             <div class="mini-product letters-product " data-product-id="56">
                                 <div class="product-image-container ">
-                                    <img src="assets/images/letras.PNG" alt="Letras decorativas" class="product-image">
+                                    <img src="assets/images/macetas/letras/letras.png" alt="Letras decorativas" class="product-image">
                                     <div class="product-overlay">
                                         <button class="letters-customization-btn" onclick="event.stopPropagation(); openLettersModal(); return false;">Personalizar Letras</button>
                                     </div>
@@ -1439,7 +1446,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta texturizada con fotografía">
+                            <img src="assets/images/macetas/texturizada/image.png" alt="Maceta texturizada con fotografía">
                         </div>
                         
                         <!-- Productos -->
@@ -1447,7 +1454,7 @@
                             <!-- Maceta Texturizada -->
                             <div class="mini-product" data-product-id="57">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta texturizada" class="product-image">
+                                    <img src="assets/images/macetas/texturizada/image.png" alt="Maceta texturizada" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1492,7 +1499,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Maceta texturizada con fotografía">
+                            <img src="assets/images/macetas/portamacetero31/image.png" alt="Maceta texturizada con fotografía">
                         </div>
                         
                         <!-- Productos -->
@@ -1500,7 +1507,7 @@
                             <!-- Portamacetero 3-1 -->
                             <div class="mini-product" data-product-id="58">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Portamacetero 3-1 con plantas" class="product-image">
+                                    <img src="assets/images/macetas/portamacetero31/image2.png" alt="Portamacetero 3-1 con plantas" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1545,7 +1552,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Marco colgante con planta">
+                            <img src="assets/images/macetas/marco/image.png" alt="Marco colgante con planta">
                         </div>
                         
                         <!-- Productos -->
@@ -1553,7 +1560,7 @@
                             <!-- Marco - 1Plantas -->
                             <div class="mini-product" data-product-id="59">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Marco - 1Plantas" class="product-image">
+                                    <img src="assets/images/macetas/marco/image.png" alt="Marco - 1Plantas" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1598,7 +1605,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Marco colgante con 2 plantas">
+                            <img src="assets/images/macetas/marco/image2.png" alt="Marco colgante con 2 plantas">
                         </div>
                         
                         <!-- Productos -->
@@ -1606,7 +1613,7 @@
                             <!-- Marco - 2 Plantas -->
                             <div class="mini-product" data-product-id="60">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Marco - 2 Plantas" class="product-image">
+                                    <img src="assets/images/macetas/marco/image2.png" alt="Marco - 2 Plantas" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1651,7 +1658,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Portamacetero para 3 plantas">
+                            <img src="assets/images/macetas/portamacetero31/para3.png" alt="Portamacetero para 3 plantas">
                         </div>
                         
                         <!-- Productos -->
@@ -1659,7 +1666,7 @@
                             <!-- Portamacetero Para 3 -->
                             <div class="mini-product" data-product-id="61">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Portamacetero Para 3" class="product-image">
+                                    <img src="assets/images/macetas/portamacetero31/para32.png" alt="Portamacetero Para 3" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1704,7 +1711,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Partamacetero para escritorio">
+                            <img src="assets/images/macetas/escritorio/image.png" alt="Partamacetero para escritorio">
                         </div>
                         
                         <!-- Productos -->
@@ -1712,7 +1719,7 @@
                             <!-- Partamacetero Para Escritorio -->
                             <div class="mini-product" data-product-id="62">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Partamacetero Para Escritorio" class="product-image">
+                                    <img src="assets/images/macetas/escritorio/image2.png" alt="Partamacetero Para Escritorio" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1757,7 +1764,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Box Dúo kit completo">
+                            <img src="assets/images/macetas/boxduo/image.png" alt="Box Dúo kit completo">
                         </div>
                         
                         <!-- Productos -->
@@ -1765,7 +1772,7 @@
                             <!-- Box Dúo -->
                             <div class="mini-product" data-product-id="63">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Box Dúo" class="product-image">
+                                    <img src="assets/images/macetas/boxduo/image2.png" alt="Box Dúo" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1810,7 +1817,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Por amor - detalle especial">
+                            <img src="assets/images/macetas/recuerdos/image.png" alt="Por amor - detalle especial">
                         </div>
                         
                         <!-- Productos -->
@@ -1818,7 +1825,7 @@
                             <!-- Por Amor -->
                             <div class="mini-product" data-product-id="64">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Por Amor" class="product-image">
+                                    <img src="assets/images/macetas/recuerdos/image2.png" alt="Por Amor" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1863,7 +1870,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos - letras con plantas">
+                            <img src="assets/images/macetas/recuerdos/image3.png" alt="Recuerdos - letras con plantas">
                         </div>
                         
                         <!-- Productos -->
@@ -1871,7 +1878,7 @@
                             <!-- Recuerdos -->
                             <div class="mini-product" data-product-id="65">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos" class="product-image">
+                                    <img src="assets/images/macetas/recuerdos/image4.png" alt="Recuerdos" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -1916,7 +1923,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos mini macetas para eventos">
+                            <img src="assets/images/macetas/recuerdos/image5.png" alt="Recuerdos mini macetas para eventos">
                         </div>
                         
                         <!-- Productos -->
@@ -1924,7 +1931,7 @@
                             <!-- Recuerdos Mini Macetas -->
                             <div class="mini-product" data-product-id="66">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos Mini Macetas" class="product-image">
+                                    <img src="assets/images/macetas/recuerdos/image6.png" alt="Recuerdos Mini Macetas" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Personalizar</button>
                                     </div>
@@ -1969,7 +1976,7 @@
                     <div class="mini-macetas-grid">
                         <!-- Imagen Principal -->
                         <div class="mini-main-image">
-                            <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos letras variadas para eventos">
+                            <img src="assets/images/macetas/recuerdos/image copy.png" alt="Recuerdos letras variadas para eventos">
                         </div>
                         
                         <!-- Productos -->
@@ -1977,7 +1984,7 @@
                             <!-- Recuerdos Letras Variadas -->
                             <div class="mini-product" data-product-id="67">
                                 <div class="product-image-container">
-                                    <img src="assets/images/macetas/maceta-casita/casita.PNG" alt="Recuerdos Letras Variadas" class="product-image">
+                                    <img src="assets/images/macetas/recuerdos/image copy 2.png" alt="Recuerdos Letras Variadas" class="product-image">
                                     <div class="product-overlay">
                                         <button class="add-to-cart-overlay">Añadir al Carrito</button>
                                     </div>
@@ -2356,6 +2363,7 @@
             
             <div class="footer-bottom">
                 <p>&copy; 2025 Botsua Suculentas y Cactus. Todos los derechos reservados.</p>
+                <p>Diseñado por <a href="https://mldsoluciones.netlify.app/" target="_blank" class="designer-link">MLD Soluciones</a></p>
             </div>
         </div>
     </footer>

@@ -63,26 +63,9 @@ function hideSendingAnimation() {
     button.style.background = '';
     button.disabled = false;
 }
-// Mostrar video de fondo cuando la sección 'nosotros' o 'contacto' está visible
-function handleAboutContactVideoBg() {
-    const aboutSection = document.getElementById('nosotros');
-    const contactSection = document.getElementById('contacto');
-    let inView = false;
-    if (aboutSection) {
-        const rect = aboutSection.getBoundingClientRect();
-        inView = inView || (rect.top < window.innerHeight && rect.bottom > 0);
-    }
-    if (contactSection) {
-        const rect = contactSection.getBoundingClientRect();
-        inView = inView || (rect.top < window.innerHeight && rect.bottom > 0);
-    }
-    document.body.classList.toggle('about-contact-active', inView);
-}
+// Video de fondo está siempre activo para todas las secciones
+// Ya no necesitamos función para controlar visibilidad
 
-window.addEventListener('scroll', handleAboutContactVideoBg);
-window.addEventListener('resize', handleAboutContactVideoBg);
-document.addEventListener('DOMContentLoaded', handleAboutContactVideoBg);
-// Inicializar referencia global para el carrusel
 window.addEventListener('DOMContentLoaded', function() {
     if (typeof MacetasCarousel !== 'undefined') {
         window.macetasCarousel = new MacetasCarousel();
