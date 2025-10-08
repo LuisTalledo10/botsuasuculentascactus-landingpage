@@ -1,41 +1,268 @@
-/* Layout de contacto 70/30 */
+/* Modificación: Sección de contacto directa 50/50 sin container */
+.contact.contact-social {
+    display: flex;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    align-items: stretch;
+}
+
+/* Layout de contacto 50/50 - Eliminado porque ahora se aplica directamente a la sección */
 .contact-layout {
     display: flex;
-    flex-direction: row;
-    gap: 2.5rem;
-    justify-content: center;
-    align-items: flex-start;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0;
     z-index: 2;
 }
-.contact-form-botsua {
-    flex: 0 1 70%;
-    min-width: 0;
+
+/* Mitad izquierda - Formulario */
+.contact-form-section {
+    flex: 1;
+    background: 
+                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('../images/prueba.PNG') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    position: relative;
 }
-.social-networks {
-    flex: 0 1 30%;
-    min-width: 0;
+
+.contact-form-botsua {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+/* Mitad derecha - Redes sociales */
+.social-section {
+    flex: 1;
+    background: 
+                linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('../images/hero-botsua.PNG') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    position: relative;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.social-card {
+    width: 120px;
+    height: 120px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    user-select: none;
 }
+
+.social-card:hover {
+    transform: scale(1.05) translateY(-5px);
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.social-card.instagram {
+    background: linear-gradient(45deg, #4C956C, #61A76A);
+}
+
+.social-card.whatsapp {
+    background: linear-gradient(45deg, #25D366, #128C7E);
+}
+
+.social-card.facebook {
+    background: linear-gradient(45deg, #6B8E5A, #4C956C);
+}
+
+.social-card.email {
+    background: linear-gradient(45deg, #8B956D, #A4AC86);
+}
+
+.social-card .social-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.social-card .social-icon svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+.social-card span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+/* Hacer que los enlaces sociales funcionen correctamente */
+.social-card {
+    text-decoration: none;
+}
+
+.social-card:visited {
+    color: white;
+}
+
+
 @media (max-width: 900px) {
-    .contact-layout {
+    .contact.contact-social {
         flex-direction: column;
-        gap: 1.5rem;
-        max-width: 98vw;
-        padding: 0 1rem;
+        min-height: auto;
     }
-    .contact-form-botsua, .social-networks {
-        flex: 1 1 100%;
-        max-width: 100%;
+    
+    .contact-form-section {
+        min-height: 60vh;
+        padding: 2rem 1rem;
+        order: 1;
     }
+    
+    .social-section {
+        min-height: 40vh;
+        padding: 2rem 1rem;
+        order: 2;
+    }
+    
+    .social-grid {
+        max-width: 250px;
+        gap: 1rem;
+    }
+    
+    .social-card {
+        width: 100px;
+        height: 100px;
+        font-size: 0.8rem;
+    }
+    
     .contact-form-botsua {
-        margin: 0 auto;
+        max-width: 100%;
+        padding: 1.2rem;
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 1.4rem;
+        text-align: center;
+        margin-bottom: 1rem;
     }
 }
+
+/* Media Query para tablets pequeñas y celulares grandes */
+@media (max-width: 768px) {
+    .contact.contact-social {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    .contact-form-section {
+        min-height: 50vh;
+        padding: 1.5rem 1rem;
+    }
+    
+    .social-section {
+        min-height: 35vh;
+        padding: 1.5rem 1rem;
+    }
+    
+    .contact-form-botsua {
+        padding: 1rem;
+        margin: 0;
+        border-radius: 12px;
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .social-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.8rem;
+        max-width: 200px;
+    }
+    
+    .social-card {
+        width: 85px;
+        height: 85px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Media Query para celulares pequeños */
+@media (max-width: 480px) {
+    .contact-form-section {
+        min-height: 45vh;
+        padding: 1rem 0.5rem;
+    }
+    
+    .social-section {
+        min-height: 30vh;
+        padding: 1rem 0.5rem;
+    }
+    
+    .contact-form-botsua {
+        padding: 0.8rem;
+        border-radius: 10px;
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+    
+    .contact-form-botsua .form-group {
+        margin-bottom: 0.8rem;
+    }
+    
+    .social-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        max-width: 170px;
+    }
+    
+    .social-card {
+        width: 75px;
+        height: 75px;
+        font-size: 0.7rem;
+        border-radius: 15px;
+    }
+    
+    .social-card .social-icon {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .social-card .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
 /* Formulario de contacto Botsua */
 .contact-form-botsua {
     background: rgba(255, 255, 255, 0.95);
@@ -81,32 +308,23 @@
 }
 
 .contact-form-botsua h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    text-align: center;
-    color: var(--primary-color, #3B755F);
+    text-align: left;
+    color: #333;
     text-transform: uppercase;
     letter-spacing: 1px;
     position: relative;
 }
 
-.contact-form-botsua h3::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color, #3B755F), #27ae60);
-    border-radius: 2px;
-}
+/* Eliminamos el after decorativo */
 
 .contact-form-botsua .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.3rem;
+    margin-bottom: 1rem;
     position: relative;
     opacity: 0;
     transform: translateY(20px);
@@ -118,27 +336,26 @@
 .contact-form-botsua .form-group:nth-child(4) { animation-delay: 0.3s; }
 
 .contact-form-botsua label {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    color: var(--text-dark, #333);
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.25rem;
+    color: #333;
+    letter-spacing: 0.3px;
+    margin-bottom: 0.5rem;
+    display: block;
 }
 
 .contact-form-botsua input,
 .contact-form-botsua textarea {
-    border: 2px solid #e0e0e0;
-    border-radius: 12px;
+    border: 2px solid #333;
+    border-radius: 8px;
     padding: 12px 16px;
     font-size: 1rem;
     background: #fff;
-    color: var(--text-dark, #333);
+    color: #333;
     outline: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
     width: 100%;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -164,7 +381,7 @@
     min-height: 120px;
     max-height: 200px;
     resize: vertical;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .contact-form-botsua input:valid {
@@ -176,13 +393,13 @@
 }
 
 .contact-form-botsua button[type="submit"] {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     width: 100%;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 700;
-    border-radius: 12px;
+    border-radius: 8px;
     padding: 15px 0;
-    background: linear-gradient(135deg, var(--primary-color, #3B755F), #27ae60);
+    background: #333;
     color: #fff;
     border: none;
     cursor: pointer;
@@ -191,10 +408,6 @@
     letter-spacing: 1px;
     position: relative;
     overflow: hidden;
-    animation-delay: 0.4s;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s ease forwards;
     touch-action: manipulation;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -306,6 +519,12 @@
         margin-bottom: 1rem;
     }
     
+    /* En móvil, la fila se convierte en columna */
+    .contact-form-botsua .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
     .contact-form-botsua .form-group {
         margin-bottom: 1rem;
     }
@@ -336,15 +555,6 @@
         margin-top: 0.5rem;
         font-weight: 600;
         letter-spacing: 0.5px;
-    }
-    
-    .social-networks {
-        margin-top: 0;
-    }
-    
-    .social-item {
-        padding: 1rem;
-        margin-bottom: 1rem;
     }
 }
 
@@ -460,7 +670,7 @@ body.hero-active .about-video-bg {
     z-index: 0;
     opacity: 1;
 }
-.about .container, .about-content, .about-text, .about-image {
+.about .container .container2, .about-content, .about-text, .about-image {
     position: relative;
 }
 .about-bg-overlay {
@@ -496,12 +706,13 @@ body.hero-active .about-video-bg {
     --black: #000000;
     
     /* Tipografía */
-    --font-primary: 'Poppins', sans-serif;
+    --font-primary: 'Montserrat', sans-serif;
     --font-weight-light: 300;
     --font-weight-regular: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
     
     /* Espaciado */
     --spacing-xs: 0.5rem;
@@ -534,7 +745,11 @@ body {
     line-height: 1.6;
     color: var(--dark-gray);
     scroll-behavior: smooth;
-
+    
+    /* Optimización para Montserrat */
+    font-display: swap;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     
     /* 🔹 Solución */
     margin: 0;
@@ -542,7 +757,61 @@ body {
     box-sizing: border-box;
 }
 
+/* Aplicar Montserrat a todos los elementos de texto */
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Mejoras tipográficas específicas para Montserrat */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.3;
+    margin: 0 0 1rem 0;
+    color: var(--text-dark);
+}
+
+h1 {
+    font-weight: var(--font-weight-bold);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-weight: var(--font-weight-semibold);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h3 {
+    font-weight: var(--font-weight-semibold);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+p, span, div, li, a {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-regular);
+}
+
+/* Botones con tipografía Montserrat mejorada */
+button, .btn {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.025em;
+}
+
+/* Input y textarea con Montserrat */
+input, textarea, select {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-regular);
+}
+
 .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+.container2 {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-sm);
@@ -936,16 +1205,41 @@ body {
 .hero-content {
     position: relative;
     z-index: 15 !important;
-    text-align: center;
-    max-width: 800px;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 3rem !important;
+    min-height: 80vh !important;
+    max-width: 1500px;
     margin: 0 auto;
     color: var(--white) !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Sección de texto a la izquierda */
+.hero-text-section {
+    flex: 1 !important;
+    max-width: 55% !important;
+    text-align: left !important;
+    z-index: 18 !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
 }
 
-.hero .container {
+/* Sección de logo a la derecha */
+.hero-logo-section {
+    flex: 0 0 40% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    z-index: 17 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.hero .container .container2 {
     position: relative;
     z-index: 10 !important;
     display: block !important;
@@ -1019,73 +1313,93 @@ body {
     animation-delay: 3s;
 }
 
-/* Logo en el hero */
+/* Logo en el hero - Nuevo diseño circular */
 .hero-logo {
-    display: flex !important;
-    justify-content: center;
-    margin-bottom: var(--spacing-lg);
-    position: relative;
-    z-index: 20 !important;
+    width: 300px !important;
+    height: 300px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    border: 5px solid rgba(255, 255, 255, 0.2) !important;
+    z-index: 18 !important;
+    display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
+    position: relative !important;
 }
 
 .hero-logo-img {
-    width: 180px;
-    height: 180px;
-    object-fit: contain;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
-    border: 4px solid rgba(255, 255, 255, 0.9);
-    transition: all 0.3s ease;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: all 0.3s ease !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    position: relative;
-    z-index: 20 !important;
+    position: relative !important;
+    z-index: 18 !important;
 }
 
-.hero-logo-img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35), 0 6px 20px rgba(0, 0, 0, 0.25);
+.hero-logo:hover .hero-logo-img {
+    transform: scale(1.1) !important;
 }
 
 .hero-title {
-    font-size: 3.5rem;
-    font-weight: var(--font-weight-bold);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.2;
+    font-family: var(--font-primary) !important;
+    font-size: 3rem !important;
+    font-weight: var(--font-weight-bold) !important;
+    margin-bottom: var(--spacing-md) !important;
+    line-height: 1.2 !important;
     color: var(--white) !important;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3), 0 1px 5px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3), 0 1px 5px rgba(0, 0, 0, 0.5) !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    position: relative;
-    z-index: 20 !important;
-}
-
-.hero-subtitle {
-    font-size: 1.2rem;
-    margin-bottom: var(--spacing-xl);
-    color: rgba(255, 255, 255, 0.95);
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
-    font-weight: 300;
-    line-height: 1.6;
+    position: relative !important;
+    z-index: 19 !important;
+    /* Optimización Montserrat */
+    letter-spacing: -0.025em !important;
+    font-feature-settings: "kern" 1, "liga" 1 !important;
 }
 
 .hero-description {
-    font-size: 1.2rem;
-    margin-bottom: var(--spacing-xl);
+    font-family: var(--font-primary) !important;
+    font-size: 1.2rem !important;
+    margin-bottom: var(--spacing-xl) !important;
     color: rgba(255, 255, 255, 0.95) !important;
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3), 0 1px 5px rgba(0, 0, 0, 0.5);
-    font-weight: 300;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3), 0 1px 5px rgba(0, 0, 0, 0.5) !important;
+    font-weight: var(--font-weight-regular) !important;
+    line-height: 1.6 !important;
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    position: relative;
-    z-index: 20 !important;
+    position: relative !important;
+    z-index: 19 !important;
+    /* Optimización Montserrat */
+    letter-spacing: 0.01em !important;
 }
 
+.hero-cta {
+    display: inline-block !important;
+    padding: 1rem 2rem !important;
+    background: var(--primary-color) !important;
+    color: white !important;
+    text-decoration: none !important;
+    border-radius: 50px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    z-index: 20 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+}
+
+.hero-cta:hover {
+    background: var(--primary-dark) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Estilos del botón hero */
 .hero-cta {
     font-size: 1.1rem;
     padding: 16px 32px;
@@ -1117,21 +1431,28 @@ body {
 }
 
 .section-title {
+    font-family: var(--font-primary);
     font-size: 2.5rem;
     font-weight: var(--font-weight-bold);
     color: var(--primary-color);
     margin-bottom: var(--spacing-sm);
+    /* Optimización Montserrat */
+    letter-spacing: -0.02em;
+    line-height: 1.2;
 }
 
 .section-description {
+    font-family: var(--font-primary);
     font-size: 1.1rem;
     color: var(--primary-dark);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.01em;
 }
 
 /* Catálogo con fondo de color sólido */
 .catalog {
     padding: var(--spacing-xxl) 0;
-    background-color: #FFFFF0 !important;
+    background-color: #F0FFF3 !important;
     background-image: none !important;
     margin-top: 0;
     padding-top: 0px;
@@ -1140,7 +1461,7 @@ body {
     scroll-margin-top: 0;
 }
 
-.catalog .container, .catalog .section-header, .catalog .main-category-nav, .catalog .floating-spots {
+.catalog .container .container2, .catalog .section-header, .catalog .main-category-nav, .catalog .floating-spots {
     position: relative;
     z-index: 2;
 }
@@ -1289,7 +1610,7 @@ body {
 .about {
     min-height: 100vh;
     height: 100vh;
-    padding: 0;
+    padding: 60px 20px;
     background-color: #F5FFF0;
     display: flex;
     align-items: center;
@@ -1301,7 +1622,7 @@ body {
 
 .about-content {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1309,6 +1630,7 @@ body {
     gap: var(--spacing-xxl);
     position: relative;
     z-index: 2;
+    padding: 0 var(--spacing-lg);
 }
 
 .about-text {
@@ -1344,10 +1666,196 @@ body {
     font-size: 1.2rem;
 }
 
-.about-image img {
+/* Collage de imágenes en Sobre Nosotros */
+.about-image-collage {
+    position: relative;
     width: 100%;
-    border-radius: var(--border-radius-large);
-    box-shadow: var(--shadow-medium);
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.collage-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1.5fr 1fr;
+    gap: 25px;
+    padding: 30px;
+}
+
+/* Imagen principal arriba (ocupa 2 columnas) */
+.collage-main {
+    grid-column: 1 / 3;
+    grid-row: 1;
+    position: relative;
+    border-radius: 30px;
+    overflow: hidden;
+    transform: rotate(-2deg);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18), 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: all 0.3s ease;
+}
+
+/* Imagen abajo izquierda */
+.collage-bottom-left {
+    grid-column: 1;
+    grid-row: 2;
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    transform: rotate(5deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Imagen abajo derecha */
+.collage-bottom-right {
+    grid-column: 2;
+    grid-row: 2;
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    transform: rotate(-3deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Imágenes del collage */
+.collage-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+/* Overlay sutil en las imágenes */
+.collage-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(59, 117, 95, 0.1), rgba(255, 140, 66, 0.1));
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+/* Efectos hover */
+.collage-item:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 10;
+}
+
+.collage-item:hover .collage-overlay {
+    opacity: 1;
+}
+
+.collage-item:hover .collage-img {
+    transform: scale(1.1);
+}
+
+/* Decoraciones del collage */
+.collage-decoration {
+    position: absolute;
+    font-size: 2rem;
+    z-index: 5;
+    animation: float 3s ease-in-out infinite;
+}
+
+.collage-star-1 {
+    top: 10%;
+    right: 10%;
+    animation-delay: 0s;
+}
+
+.collage-star-2 {
+    bottom: 20%;
+    left: 5%;
+    animation-delay: 1s;
+}
+
+.collage-leaf {
+    top: 25%;
+    left: -5%;
+    animation-delay: 2s;
+}
+
+/* Formas geométricas decorativas */
+.collage-shape {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+.shape-circle {
+    top: 15%;
+    right: -10%;
+    width: 80px;
+    height: 80px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.shape-triangle {
+    bottom: 15%;
+    right: 10%;
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 55px solid var(--orange-light);
+    animation: rotate 8s linear infinite;
+}
+
+.shape-hexagon {
+    top: 40%;
+    left: -15%;
+    width: 55px;
+    height: 48px;
+    background: var(--primary-color);
+    position: relative;
+    transform: rotate(20deg);
+    animation: float 6s ease-in-out infinite;
+}
+
+.shape-hexagon:before,
+.shape-hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 28px solid transparent;
+    border-right: 28px solid transparent;
+}
+
+.shape-hexagon:before {
+    bottom: 100%;
+    border-bottom: 16px solid var(--primary-color);
+}
+
+.shape-hexagon:after {
+    top: 100%;
+    border-top: 16px solid var(--primary-color);
+}
+
+/* Animaciones */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.5; }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Contact Section */
@@ -1421,12 +1929,13 @@ body {
 .social-item {
     background: var(--white);
     border-radius: var(--border-radius-large);
-    padding: var(--spacing-xl);
+    padding: 1rem 1.25rem;
     box-shadow: var(--shadow-medium);
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
+    gap: 0.75rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 70px;
 }
 
 /* Nueva estructura de contacto */
@@ -1566,8 +2075,8 @@ body {
 .social-icon {
     background: var(--primary-green);
     color: var(--white);
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1577,8 +2086,8 @@ body {
 }
 
 .social-icon svg {
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     fill: currentColor;
 }
 
@@ -1589,25 +2098,26 @@ body {
 
 .social-info h4 {
     color: var(--text-dark);
-    margin: 0 0 8px 0;
-    font-size: 1.2rem;
+    margin: 0 0 4px 0;
+    font-size: 1rem;
     font-weight: 600;
 }
 
 .social-info p {
     color: var(--text-gray);
-    margin: 0 0 15px 0;
-    font-size: 0.9rem;
-    line-height: 1.4;
+    margin: 0 0 8px 0;
+    font-size: 0.8rem;
+    line-height: 1.3;
 }
 
 .social-btn {
     display: inline-block;
     background: var(--primary-green);
     color: var(--white);
-    padding: 10px 20px;
-    border-radius: 25px;
+    padding: 6px 12px;
+    border-radius: 20px;
     text-decoration: none;
+    font-size: 0.8rem;
     font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -2635,7 +3145,7 @@ body {
 }
 
 /* Asegurar que el contenido esté por encima */
-.container {
+.container .container2 {
     position: relative;
     z-index: 2;
 }
@@ -4915,5 +5425,480 @@ body {
         height: 7px;
         flex-shrink: 0;
         min-width: 7px;
+    }
+}
+
+/* ========================================
+   RESPONSIVE HERO LAYOUT
+   ======================================== */
+
+/* Tablets */
+@media (max-width: 968px) {
+    .hero-content {
+        gap: 2rem !important;
+    }
+    
+    .hero-text-section {
+        max-width: 60% !important;
+    }
+    
+    .hero-logo-section {
+        flex: 0 0 35% !important;
+    }
+    
+    .hero-logo {
+        width: 250px !important;
+        height: 250px !important;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem !important;
+    }
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column !important;
+        text-align: center !important;
+        gap: 2rem !important;
+        padding: 2rem 1rem !important;
+        min-height: 70vh !important;
+    }
+    
+    .hero-text-section {
+        max-width: 100% !important;
+        order: 2 !important;
+        text-align: center !important;
+    }
+    
+    .hero-logo-section {
+        flex: 0 0 auto !important;
+        order: 1 !important;
+    }
+    
+    .hero-logo {
+        width: 200px !important;
+        height: 200px !important;
+    }
+    
+    .hero-title {
+        font-size: 2rem !important;
+        margin-bottom: 1rem !important;
+    }
+    
+    .hero-description {
+        font-size: 1rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    .hero-cta {
+        padding: 0.8rem 1.8rem !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 1.5rem 0.5rem !important;
+        gap: 1.5rem !important;
+    }
+    
+    .hero-logo {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem !important;
+        line-height: 1.1 !important;
+    }
+    
+    .hero-description {
+        font-size: 0.9rem !important;
+        line-height: 1.5 !important;
+    }
+    
+    .hero-cta {
+        padding: 0.7rem 1.5rem !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+    .hero-logo {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    .hero-title {
+        font-size: 1.5rem !important;
+    }
+    
+    .hero-description {
+        font-size: 0.85rem !important;
+    }
+    
+    .hero-cta {
+        padding: 0.6rem 1.2rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* ========================================
+   RESPONSIVE COLLAGE SOBRE NOSOTROS
+   ======================================== */
+
+/* Desktop Grande - Pantallas amplias */
+@media (min-width: 1400px) {
+    .about-image-collage {
+        height: 700px;
+    }
+    
+    .collage-container {
+        max-width: 800px;
+        gap: 30px;
+        padding: 40px;
+    }
+    
+    .collage-decoration {
+        font-size: 2.5rem;
+    }
+    
+    .shape-circle {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .shape-triangle {
+        border-left-width: 45px;
+        border-right-width: 45px;
+        border-bottom-width: 70px;
+    }
+    
+    .shape-hexagon {
+        width: 70px;
+        height: 60px;
+    }
+    
+    .shape-hexagon:before,
+    .shape-hexagon:after {
+        border-left-width: 35px;
+        border-right-width: 35px;
+    }
+    
+    .shape-hexagon:before {
+        border-bottom-width: 20px;
+    }
+    
+    .shape-hexagon:after {
+        border-top-width: 20px;
+    }
+}
+
+/* Desktop Estándar */
+@media (max-width: 1399px) and (min-width: 969px) {
+    .about-image-collage {
+        height: 600px;
+    }
+    
+    .collage-container {
+        max-width: 700px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 968px) {
+    .about-image-collage {
+        height: 350px;
+    }
+    
+    .collage-container {
+        max-width: 400px;
+        gap: 12px;
+        padding: 15px;
+    }
+    
+    .collage-decoration {
+        font-size: 1.2rem;
+    }
+    
+    .shape-circle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .shape-hexagon {
+        width: 35px;
+        height: 30px;
+    }
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+    .about-image-collage {
+        height: 300px;
+    }
+    
+    .collage-container {
+        max-width: 350px;
+        gap: 10px;
+        padding: 10px;
+        grid-template-rows: 1.3fr 1fr;
+    }
+    
+    .collage-main {
+        border-radius: 20px;
+        transform: rotate(-1deg);
+    }
+    
+    .collage-bottom-left,
+    .collage-bottom-right {
+        border-radius: 15px;
+    }
+    
+    .collage-bottom-left {
+        transform: rotate(3deg);
+    }
+    
+    .collage-bottom-right {
+        transform: rotate(-2deg);
+    }
+    
+    .collage-decoration {
+        font-size: 1rem;
+    }
+    
+    .shape-circle {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .shape-triangle {
+        border-left-width: 20px;
+        border-right-width: 20px;
+        border-bottom-width: 30px;
+    }
+    
+    .shape-hexagon {
+        width: 30px;
+        height: 25px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .about-image-collage {
+        height: 250px;
+    }
+    
+    .collage-container {
+        max-width: 300px;
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .collage-main {
+        border-radius: 15px;
+    }
+    
+    .collage-bottom-left,
+    .collage-bottom-right {
+        border-radius: 12px;
+    }
+    
+    .collage-decoration {
+        font-size: 0.8rem;
+    }
+    
+    .shape-circle {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .shape-triangle {
+        border-left-width: 15px;
+        border-right-width: 15px;
+        border-bottom-width: 25px;
+    }
+    
+    .shape-hexagon {
+        width: 25px;
+        height: 20px;
+    }
+    
+    /* Simplificar animaciones en móviles */
+    .collage-item:hover {
+        transform: rotate(0deg) scale(1.02);
+    }
+    
+    .collage-item:hover .collage-img {
+        transform: scale(1.05);
+    }
+}
+
+/* Media Query para pantallas de escritorio grandes */
+@media (min-width: 1200px) {
+    .about {
+        padding: 80px 40px;
+    }
+    
+    .about-content {
+        max-width: 1600px;
+        padding: 40px;
+    }
+    
+    .about-text {
+        padding: 60px;
+    }
+    
+    .about-text h2 {
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+    }
+    
+    .about-text p {
+        font-size: 1.3rem;
+        line-height: 1.8;
+    }
+    
+    .about-image-collage {
+        height: 750px;
+    }
+    
+    .collage-container {
+        max-width: 1000px;
+        min-height: 500px;
+        max-height: 600px;
+        gap: 30px;
+        padding: 40px;
+    }
+}
+
+/* Media Query para pantallas ultra anchas */
+@media (min-width: 1600px) {
+    .about {
+        padding: 100px 60px;
+    }
+    
+    .about-content {
+        max-width: 1800px;
+        padding: 60px;
+    }
+    
+    .about-text {
+        padding: 80px;
+    }
+    
+    .about-text h2 {
+        font-size: 4rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    .about-text p {
+        font-size: 1.4rem;
+        line-height: 1.9;
+    }
+    
+    .about-image-collage {
+        height: 800px;
+    }
+    
+    .collage-container {
+        max-width: 1200px;
+        min-height: 600px;
+        max-height: 700px;
+        gap: 35px;
+        padding: 50px;
+    }
+}
+
+/* Media queries para contenedores en pantallas grandes */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1500px;
+        padding: 0 40px;
+    }
+    
+    .contact-form-section {
+        padding: 3rem;
+    }
+    
+    .contact-form-botsua {
+        max-width: 450px;
+    }
+    
+    .social-section {
+        padding: 3rem;
+    }
+    
+    .social-grid {
+        max-width: 350px;
+        gap: 2rem;
+    }
+    
+    .social-card {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .social-card .social-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1700px;
+        padding: 0 60px;
+    }
+    
+    .contact-form-section {
+        padding: 4rem;
+    }
+    
+    .contact-form-botsua {
+        max-width: 500px;
+    }
+    
+    .contact-form-botsua h3 {
+        font-size: 2.2rem;
+    }
+    
+    .social-section {
+        padding: 4rem;
+    }
+    
+    .social-grid {
+        max-width: 400px;
+        gap: 2.5rem;
+    }
+    
+    .social-card {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .social-card .social-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .social-card span {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1800px;
+        padding: 0 80px;
     }
 }

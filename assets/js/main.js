@@ -1189,6 +1189,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Funcionalidad para las tarjetas de redes sociales
+    const socialCards = document.querySelectorAll('.social-card');
+    socialCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const cardType = this.classList[1]; // instagram, whatsapp, facebook, email
+            
+            switch(cardType) {
+                case 'instagram':
+                    window.open('https://www.instagram.com/botsua.suculentascactus/', '_blank');
+                    break;
+                case 'whatsapp':
+                    window.open('https://wa.me/51987510300?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20sus%20productos%20de%20Botsua', '_blank');
+                    break;
+                case 'facebook':
+                    window.open('https://www.facebook.com/botsuasuculentascactus', '_blank');
+                    break;
+                case 'email':
+                    window.open('mailto:contacto@botsua.com?subject=Consulta%20sobre%20productos%20Botsua&body=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20sus%20productos.', '_blank');
+                    break;
+            }
+        });
+        
+        // Agregar cursor pointer
+        card.style.cursor = 'pointer';
+    });
+    
     // Inicializar precio
     setTimeout(updateLettersPrice, 100);
 });
