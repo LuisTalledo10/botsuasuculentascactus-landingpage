@@ -96,11 +96,15 @@ class MacetasCarousel {
         this.touchStartX = e.touches[0].clientX;
         this.touchStartY = e.touches[0].clientY;
         this.hasMoved = false;
-        this.horizontalDrag = null; // null: no decidido, true: horizontal, false: vertical
+        this.horizontalDrag = null;
         this.isDragging = false;
-
-        // Permitir drag en todo el slide, decidir por dirección en touchMove
         this.allowHorizontalDrag = true;
+
+        // Reiniciar variables de arrastre
+        this.startX = this.touchStartX;
+        this.currentX = this.touchStartX;
+        this.inMagnetZone = false;
+        this.magnetDirection = null;
     }
 
     touchMove(e) {
