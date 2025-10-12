@@ -1,5 +1,266 @@
 
 const products = [
+
+
+    // ...existing code...
+
+    // PIEZAS 1
+    {
+        id: 68,
+        name: "JOYERO BURBUJAS",
+        price: 16.00,
+        category: "piezas",
+        subcategory: "piezas1",
+        image: "assets/images/macetas/piezas/p1.png"
+    },
+    {
+        id: 69,
+        name: "JOYERO CONCHA",
+        price: 16.00,
+        category: "piezas",
+        subcategory: "piezas1",
+        image: "assets/images/macetas/piezas/p2.png"
+    },
+    {
+        id: 70,
+        name: "FLORERO",
+        price: 19.00,
+        category: "piezas",
+        subcategory: "piezas1",
+        image: "assets/images/macetas/piezas/p3.png"
+    },
+
+    // PIEZAS 2
+    {
+        id: 71,
+        name: "JOYERO PUNTA",
+        price: 22.00,
+        category: "piezas",
+        subcategory: "piezas2",
+        image: "assets/images/macetas/piezas/p4.png"
+    },
+    {
+        id: 72,
+        name: "JOYERO CUADRADO",
+        price: 25.00,
+        category: "piezas",
+        subcategory: "piezas2",
+        image: "assets/images/macetas/piezas/p5.png"
+    },
+    {
+        id: 73,
+        name: "ARCO",
+        price: 15.00,
+        category: "piezas",
+        subcategory: "piezas2",
+        image: "assets/images/macetas/piezas/p6.png"
+    },
+
+    // PIEZAS 3
+    {
+        id: 74,
+        name: "JOYERO ESTRELLA",
+        price: 16.00,
+        category: "piezas",
+        subcategory: "piezas3",
+        image: "assets/images/macetas/piezas/p7.png"
+    },
+    {
+        id: 75,
+        name: "JOYERO ALVA",
+        price: 20.00,
+        category: "piezas",
+        subcategory: "piezas3",
+        image: "assets/images/macetas/piezas/p8.png"
+    },
+    {
+        id: 76,
+        name: "JOYERO HOJA",
+        price: 19.00,
+        category: "piezas",
+        subcategory: "piezas3",
+        image: "assets/images/macetas/piezas/p9.png"
+    },
+
+    // PIEZAS 4
+    {
+        id: 77,
+        name: "BASE OVALADA",
+        price: 16.00,
+        category: "piezas",
+        subcategory: "piezas4",
+        image: "assets/images/macetas/piezas/p10.png"
+    },
+    {
+        id: 78,
+        name: "JOYERO NUBE",
+        price: 25.00,
+        category: "piezas",
+        subcategory: "piezas4",
+        image: "assets/images/macetas/piezas/p11.png"
+    },
+    {
+        id: 79,
+        name: "BASE GÉNESIS",
+        price: 20.00,
+        category: "piezas",
+        subcategory: "piezas4",
+        image: "assets/images/macetas/piezas/p12.png"
+    },
+
+    // PIEZAS 5
+    {
+        id: 80,
+        name: "ANILLERO",
+        price: 18.00,
+        category: "piezas",
+        subcategory: "piezas5",
+        image: "assets/images/macetas/piezas/p13.png"
+    },
+    {
+        id: 81,
+        name: "JOYERO CIRCULAR + TAPA",
+        price: 20.00,
+        category: "piezas",
+        subcategory: "piezas5",
+        image: "assets/images/macetas/piezas/p14.png"
+    },
+    {
+        id: 82,
+        name: "BASE REDONDA",
+        price: 25.00,
+        category: "piezas",
+        subcategory: "piezas5",
+        image: "assets/images/macetas/piezas/p15.png"
+    },
+    {
+        id: 83,
+        name: "FLORERO TRIANGULOS",
+        price: 22.00,
+        category: "piezas",
+        subcategory: "piezas5",
+        image: "assets/images/macetas/piezas/p16.png"
+    },
+
+    // COMBOS 1
+    {
+        id: 84,
+        name: "COMBO I",
+        price: 55.00,
+        category: "combos",
+        subcategory: "combos1",
+        image: "assets/images/macetas/combos/c1.png",
+        description: "FLORERO + JOYERO PUNTA + BANDEJA OVALADA"
+    },
+    {
+        id: 85,
+        name: "COMBO II",
+        price: 65.00,
+        category: "combos",
+        subcategory: "combos1",
+        image: "assets/images/macetas/combos/c2.png",
+        description: "FLORERO + JOYERO CUADRADO + BASE REDONDA (21 CM)"
+    },
+    {
+        id: 86,
+        name: "BASE + ARCO",
+        price: 30.00,
+        category: "combos",
+        subcategory: "combos1",
+        image: "assets/images/macetas/combos/c3.png",
+        description: "ARCOS + BANDEJA OVALADA"
+    },
+
+    // COMBOS 2
+    {
+        id: 87,
+        name: "COMBO III",
+        price: 72.00,
+        category: "combos",
+        subcategory: "combos2",
+        image: "assets/images/macetas/combos/c4.png",
+        description: "FLORERO + JOYERO CUADRADO + BASE REDONDA (21 CM) + 3 LETRAS"
+    },
+    {
+        id: 88,
+        name: "COMBO IV",
+        price: 55.00,
+        category: "combos",
+        subcategory: "combos2",
+        image: "assets/images/macetas/combos/c5.png",
+        description: "FLORERO + ARCO + BANDEJA OVALADA"
+    },
+    {
+        id: 89,
+        name: "FLORERO + LETRA",
+        price: 45.00,
+        category: "combos",
+        subcategory: "combos2",
+        image: "assets/images/macetas/combos/c6.png",
+        description: "FLORERO + BANDEJA OVALADA + 1 LETRA"
+    },
+
+    // COMBOS 3
+    {
+        id: 90,
+        name: "COMBO V",
+        price: 40.00,
+        category: "combos",
+        subcategory: "combos3",
+        image: "assets/images/macetas/combos/c7.png",
+        description: "JOYERO ALVA + BASE GENESIS"
+    },
+    {
+        id: 91,
+        name: "COMBO VI",
+        price: 40.00,
+        category: "combos",
+        subcategory: "combos3",
+        image: "assets/images/macetas/combos/c8.png",
+        description: "JOYERO PUNTA + BASE GENESIS"
+    },
+    {
+        id: 92,
+        name: "COMBO VII",
+        price: 85.00,
+        category: "combos",
+        subcategory: "combos3",
+        image: "assets/images/macetas/combos/c9.png",
+        description: "BASE REDONDA + JOYERO CIRCULAR + JOYERO PUNTA + FLORERO TRIANGULAR"
+    },
+
+    // COMBOS 4
+    {
+        id: 93,
+        name: "COMBO VIII",
+        price: 80.00,
+        category: "combos",
+        subcategory: "combos4",
+        image: "assets/images/macetas/combos/c10.png",
+        description: "ARCOS + JOYERO ALVA + JOYERO CIRCULAR + BASE REDONDA"
+    },
+    {
+        id: 94,
+        name: "COMBO IX",
+        price: 55.00,
+        category: "combos",
+        subcategory: "combos4",
+        image: "assets/images/macetas/combos/c11.png",
+        description: "BASE OVALADA + JOYERO CIRCULAR + JOYERO PUNTA"
+    },
+    {
+        id: 95,
+        name: "COMBO X",
+        price: 72.00,
+        category: "combos",
+        subcategory: "combos4",
+        image: "assets/images/macetas/combos/c12.png",
+        description: "FLORERO + JOYERO CUADRADO + 1 LETRA + BASE CIRCULAR"
+    },
+
+
+
+
     // RECUERDOS (Letras Variadas)
       // BOX DÚO
     {
