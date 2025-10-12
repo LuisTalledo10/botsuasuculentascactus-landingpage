@@ -187,39 +187,40 @@ class MacetasCarousel {
         this.currentX = clientX;
         const diffX = this.currentX - this.startX;
         const containerWidth = this.carouselContainer.parentElement.offsetWidth;
-        
-        // Reducir MUCHO más la sensibilidad del arrastre
-        const sensitivity = 0.15; // Aumentar un poco la sensibilidad para mejor feedback visual
+
+        // Sensibilidad
+        const sensitivity = 0.07;
         const adjustedDiffX = diffX * sensitivity;
-        
-        // Limitar el movimiento máximo para que se vea suave
-        const maxDragDistance = containerWidth * 0.3; // Aumentar a 30% para mejor feedback visual
-        const clampedDiffX = Math.max(-maxDragDistance, Math.min(maxDragDistance, adjustedDiffX));
-        
+
+        // Limitar el arrastre máximo SOLO al siguiente/previo slide
+        const slideWidth = containerWidth / this.totalSlides;
+        let maxDragDistance = slideWidth; // Solo 1 slide
+        if (adjustedDiffX < 0) maxDragDistance = -slideWidth;
+
+        // Clamp para que solo se vea el siguiente/previo slide
+        const clampedDiffX = Math.max(Math.min(adjustedDiffX, slideWidth), -slideWidth);
+
         // Calcular el porcentaje de arrastre
         const dragPercentage = (clampedDiffX / containerWidth) * 100;
-        
+
         // La posición base es siempre el slide actual
-    const baseTranslate = -this.currentSlide * (100 / this.totalSlides);
+        const baseTranslate = -this.currentSlide * (100 / this.totalSlides);
         let newTranslate = baseTranslate + dragPercentage;
-        
+
         // Aplicar resistencia en los extremos
         if (this.currentSlide === 0 && diffX > 0) {
-            // En el primer slide arrastrando hacia la derecha - resistencia
             newTranslate = baseTranslate + (dragPercentage * 0.3);
         } else if (this.currentSlide === this.totalSlides - 1 && diffX < 0) {
-            // En el último slide arrastrando hacia la izquierda - resistencia
             newTranslate = baseTranslate + (dragPercentage * 0.3);
         }
-        
-        // Solo seguimiento visual - SIN activar el imán durante el arrastre
+
         this.carouselContainer.style.transition = 'none';
         this.carouselContainer.style.transform = `translateX(${newTranslate}%)`;
-        
-        // Solo detectar si está en zona de imán para después (cuando se suelte)
-        const magnetThreshold = containerWidth * 0.25; // 25% para activar el imán al soltar
-        this.inMagnetZone = Math.abs(diffX) > magnetThreshold;
-        
+
+        // Detectar zona de imán para el salto al soltar
+        const magnetThreshold = slideWidth * 0.5; // 50% del slide para activar el imán
+        this.inMagnetZone = Math.abs(adjustedDiffX) > magnetThreshold;
+
         if (this.inMagnetZone) {
             if (diffX > 0 && this.currentSlide > 0) {
                 this.magnetDirection = 'prev';
