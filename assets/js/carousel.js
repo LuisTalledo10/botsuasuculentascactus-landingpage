@@ -402,9 +402,9 @@ class MacetasCarousel {
 
 // Inicializar el carrusel cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
-    // Solo inicializar si estamos en la sección de macetas
     const macetasSection = document.getElementById('macetas-section');
-    if (macetasSection) {
+    // Solo crear si no existe ya la instancia
+    if (macetasSection && !window.macetasCarousel) {
         window.macetasCarousel = new MacetasCarousel();
     }
 });
