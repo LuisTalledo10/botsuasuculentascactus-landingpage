@@ -19,10 +19,16 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="assets/css/leaflet.css">
+    <link rel="stylesheet" href="assets/css/leaflet-map.css">
     
     <!-- Scripts -->
     <script src="assets/js/config.js"></script>
     <script src="assets/js/products.js"></script>
+    <!-- Leaflet JS debe ir antes de cart.js -->
+    <script src="assets/js/leaflet.js"></script>
     <script src="assets/js/cart.js"></script>
     <script src="assets/js/catalog.js"></script>
     <script src="assets/js/main.js"></script>
@@ -2972,15 +2978,16 @@
         </div>
     </footer>
 
-    <!-- Cart Modal -->
-    <div class="modal" id="cartModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Carrito de compras</h3>
-                <button class="modal-close" id="closeCartModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
+<!-- Cart Modal -->
+<div class="modal" id="cartModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Carrito de compras</h3>
+            <button class="modal-close" id="closeCartModal">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="cartContent">
             <div class="modal-body">
                 <div id="cartItems" class="cart-items">
                     <!-- Los items del carrito se cargarán aquí -->
@@ -2996,7 +3003,49 @@
                 <button class="btn btn-primary" id="checkoutBtn">Finalizar compra</button>
             </div>
         </div>
+        <!-- Formulario de datos personales (oculto por defecto) -->
+        <div id="checkoutForm" class="checkout-form" style="display:none;">
+            <label>
+                Nombre:
+                <input type="text" id="checkoutName" required>
+            </label>
+            <label>
+                Teléfono:
+                <input type="tel" id="checkoutPhone" required>
+            </label>
+            <label>
+                Método de entrega:
+                <select id="checkoutMethod" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Recojo">Recojo en tienda</option>
+                    <option value="Envío">Envío a domicilio</option>
+                </select>
+            </label>
+            <label id="locationLabel" style="display:none;">
+             Ubicación de entrega:
+             <input type="text" id="checkoutLocation" placeholder="Escribe tu dirección o usa tu ubicación">
+             <button type="button" id="geoLocationBtn" class="btn btn-secondary" style="margin-top:8px;">Usar mi ubicación</button>
+            </label>
+            <label>
+                Método de pago:
+                <select id="checkoutPayment" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="Yape">Yape</option>
+                    <option value="Plin">Plin</option>
+                    <option value="Tarjeta">Tarjeta</option>
+                </select>
+            </label>
+            <input type="hidden" id="checkoutMapLink">
+            </label>
+            <button id="confirmCheckout" class="btn btn-primary">Enviar pedido</button>
+            <button id="cancelCheckout" class="btn btn-secondary">Cancelar</button>
+        </div>
+        <!-- Modal Leaflet para seleccionar ubicación -->
+        <!-- El mapa ahora está embebido en el formulario -->
+        </div>
     </div>
+</div>
 
     <!-- Product Modal -->
     <div class="modal" id="productModal">
@@ -3043,7 +3092,11 @@
                 </div>
             </div>
         </div>
+
+
+
     </div>
+
 
     <!-- JavaScript -->
     <script src="assets/js/config.js"></script>

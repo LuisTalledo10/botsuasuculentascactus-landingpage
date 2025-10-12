@@ -5071,6 +5071,14 @@ input, textarea, select {
 
 .config-row .checkbox-label:hover {
     background: rgba(59, 117, 95, 0.1);
+#leafletMap {
+    width: 100%;
+    height: 250px;
+    margin-top: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    z-index: 1;
+}
     border-color: var(--primary-color);
 }
 
@@ -5918,4 +5926,87 @@ input, textarea, select {
     text-align: center;
     margin: 10px 0;
     color: var(--primary-dark)
+}
+
+/* Estilos para el formulario dentro del modal del carrito */
+.checkout-form {
+    background: transparent; /* Quita el fondo blanco */
+    border-radius: 0;        /* Quita el borde redondeado */
+    box-shadow: none;        /* Quita la sombra */
+    max-width: 100%;         /* Ocupa todo el ancho del modal */
+    width: 100%;
+    margin: 0;
+    padding: 0 24px 24px 24px; /* Solo padding interno */
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: static;
+}
+
+.checkout-form label {
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.checkout-form input,
+.checkout-form select {
+    padding: 12px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.checkout-form button {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    padding: 12px 0;
+}
+
+@media (max-width: 600px) {
+    .checkout-form {
+        max-width: 98vw;
+        padding: 18px 8px;
+        border-radius: 16px;
+    }
+    .checkout-form input,
+    .checkout-form select {
+        font-size: 1rem;
+        padding: 10px 8px;
+    }
+    .checkout-form button {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+}
+
+.checkout-form input:focus,
+.checkout-form select:focus {
+    border-color: #219a7f; /* Verde Botsua */
+    box-shadow: 0 0 0 2px rgba(33, 154, 127, 0.15);
+    outline: none;
+}
+
+/* Estilo base para el select */
+.checkout-form select {
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 12px 10px;
+    font-size: 1rem;
+    color: #222;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* Flecha personalizada para el select */
+.checkout-form select {
+    background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 6L8 10L12 6' stroke='%23219a7f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px 18px;
 }

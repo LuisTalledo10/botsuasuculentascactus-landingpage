@@ -202,6 +202,11 @@ class ShoppingCart {
             document.body.style.overflow = 'hidden';
             this.isOpen = true;
             this.updateCartDisplay();
+            // Mostrar el contenido del carrito y ocultar el formulario SIEMPRE
+            const cartContent = document.getElementById('cartContent');
+            const checkoutForm = document.getElementById('checkoutForm');
+            if (cartContent) cartContent.style.display = 'block';
+            if (checkoutForm) checkoutForm.style.display = 'none';
         }
     }
 
@@ -341,11 +346,16 @@ class ShoppingCart {
     }
 
     // Abrir modal del carrito
-    openModal() {
-        this.updateCartDisplay();
-        showModal('cartModal');
-        this.isOpen = true;
-    }
+        openModal() {
+            this.updateCartDisplay();
+            showModal('cartModal');
+            this.isOpen = true;
+            // Mostrar el contenido del carrito y ocultar el formulario SIEMPRE
+            const cartContent = document.getElementById('cartContent');
+            const checkoutForm = document.getElementById('checkoutForm');
+            if (cartContent) cartContent.style.display = 'block';
+            if (checkoutForm) checkoutForm.style.display = 'none';
+        }
 
     // Cerrar modal del carrito
     closeModal() {
@@ -464,21 +474,38 @@ class ShoppingCart {
     }
 
     // Proceder al checkout (WhatsApp)
-    checkout() {
+    checkout(extra = {}) {
         if (this.isEmpty()) {
             this.showNotification('Tu carrito está vacío', 'error');
             return;
         }
 
-        const message = this.generateWhatsAppMessage();
-        const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${message}`;
-        
-        // Abrir WhatsApp en una nueva ventana
-        window.open(whatsappUrl, '_blank');
-        
-        // Opcional: vaciar carrito después del checkout
-        // this.clear();
-        // this.closeModal();
+        // Validar datos personales
+            const name = document.getElementById('checkoutName').value.trim();
+            const phone = document.getElementById('checkoutPhone').value.trim();
+            const method = document.getElementById('checkoutMethod').value;
+            const payment = document.getElementById('checkoutPayment').value;
+            let location = extra.location || '';
+            let mapLink = extra.mapLink || '';
+
+            if (!name || !phone || !method || !payment) {
+                this.showNotification('Por favor, completa todos los datos personales.', 'error');
+                return;
+            }
+
+            let personalData = `👤 *Nombre:* ${name}\n📱 *Teléfono:* ${phone}\n🚚 *Método de entrega:* ${method}\n💳 *Método de pago:* ${payment}\n`;
+            if (method === 'Envío' && location && mapLink) {
+                personalData += `📍 *Ubicación:* ${location}\n🔗 [Ver en Maps](${mapLink})\n`;
+            }
+            personalData += '\n';
+
+            const message = this.generateWhatsAppMessage();
+            const whatsappUrl = `https://wa.me/${WHATSAPP_CONFIG.phoneNumber}?text=${encodeURIComponent(personalData + decodeURIComponent(message))}`;
+
+            window.open(whatsappUrl, '_blank');
+            // Opcional: vaciar carrito después del checkout
+            // this.clear();
+            // this.closeModal();
     }
 }
 
@@ -530,9 +557,100 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
-            cart.checkout();
+            // Oculta el contenido del carrito y muestra el formulario
+            document.getElementById('cartContent').style.display = 'none';
+            document.getElementById('checkoutForm').style.display = 'flex';
         });
     }
+
+    // Mostrar/ocultar campo ubicación y mapa embebido según método
+    const checkoutMethod = document.getElementById('checkoutMethod');
+    const locationLabel = document.getElementById('locationLabel');
+    const leafletMapDiv = document.getElementById('leafletMap');
+    let leafletMap, marker, selectedLatLng;
+
+    checkoutMethod.addEventListener('change', function() {
+        if (this.value === 'Envío') {
+            locationLabel.style.display = 'block';
+            leafletMapDiv.style.display = 'block';
+            setTimeout(() => {
+                // Verificar que Leaflet está cargado y el div existe
+                if (typeof L !== 'undefined' && leafletMapDiv) {
+                    if (!leafletMap) {
+                        leafletMap = L.map('leafletMap').setView([-12.0464, -77.0428], 13); // Lima por defecto
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '© OpenStreetMap'
+                        }).addTo(leafletMap);
+                        leafletMap.on('click', function(e) {
+                            if (marker) leafletMap.removeLayer(marker);
+                            marker = L.marker(e.latlng).addTo(leafletMap);
+                            selectedLatLng = e.latlng;
+                            const lat = selectedLatLng.lat.toFixed(6);
+                            const lng = selectedLatLng.lng.toFixed(6);
+                            const mapLink = `https://www.google.com/maps?q=${lat},${lng}`;
+                            document.getElementById('checkoutLocation').value = `Lat: ${lat}, Lng: ${lng}`;
+                            document.getElementById('checkoutMapLink').value = mapLink;
+                        });
+                        setTimeout(() => { leafletMap.invalidateSize(); }, 300);
+                    } else {
+                        leafletMap.invalidateSize();
+                    }
+                } else {
+                    leafletMapDiv.innerHTML = '<div style="color:red;text-align:center;padding:1em;">No se pudo cargar el mapa. Verifica tu conexión o la carga de Leaflet.</div>';
+                }
+            }, 150);
+        } else {
+            locationLabel.style.display = 'none';
+            leafletMapDiv.style.display = 'none';
+            document.getElementById('checkoutLocation').value = '';
+            document.getElementById('checkoutMapLink').value = '';
+            if (leafletMap && marker) {
+                leafletMap.removeLayer(marker);
+                marker = null;
+            }
+        }
+    });
+
+        // Botón confirmar checkout en el formulario
+    const confirmCheckout = document.getElementById('confirmCheckout');
+    if (confirmCheckout) {
+        confirmCheckout.addEventListener('click', () => {
+            const name = document.getElementById('checkoutName').value.trim();
+            const phone = document.getElementById('checkoutPhone').value.trim();
+            const method = document.getElementById('checkoutMethod').value;
+            const mapLink = document.getElementById('checkoutMapLink').value.trim();
+            const location = document.getElementById('checkoutLocation').value.trim();
+            // Validar que haya dirección escrita o link
+            if (!name || !phone || !method) {
+                cart.showNotification('Por favor, completa todos los datos personales.', 'error');
+                return;
+            }
+            if (method === 'Envío' && !location && !mapLink) {
+                cart.showNotification('Por favor, ingresa tu dirección o usa tu ubicación.', 'error');
+                return;
+            }
+            // Proceder al checkout (WhatsApp)
+            cart.checkout({ location, mapLink });
+            cart.clear(); // Limpia el carrito
+            cart.closeModal(); // Cierra el modal del carrito
+            // Ocultar el formulario después de enviar
+            const checkoutForm = document.getElementById('checkoutForm');
+            if (checkoutForm) {
+                checkoutForm.style.display = 'none';
+            }
+        });
+    }
+
+    // Botón cancelar checkout en el formulario
+    const cancelCheckout = document.getElementById('cancelCheckout');
+    if (cancelCheckout) {
+        cancelCheckout.addEventListener('click', () => {
+            // Vuelve a mostrar el carrito y oculta el formulario
+            document.getElementById('checkoutForm').style.display = 'none';
+            document.getElementById('cartContent').style.display = 'block';
+        });
+    }
+
 
     // Tecla Escape para cerrar
     document.addEventListener('keydown', (e) => {
@@ -544,6 +662,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inicializar carrito
     cart.updateCartDisplay();
     cart.updateCartCount();
+
+    var geoBtn = document.getElementById('geoLocationBtn');
+    if (geoBtn) {
+        geoBtn.addEventListener('click', function() {
+            setLocationFromGeolocation();
+        });
+    }
 });
 
 // Función global para agregar al carrito (llamada desde los botones)
@@ -602,12 +727,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Botón checkout
-    const checkoutBtn = document.getElementById('checkoutBtn');
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', () => cart.checkout());
-    }
-
     // Cerrar modales al hacer click fuera
     const modals = document.querySelectorAll('.modal');
     modals.forEach(modal => {
@@ -642,3 +761,29 @@ window.addToCart = addToCart;
 window.showModal = showModal;
 window.hideModal = hideModal;
 window.closeModal = closeModal;
+
+// Geolocalización y enlace de Google Maps
+function setLocationFromGeolocation() {
+    const locationInput = document.getElementById('checkoutLocation');
+    const geoBtn = document.getElementById('geoLocationBtn');
+    if (!navigator.geolocation) {
+        alert('La geolocalización no está soportada en tu navegador.');
+        return;
+    }
+    geoBtn.disabled = true;
+    geoBtn.textContent = 'Obteniendo ubicación...';
+    navigator.geolocation.getCurrentPosition(function(position) {
+        const lat = position.coords.latitude.toFixed(6);
+        const lng = position.coords.longitude.toFixed(6);
+        const mapLink = `https://www.google.com/maps?q=${lat},${lng}`;
+        document.getElementById('checkoutMapLink').value = mapLink;
+        geoBtn.textContent = '✔ Ubicación lista';
+        geoBtn.classList.add('success');
+        geoBtn.disabled = true;
+        // No modificar el input, el cliente puede escribir su dirección manualmente
+    }, function(error) {
+        alert('No se pudo obtener la ubicación: ' + error.message);
+        geoBtn.textContent = 'Usar mi ubicación';
+        geoBtn.disabled = false;
+    });
+}
