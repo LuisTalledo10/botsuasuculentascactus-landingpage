@@ -5902,3 +5902,12 @@ input, textarea, select {
         padding: 0 80px;
     }
 }
+
+.macetas-carousel,
+#carouselContainer {
+    touch-action: pan-y;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+}
