@@ -8,6 +8,7 @@ class MacetasCarousel {
         this.indicators = document.querySelectorAll('.indicator');
         this.prevBtn = document.getElementById('prevBtn');
         this.nextBtn = document.getElementById('nextBtn');
+        this.positionIndicator = document.getElementById('carouselPosition');
 
         // Ajustar dinámicamente el ancho del contenedor y de los slides
         if (this.carouselContainer && this.totalSlides > 0) {
@@ -185,6 +186,8 @@ class MacetasCarousel {
         }
     }
 
+    
+
     duringDrag(clientX) {
         if (!this.isDragging) return;
 
@@ -253,6 +256,7 @@ class MacetasCarousel {
                 const targetTranslate = -this.currentSlide * (100 / this.totalSlides);
                 this.carouselContainer.style.transform = `translateX(${targetTranslate}%)`;
                 this.updateButtons();
+                this.updatePositionIndicator();
                 
                 // Actualizar indicadores después de un pequeño delay
                 setTimeout(() => {
@@ -269,6 +273,7 @@ class MacetasCarousel {
                 const targetTranslate = -this.currentSlide * (100 / this.totalSlides);
                 this.carouselContainer.style.transform = `translateX(${targetTranslate}%)`;
                 this.updateButtons();
+                this.updatePositionIndicator();
                 
                 // Actualizar indicadores después de un pequeño delay
                 setTimeout(() => {
@@ -283,6 +288,7 @@ class MacetasCarousel {
             // Sin zona de imán - volver suavemente a la posición actual
             this.carouselContainer.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
             this.updateCarousel();
+            this.updatePositionIndicator();
         }
         
         // Limpiar estado
@@ -296,7 +302,8 @@ class MacetasCarousel {
         // Asegurar que la transición esté activada para los cambios programáticos
         this.carouselContainer.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
         this.carouselContainer.style.transform = `translateX(${translateX}%)`;
-        
+        this.updatePositionIndicator();
+
         // Actualizar indicadores
         this.indicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index === this.currentSlide);
@@ -355,6 +362,12 @@ class MacetasCarousel {
         }
     }
 
+    updatePositionIndicator() {
+        if (this.positionIndicator) {
+            this.positionIndicator.textContent = `${this.currentSlide + 1} / ${this.totalSlides}`;
+        }
+    }
+
     updateButtons() {
         this.prevBtn.disabled = this.currentSlide === 0;
         this.nextBtn.disabled = this.currentSlide === this.totalSlides - 1;
@@ -365,6 +378,7 @@ class MacetasCarousel {
             this.currentSlide--;
             this.updateCarousel();
             this.updateButtons();
+            this.updatePositionIndicator();
         }
     }
 
@@ -373,6 +387,7 @@ class MacetasCarousel {
             this.currentSlide++;
             this.updateCarousel();
             this.updateButtons();
+            this.updatePositionIndicator();
         }
     }
 
@@ -381,6 +396,7 @@ class MacetasCarousel {
             this.currentSlide = slideIndex;
             this.updateCarousel();
             this.updateButtons();
+            this.updatePositionIndicator();
         }
     }
 

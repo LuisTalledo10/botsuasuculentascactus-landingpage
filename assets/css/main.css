@@ -5911,3 +5911,11 @@ input, textarea, select {
     -webkit-user-drag: none;
     -webkit-tap-highlight-color: transparent;
 }
+
+.carousel-position {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+    color: var(--primary-dark)
+}
