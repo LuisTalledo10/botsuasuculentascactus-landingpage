@@ -16,13 +16,21 @@ class CatalogManager {
         const btnMacetas = document.getElementById('btn-macetas');
         const btnPokemon = document.getElementById('btn-pokemon');
         const btnLetras = document.getElementById('btn-letras');
-        const mainCategoryBtns = [btnMacetas, btnPokemon, btnLetras];
+        const btnPortamacetero = document.getElementById('btn-portamacetero');
+        const btnRecuerdos = document.getElementById('btn-recuerdos');
+        const btnPiezas = document.getElementById('btn-piezas');
+        const btnCombos = document.getElementById('btn-combos');
+        const mainCategoryBtns = [btnMacetas, btnPokemon, btnLetras, btnPortamacetero, btnRecuerdos, btnPiezas, btnCombos];
 
         // Definir rangos de slides para cada sección
         const slideRanges = {
             macetas: { start: 0, end: 14, button: btnMacetas },
             pokemon: { start: 15, end: 18, button: btnPokemon },
-            letras: { start: 19, end: 19, button: btnLetras }
+            letras: { start: 19, end: 20, button: btnLetras },
+            portamacetero: { start: 21, end: 25, button: btnPortamacetero },
+            recuerdos: { start: 26, end: 30, button: btnRecuerdos },
+            piezas: { start: 31, end: 35, button: btnPiezas },
+            combos: { start: 36, end: 39, button: btnCombos }
         };
 
         // Función para actualizar botones según el slide actual
@@ -174,6 +182,58 @@ class CatalogManager {
             // Ir al slide 19
             if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
                 window.macetasCarousel.goToSlide(19);
+            }
+        });
+
+        // Ir al slide 21 (portamacetero y marco)
+        btnPortamacetero?.addEventListener('click', () => {
+            // Mostrar sección (si hay más de una)
+            const macetasSection = document.getElementById('macetas-section');
+            if (macetasSection) {
+                macetasSection.classList.add('active');
+            }
+            // Ir al slide 21
+            if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
+                window.macetasCarousel.goToSlide(21);
+            }
+        });
+
+        // Ir al slide 26 (recuerdos)
+        btnRecuerdos?.addEventListener('click', () => {
+            // Mostrar sección (si hay más de una)
+            const macetasSection = document.getElementById('macetas-section');
+            if (macetasSection) {
+                macetasSection.classList.add('active');
+            }
+            // Ir al slide 26
+            if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
+                window.macetasCarousel.goToSlide(26);
+            }
+        });
+
+        // Ir al slide 31 (piezas cemento blanco)
+        btnPiezas?.addEventListener('click', () => {
+            // Mostrar sección (si hay más de una)
+            const macetasSection = document.getElementById('macetas-section');
+            if (macetasSection) {
+                macetasSection.classList.add('active');
+            }
+            // Ir al slide 31
+            if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
+                window.macetasCarousel.goToSlide(31);
+            }
+        });
+
+        // Ir al slide 36 (combos cemento blanco)
+        btnCombos?.addEventListener('click', () => {
+            // Mostrar sección (si hay más de una)
+            const macetasSection = document.getElementById('macetas-section');
+            if (macetasSection) {
+                macetasSection.classList.add('active');
+            }
+            // Ir al slide 36
+            if (window.macetasCarousel && typeof window.macetasCarousel.goToSlide === 'function') {
+                window.macetasCarousel.goToSlide(36);
             }
         });
     }
